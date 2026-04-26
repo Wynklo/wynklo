@@ -37,7 +37,7 @@
   line-height: 0.92;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  max-width: 14ch;
+  max-width: 100%;
   margin-bottom: var(--space-2xl);
 }
 
