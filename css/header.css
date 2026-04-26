@@ -29,6 +29,22 @@
   transform: translateY(-100%);
 }
 
+/* When mega menu is open, header text becomes dark */
+.site-header.menu-open .logo,
+.site-header.menu-open .nav-link,
+.site-header.menu-open .nav-link::after {
+  color: var(--color-bg);
+  background-color: transparent;
+}
+
+.site-header.menu-open .nav-link::after {
+  background: var(--color-bg);
+}
+
+.site-header.menu-open .menu-toggle span {
+  background: var(--color-bg);
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -143,20 +159,26 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: auto;
+  height: auto;
+  min-height: 65vh;
+  max-height: 100vh;
+  overflow-y: auto;
   background: var(--color-yellow);
   z-index: 999;
   display: flex;
-  align-items: flex-end;
-  padding: calc(var(--header-height) + 2rem) var(--container-padding) var(--space-3xl);
+  align-items: flex-start;
+  padding: calc(var(--header-height) + 4rem) var(--container-padding) var(--space-3xl);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s var(--ease-out);
+  transform: translateY(-100%);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 
 .mega-menu.active {
   opacity: 1;
   pointer-events: all;
+  transform: translateY(0);
 }
 
 .mega-menu-inner {

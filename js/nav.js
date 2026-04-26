@@ -72,6 +72,7 @@ export function initNav() {
       const isActive = megaMenu.classList.contains('active');
       megaMenu.classList.toggle('active');
       servicesToggle.classList.toggle('active');
+      header.classList.toggle('menu-open');
       document.body.style.overflow = isActive ? '' : 'hidden';
     });
 
@@ -80,6 +81,7 @@ export function initNav() {
       if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
         megaMenu.classList.remove('active');
         servicesToggle.classList.remove('active');
+        header.classList.remove('menu-open');
         document.body.style.overflow = '';
       }
     });
@@ -89,6 +91,7 @@ export function initNav() {
       if (e.target === megaMenu) {
         megaMenu.classList.remove('active');
         servicesToggle.classList.remove('active');
+        header.classList.remove('menu-open');
         document.body.style.overflow = '';
       }
     });
