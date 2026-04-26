@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Insights - Demo</title>
-  <meta name="description" content="Blogs, guides, and spotlights from Demo — insights on web design, development, and digital platforms." />
+  <title>Insights - Winqly</title>
+  <meta name="description"
+    content="Blogs, guides, and spotlights from Winqly — insights on web design, development, and digital platforms." />
   <link rel="stylesheet" href="/css/variables.css" />
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/base.css" />
@@ -13,12 +15,14 @@
   <link rel="stylesheet" href="/css/marquee.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="stylesheet" href="/css/popup.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🍑</text></svg>" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🍑</text></svg>" />
   <style>
     .insights-hero {
       padding-top: calc(var(--header-height) + 4rem);
       padding-bottom: var(--space-2xl);
     }
+
     .insights-hero-top {
       display: flex;
       justify-content: space-between;
@@ -27,6 +31,7 @@
       flex-wrap: wrap;
       margin-top: var(--space-lg);
     }
+
     .insights-hero h1 {
       font-family: var(--font-heading);
       font-weight: 800;
@@ -36,6 +41,7 @@
       letter-spacing: -0.02em;
       color: var(--color-text);
     }
+
     .insights-filters {
       display: flex;
       gap: var(--space-sm);
@@ -43,6 +49,7 @@
       flex-wrap: wrap;
       padding-top: var(--space-xs);
     }
+
     .insights-filter-btn {
       font-family: var(--font-heading);
       font-weight: 800;
@@ -57,51 +64,83 @@
       align-items: baseline;
       gap: 0.3em;
     }
+
     .insights-filter-btn:hover,
     .insights-filter-btn.active {
       color: var(--color-text);
     }
+
     .insights-filter-count {
       font-family: var(--font-mono);
       font-size: 0.7rem;
       color: var(--color-text-muted);
     }
+
     .insights-full-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-lg);
       padding-bottom: var(--space-section);
     }
+
     @media (max-width: 900px) {
-      .insights-full-grid { grid-template-columns: 1fr; }
-      .insights-filters { gap: var(--space-md); }
-      .insights-hero-top { flex-direction: column; }
+      .insights-full-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insights-filters {
+        gap: var(--space-md);
+      }
+
+      .insights-hero-top {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="/" class="logo">Demo</a>
+      <a href="/" class="logo">Winqly</a>
       <nav class="nav-desktop" id="nav-desktop">
         <a href="/work.html" class="nav-link" data-chars>Work</a>
         <a href="/about.html" class="nav-link" data-chars>About</a>
-        <button class="nav-link nav-link-services" id="services-toggle" data-chars>Services <span class="chevron">▾</span></button>
+        <button class="nav-link nav-link-services" id="services-toggle" data-chars>Services <span
+            class="chevron">▾</span></button>
         <a href="/insights.html" class="nav-link" data-chars>Insights</a>
         <a href="/contact.html" class="nav-link" data-chars>Contact</a>
       </nav>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" id="menu-toggle"
+        aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </header>
   <div class="mega-menu" id="mega-menu">
     <div class="mega-menu-inner">
-      <div class="mega-menu-column"><h3>Web Design</h3><p>Captivate and delight your audience.</p><div class="mega-menu-links"><a href="#">UI & UX Design</a><a href="#">Accessibility</a><a href="#">Brand Development</a></div><a href="#" class="mega-menu-cta">Find out more</a></div>
-      <div class="mega-menu-column"><h3>Web Development</h3><p>Push your footprint further.</p><div class="mega-menu-links"><a href="#">Website Hosting</a><a href="#">WordPress Development</a><a href="#">WordPress Migrations</a></div><a href="#" class="mega-menu-cta">Find out more</a></div>
-      <div class="mega-menu-column"><h3>Digital Platforms</h3><p>Integrated web apps and software.</p><div class="mega-menu-links"><a href="#">APIs & Integrations</a><a href="#">Software Development</a><a href="#">Web App Development</a></div><a href="#" class="mega-menu-cta">Find out more</a></div>
+      <div class="mega-menu-column">
+        <h3>Web Design</h3>
+        <p>Captivate and delight your audience.</p>
+        <div class="mega-menu-links"><a href="#">UI & UX Design</a><a href="#">Accessibility</a><a href="#">Brand
+            Development</a></div><a href="#" class="mega-menu-cta">Find out more</a>
+      </div>
+      <div class="mega-menu-column">
+        <h3>Web Development</h3>
+        <p>Push your footprint further.</p>
+        <div class="mega-menu-links"><a href="#">Website Hosting</a><a href="#">WordPress Development</a><a
+            href="#">WordPress Migrations</a></div><a href="#" class="mega-menu-cta">Find out more</a>
+      </div>
+      <div class="mega-menu-column">
+        <h3>Digital Platforms</h3>
+        <p>Integrated web apps and software.</p>
+        <div class="mega-menu-links"><a href="#">APIs & Integrations</a><a href="#">Software Development</a><a
+            href="#">Web App Development</a></div><a href="#" class="mega-menu-cta">Find out more</a>
+      </div>
     </div>
   </div>
   <nav class="nav-mobile" id="nav-mobile">
-    <a href="/work.html" class="nav-link">Work</a><a href="/about.html" class="nav-link">About</a><a href="#" class="nav-link">Services</a><a href="/insights.html" class="nav-link">Insights</a><a href="/contact.html" class="nav-link">Contact</a>
+    <a href="/work.html" class="nav-link">Work</a><a href="/about.html" class="nav-link">About</a><a href="#"
+      class="nav-link">Services</a><a href="/insights.html" class="nav-link">Insights</a><a href="/contact.html"
+      class="nav-link">Contact</a>
   </nav>
 
   <main>
@@ -125,13 +164,17 @@
         <div class="insights-full-grid">
           <!-- Row 1 -->
           <a href="#" class="blog-card reveal">
-            <div class="blog-card-image"><img src="/images/gallery-office.png" alt="Website Redesign" loading="lazy" /></div>
+            <div class="blog-card-image"><img src="/images/gallery-office.png" alt="Website Redesign" loading="lazy" />
+            </div>
             <div class="blog-card-body">
-              <h3 class="blog-card-title">Do I Need a Website Redesign? 10 Signs Your Business Has Outgrown Its Website</h3>
+              <h3 class="blog-card-title">Do I Need a Website Redesign? 10 Signs Your Business Has Outgrown Its Website
+              </h3>
               <div class="blog-card-footer">
                 <span class="blog-card-tag">Blogs</span>
                 <span class="blog-card-date">23 Apr</span>
-                <div class="blog-card-author"><div class="blog-card-author-avatar">M</div><span class="blog-card-author-name">Matt</span></div>
+                <div class="blog-card-author">
+                  <div class="blog-card-author-avatar">M</div><span class="blog-card-author-name">Matt</span>
+                </div>
               </div>
             </div>
           </a>
@@ -143,7 +186,9 @@
               <div class="blog-card-footer">
                 <span class="blog-card-tag">Blogs</span>
                 <span class="blog-card-date">2 Apr</span>
-                <div class="blog-card-author"><div class="blog-card-author-avatar">S</div><span class="blog-card-author-name">Sam</span></div>
+                <div class="blog-card-author">
+                  <div class="blog-card-author-avatar">S</div><span class="blog-card-author-name">Sam</span>
+                </div>
               </div>
             </div>
           </a>
@@ -155,20 +200,25 @@
               <div class="blog-card-footer">
                 <span class="blog-card-tag">Blogs</span>
                 <span class="blog-card-date">10 Mar</span>
-                <div class="blog-card-author"><div class="blog-card-author-avatar">W</div><span class="blog-card-author-name">Will</span></div>
+                <div class="blog-card-author">
+                  <div class="blog-card-author-avatar">W</div><span class="blog-card-author-name">Will</span>
+                </div>
               </div>
             </div>
           </a>
 
           <!-- Row 2 -->
           <a href="#" class="blog-card reveal">
-            <div class="blog-card-image"><img src="/images/team-photo.png" alt="Accessibility Guide" loading="lazy" /></div>
+            <div class="blog-card-image"><img src="/images/team-photo.png" alt="Accessibility Guide" loading="lazy" />
+            </div>
             <div class="blog-card-body">
               <h3 class="blog-card-title">Accessibility in Web Design: A Beginner's Guide</h3>
               <div class="blog-card-footer">
                 <span class="blog-card-tag">Guides</span>
                 <span class="blog-card-date">18 Feb</span>
-                <div class="blog-card-author"><div class="blog-card-author-avatar">M</div><span class="blog-card-author-name">Matt</span></div>
+                <div class="blog-card-author">
+                  <div class="blog-card-author-avatar">M</div><span class="blog-card-author-name">Matt</span>
+                </div>
               </div>
             </div>
           </a>
@@ -180,7 +230,9 @@
               <div class="blog-card-footer">
                 <span class="blog-card-tag">Blogs</span>
                 <span class="blog-card-date">9 Feb</span>
-                <div class="blog-card-author"><div class="blog-card-author-avatar">G</div><span class="blog-card-author-name">Gemma</span></div>
+                <div class="blog-card-author">
+                  <div class="blog-card-author-avatar">G</div><span class="blog-card-author-name">Gemma</span>
+                </div>
               </div>
             </div>
           </a>
@@ -192,7 +244,9 @@
               <div class="blog-card-footer">
                 <span class="blog-card-tag">Blogs</span>
                 <span class="blog-card-date">3 Feb</span>
-                <div class="blog-card-author"><div class="blog-card-author-avatar">A</div><span class="blog-card-author-name">Anjt</span></div>
+                <div class="blog-card-author">
+                  <div class="blog-card-author-avatar">A</div><span class="blog-card-author-name">Anjt</span>
+                </div>
               </div>
             </div>
           </a>
@@ -202,12 +256,18 @@
 
     <section class="marquee-section marquee-section--red">
       <div class="marquee-track">
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html" class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html" class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html" class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html" class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html" class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html" class="marquee-btn">Get in touch today</a></div>
+        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html"
+            class="marquee-btn">Get in touch today</a></div>
+        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html"
+            class="marquee-btn">Get in touch today</a></div>
+        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html"
+            class="marquee-btn">Get in touch today</a></div>
+        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html"
+            class="marquee-btn">Get in touch today</a></div>
+        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html"
+            class="marquee-btn">Get in touch today</a></div>
+        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/contact.html"
+            class="marquee-btn">Get in touch today</a></div>
       </div>
     </section>
   </main>
@@ -215,21 +275,40 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-column"><div class="footer-links"><a href="/">Home</a><a href="/work.html">Work</a><a href="/insights.html">Insights</a><a href="/about.html">About</a><a href="#">Locations</a></div></div>
-        <div class="footer-column"><div class="footer-links"><a href="#">Web Design</a><a href="#">Web Development</a><a href="#">Digital Platforms</a><a href="#">Agency Partnerships</a><a href="#">All Services</a></div></div>
-        <div class="footer-column"><div class="footer-links"><a href="/contact.html">Contact</a><a href="#">Careers</a><a href="#">LinkedIn</a><a href="#">Facebook</a></div></div>
-        <div class="footer-column"><div class="footer-contact"><p class="footer-address">Studio B.15, The Old Church School,<br/>Butts Hill, Frome,<br/>BA11 1HR</p><div class="footer-contact-links"><a href="mailto:contact@demo.co.uk">contact@demo.co.uk</a><a href="tel:01373476446">01373 476446</a></div></div></div>
+        <div class="footer-column">
+          <div class="footer-links"><a href="/">Home</a><a href="/work.html">Work</a><a
+              href="/insights.html">Insights</a><a href="/about.html">About</a><a href="#">Locations</a></div>
+        </div>
+        <div class="footer-column">
+          <div class="footer-links"><a href="#">Web Design</a><a href="#">Web Development</a><a href="#">Digital
+              Platforms</a><a href="#">Agency Partnerships</a><a href="#">All Services</a></div>
+        </div>
+        <div class="footer-column">
+          <div class="footer-links"><a href="/contact.html">Contact</a><a href="#">Careers</a><a href="#">LinkedIn</a><a
+              href="#">Facebook</a></div>
+        </div>
+        <div class="footer-column">
+          <div class="footer-contact">
+            <p class="footer-address">Studio B.15, The Old Church School,<br />Butts Hill, Frome,<br />BA11 1HR</p>
+            <div class="footer-contact-links"><a href="mailto:contact@winqly.co.in">contact@winqly.co.in</a><a
+                href="tel:01373476446">01373 476446</a></div>
+          </div>
+        </div>
       </div>
-      <div class="footer-bottom"><span class="footer-copyright">&copy;2026 Demo</span><div class="footer-legal"><a href="#">Cookie Policy</a><span class="footer-legal-sep">/</span><a href="#">Privacy Policy</a><span class="footer-legal-sep">/</span><a href="#">Sitemap</a></div></div>
+      <div class="footer-bottom"><span class="footer-copyright">&copy;2026 Winqly</span>
+        <div class="footer-legal"><a href="#">Cookie Policy</a><span class="footer-legal-sep">/</span><a
+            href="#">Privacy Policy</a><span class="footer-legal-sep">/</span><a href="#">Sitemap</a></div>
+      </div>
     </div>
-    <div class="footer-watermark" aria-hidden="true">D<span>e</span>m<span>o</span></div>
+    <div class="footer-watermark" aria-hidden="true">W<span>i</span>nql<span>y</span></div>
   </footer>
 
   <div class="cta-popup" id="cta-popup">
     <button class="cta-popup-close" id="cta-popup-close" aria-label="Close">&times;</button>
-    <p class="cta-popup-text">Got a project in mind?<br/>We'd love to hear about it.</p>
+    <p class="cta-popup-text">Got a project in mind?<br />We'd love to hear about it.</p>
     <a href="/contact.html" class="cta-popup-link">Get in touch</a>
   </div>
   <script type="module" src="/js/main.js"></script>
 </body>
+
 </html>

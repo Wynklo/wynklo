@@ -23,7 +23,8 @@
   letter-spacing: 0.1em;
   color: var(--color-text-muted);
   margin-bottom: var(--space-md);
-  display: none; /* Column headings hidden like original */
+  display: none;
+  /* Column headings hidden like original */
 }
 
 .footer-links {
@@ -128,6 +129,20 @@
   user-select: none;
   pointer-events: none;
   overflow: hidden;
+  text-align: center;
+  animation: gravityFloat 6s ease-in-out infinite;
+}
+
+@keyframes gravityFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .footer-watermark span {
