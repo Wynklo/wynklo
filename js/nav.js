@@ -63,36 +63,85 @@ export function initNav() {
     });
   });
 
-  // ── Services mega menu toggle ──
-  // When Services is clicked, mega menu opens from the top 50% of the viewport
-  // pushing page content down, showing the yellow overlay with services info
+  // ── Services mega menu toggle & Slider ──
   if (servicesToggle && megaMenu) {
+    const pages = document.querySelectorAll('.mega-menu-page');
+    const arrow = document.getElementById('mega-menu-arrow');
+    const closeBtn = document.getElementById('mega-menu-close');
+    let currentPage = 0;
+
+    const updateSlider = () => {
+      pages.forEach(page => {
+        page.style.transform = `translateX(-${currentPage * 100}%)`;
+      });
+      if (arrow) {
+        if (currentPage === pages.length - 1) {
+           arrow.style.transform = 'translateY(-50%) rotate(180deg)';
+        } else {
+           arrow.style.transform = 'translateY(-50%) rotate(0deg)';
+        }
+      }
+    };
+
+    const closeMegaMenu = () => {
+      megaMenu.classList.remove('active');
+      servicesToggle.classList.remove('active');
+      header.classList.remove('menu-open');
+      document.body.style.overflow = '';
+      // Reset to page 1 after transition ends
+      setTimeout(() => {
+        currentPage = 0;
+        updateSlider();
+      }, 500);
+    };
+
     servicesToggle.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const isActive = megaMenu.classList.contains('active');
-      megaMenu.classList.toggle('active');
-      servicesToggle.classList.toggle('active');
-      header.classList.toggle('menu-open');
-      document.body.style.overflow = isActive ? '' : 'hidden';
+      if (isActive) {
+        closeMegaMenu();
+      } else {
+        megaMenu.classList.add('active');
+        servicesToggle.classList.add('active');
+        header.classList.add('menu-open');
+        document.body.style.overflow = 'hidden';
+      }
     });
+
+    if (arrow) {
+      arrow.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentPage = (currentPage + 1) % pages.length;
+        updateSlider();
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMegaMenu();
+      });
+    }
 
     // Close on Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && megaMenu.classList.contains('active')) {
-        megaMenu.classList.remove('active');
-        servicesToggle.classList.remove('active');
-        header.classList.remove('menu-open');
-        document.body.style.overflow = '';
+        closeMegaMenu();
       }
     });
 
-    // Close when clicking outside menu content
+    // Close when clicking outside menu content (backdrop)
+    document.addEventListener('click', (e) => {
+      if (megaMenu.classList.contains('active') && !megaMenu.contains(e.target) && !servicesToggle.contains(e.target)) {
+        closeMegaMenu();
+      }
+    });
+    
+    // Also close if clicking exactly on the yellow background
     megaMenu.addEventListener('click', (e) => {
-      if (e.target === megaMenu) {
-        megaMenu.classList.remove('active');
-        servicesToggle.classList.remove('active');
-        header.classList.remove('menu-open');
-        document.body.style.overflow = '';
+      if (e.target === megaMenu || e.target === document.getElementById('mega-menu-slider')) {
+        closeMegaMenu();
       }
     });
   }
