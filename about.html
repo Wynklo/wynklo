@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - Winqly</title>
+  <title>About Us - Wynklo</title>
   <meta name="description"
-    content="Meet the Winqly team — designers, developers, and deliberate thinkers crafting creative solutions with technical precision." />
+    content="Meet the Wynklo team — designers, developers, and deliberate thinkers crafting creative solutions with technical precision." />
   <link rel="stylesheet" href="/css/variables.css" />
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/base.css" />
@@ -246,36 +246,7 @@
       margin-top: 0.3em;
     }
 
-    /* Careers toast notification */
-    .careers-toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(120%);
-      background: var(--color-bg-card);
-      border: 1px solid rgba(243, 241, 231, 0.15);
-      border-radius: var(--radius-lg);
-      padding: 1em 2em;
-      z-index: 10000;
-      transition: transform 0.5s var(--ease-out), opacity 0.5s;
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    }
 
-    .careers-toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
-    .careers-toast p {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--color-text);
-      white-space: nowrap;
-    }
 
     @media (max-width: 900px) {
       .our-values-layout {
@@ -296,7 +267,7 @@
 <body>
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a href="/" class="logo">Winqly</a>
+      <a href="/" class="logo">Wynklo</a>
       <nav class="nav-desktop" id="nav-desktop">
         <a href="/work.html" class="nav-link" data-chars>Work</a>
         <a href="/about.html" class="nav-link" data-chars>About</a>
@@ -311,7 +282,7 @@
   </header>
   <div class="mega-menu" id="mega-menu">
     <button class="mega-menu-close-btn" id="mega-menu-close" aria-label="Close menu">&times;</button>
-    
+
     <div class="mega-menu-slider" id="mega-menu-slider">
       <!-- Page 1 -->
       <div class="mega-menu-inner mega-menu-page">
@@ -387,7 +358,7 @@
         </div>
       </div>
     </div>
-    
+
     <button class="mega-menu-arrow" id="mega-menu-arrow" aria-label="Next services">&#8594;</button>
   </div>
   <nav class="nav-mobile" id="nav-mobile">
@@ -402,15 +373,29 @@
         <hr class="separator" />
         <p class="about-hero-eyebrow reveal">Designers, Developers, and Deliberate Thinkers</p>
         <h1 class="reveal reveal-delay-1">Creative Solutions. Technical Precision</h1>
-        <p class="about-description reveal reveal-delay-2">We know how to squeeze every last drop of performance out of
-          WordPress. But it's the cohesive experiences we shape across every digital touchpoint that sets you – and us –
-          apart.</p>
+        <div class="about-story reveal reveal-delay-2" style="margin-top: var(--space-2xl);">
+          <h2
+            style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: var(--space-md);">
+            Our Story</h2>
+          <div class="about-description"
+            style="margin-top: 0; display: flex; flex-direction: column; gap: var(--space-md);">
+            <p>Our journey began with a simple idea: technology should work for people, not the other way around. In
+              just two years, we've grown from a two-person startup to a trusted partner for businesses looking to make
+              their mark in the digital world.</p>
+            <p>What sets us apart? We listen. We understand that behind every line of code is a business goal, a
+              customer need, or a dream waiting to be realized. Our approach combines technical excellence with genuine
+              human understanding.</p>
+            <p>We've had the privilege of working with amazing clients who've trusted us to bring their visions to life.
+              From sleek websites to complex web applications, each project has been a learning experience that's helped
+              us grow and refine our craft.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="container">
       <div class="about-studio-image reveal">
-        <img src="/images/gallery-office.png" alt="Winqly studio" loading="lazy" />
+        <img src="/images/gallery-office.png" alt="Wynklo studio" loading="lazy" />
       </div>
     </div>
 
@@ -443,26 +428,21 @@
         <h2 class="reveal">Meet The Team</h2>
         <div class="team-grid">
           <div class="team-member reveal">
-            <div class="team-member-photo"><img src="/images/team-photo.png" alt="Matt" loading="lazy" /></div>
-            <p class="team-member-name">Matt</p>
-            <p class="team-member-role">Founder & Creative Director</p>
+            <div class="team-member-photo"><img src="/images/team-photo.png" alt="Kovid Sharma" loading="lazy" /></div>
+            <p class="team-member-name">Kovid Sharma</p>
+            <p class="team-member-role">Technical Lead</p>
           </div>
           <div class="team-member reveal reveal-delay-1">
-            <div class="team-member-photo"><img src="/images/gallery-office.png" alt="Sam" loading="lazy" /></div>
-            <p class="team-member-name">Sam</p>
-            <p class="team-member-role">Lead Developer</p>
-          </div>
-          <!-- Join the Family card -->
-          <div class="team-member team-member--join reveal reveal-delay-2" id="join-family-card">
-            <div class="team-member-photo">
-              <div class="join-content">
-                <div class="join-icon">+</div>
-                <p class="join-text">Join The Family</p>
-                <p class="join-subtext">Careers</p>
-              </div>
+            <div class="team-member-photo"><img src="/images/gallery-office.png" alt="Krishna Sudan" loading="lazy" />
             </div>
-            <p class="team-member-name">Your Name?</p>
-            <p class="team-member-role">Open Positions</p>
+            <p class="team-member-name">Krishna Sudan</p>
+            <p class="team-member-role">Automation Specialist</p>
+          </div>
+          <div class="team-member reveal reveal-delay-2">
+            <div class="team-member-photo"><img src="/images/gallery-social.png" alt="Pulkit Giddu" loading="lazy" />
+            </div>
+            <p class="team-member-name">Pulkit Giddu</p>
+            <p class="team-member-role">Full Stack Developer</p>
           </div>
         </div>
       </div>
@@ -496,10 +476,7 @@
     </section>
   </main>
 
-  <!-- Careers Toast -->
-  <div class="careers-toast" id="careers-toast">
-    <p>🍑 Currently no open positions — check back soon!</p>
-  </div>
+
 
   <footer class="site-footer">
     <div class="container">
@@ -519,17 +496,17 @@
         <div class="footer-column">
           <div class="footer-contact">
             <p class="footer-address">Studio B.15, The Old Church School,<br />Butts Hill, Frome,<br />BA11 1HR</p>
-            <div class="footer-contact-links"><a href="mailto:contact@winqly.in">contact@winqly.in</a><a
+            <div class="footer-contact-links"><a href="mailto:contact@wynklo.in">contact@wynklo.in</a><a
                 href="tel:01373476446">01373 476446</a></div>
           </div>
         </div>
       </div>
-      <div class="footer-bottom"><span class="footer-copyright">&copy;2026 Winqly</span>
+      <div class="footer-bottom"><span class="footer-copyright">&copy;2026 Wynklo</span>
         <div class="footer-legal"><a href="#">Cookie Policy</a><span class="footer-legal-sep">/</span><a
             href="#">Privacy Policy</a><span class="footer-legal-sep">/</span><a href="#">Sitemap</a></div>
       </div>
     </div>
-    <div class="footer-watermark" aria-hidden="true">W<span>i</span>nql<span>y</span></div>
+    <div class="footer-watermark" aria-hidden="true">W<span>y</span>nkl<span>o</span></div>
   </footer>
 
   <div class="cta-popup" id="cta-popup">

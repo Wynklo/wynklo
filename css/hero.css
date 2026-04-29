@@ -196,12 +196,12 @@
 .featured-work-heading {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: clamp(4rem, 12vw, 11rem);
+  font-size: clamp(3rem, 6vw, 6rem);
   text-transform: uppercase;
   color: var(--color-text);
   text-align: center;
   line-height: 0.9;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   transition: opacity 0.1s linear;
 }
 
@@ -228,7 +228,7 @@
   }
 
   .featured-work-heading {
-    font-size: clamp(3rem, 10vw, 5rem);
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
   }
 
   .featured-work-header {

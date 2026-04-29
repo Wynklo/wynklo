@@ -106,3 +106,146 @@
     gap: var(--space-2xl);
   }
 }
+
+/* ========================================
+   Zyntrix About Section Styling
+   ======================================== */
+
+.zyntrix-about {
+  padding: var(--space-3xl) 0;
+  background: var(--color-bg);
+}
+
+.zyntrix-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  margin-bottom: var(--space-3xl);
+  align-items: center;
+}
+
+.zyntrix-intro-text h2, 
+.zyntrix-story h2,
+.zyntrix-values-header h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.zyntrix-intro-text p,
+.zyntrix-story-content p,
+.zyntrix-values-header p {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.zyntrix-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+.zyntrix-stat {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.zyntrix-stat .stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-yellow);
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+
+.zyntrix-stat .stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.zyntrix-story {
+  margin-bottom: var(--space-3xl);
+  background: rgba(255, 255, 255, 0.02);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.zyntrix-story-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 80ch;
+}
+
+.zyntrix-values {
+  margin-top: var(--space-3xl);
+}
+
+.zyntrix-values-header {
+  margin-bottom: var(--space-2xl);
+  text-align: center;
+}
+
+.zyntrix-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.zyntrix-value-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.zyntrix-value-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-yellow);
+}
+
+.zyntrix-value-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.zyntrix-value-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 900px) {
+  .zyntrix-intro-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .zyntrix-values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .zyntrix-story {
+    padding: var(--space-xl);
+  }
+}

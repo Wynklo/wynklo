@@ -168,3 +168,34 @@
     text-align: center;
   }
 }
+
+/* ── Global Careers Toast ── */
+.careers-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--color-bg-card);
+  border: 1px solid rgba(243, 241, 231, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1em 2em;
+  z-index: 10000;
+  transition: transform 0.5s var(--ease-out), opacity 0.5s;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.careers-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.careers-toast p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
