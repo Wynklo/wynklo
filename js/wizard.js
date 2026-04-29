@@ -297,7 +297,32 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.mockup-action-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const device = e.target.closest('.phone-mockup') ? 'phone' : 'mac';
-      showToast(device, btn.textContent + ' Clicked!');
+      const originalText = btn.textContent;
+      
+      // Simulate Processing State
+      btn.classList.add('loading');
+      btn.textContent = 'Processing...';
+      
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        btn.textContent = '✅ Success';
+        showToast(device, originalText + ' Completed!');
+        
+        // Revert back
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 1500);
+      }, 800);
+    });
+  });
+
+  // Toggle Switches Interaction
+  document.querySelectorAll('.mockup-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      toggle.classList.toggle('active');
+      const device = toggle.closest('.phone-mockup') ? 'phone' : 'mac';
+      const state = toggle.classList.contains('active') ? 'Enabled' : 'Disabled';
+      showToast(device, `Setting ${state}`);
     });
   });
 

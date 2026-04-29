@@ -250,9 +250,18 @@
                       </div>
                     </div>
                     <div class="mockup-list">
-                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px;"><span style="margin-right: 10px;">🔔</span> Notifications</div>
-                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px;"><span style="margin-right: 10px;">🔒</span> Privacy</div>
-                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 8px;"><span style="margin-right: 10px;">❓</span> Support</div>
+                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <div><span style="margin-right: 10px;">🔔</span> Notifications</div>
+                        <div class="mockup-toggle active"></div>
+                      </div>
+                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <div><span style="margin-right: 10px;">🔒</span> Privacy Mode</div>
+                        <div class="mockup-toggle"></div>
+                      </div>
+                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                        <div><span style="margin-right: 10px;">🌙</span> Dark Theme</div>
+                        <div class="mockup-toggle active"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -318,16 +327,25 @@
                     <div class="mac-split">
                       <div class="mac-split-left" style="flex: 0.3;">
                         <div class="mockup-list">
-                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">Dashboard</div>
-                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px;">Analytics</div>
-                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px;">Settings</div>
+                          <div class="mockup-list-item active" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">Dashboard</div>
+                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">Analytics</div>
+                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">Settings</div>
                         </div>
                       </div>
                       <div class="mac-split-right" style="flex: 0.7;">
-                        <div style="background: rgba(255,255,255,0.02); height: 200px; border-radius: 12px; margin-bottom: 20px;"></div>
+                        <div style="background: rgba(255,255,255,0.02); height: auto; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                          <div class="mockup-list-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>Enable Analytics Tracking</div>
+                            <div class="mockup-toggle active"></div>
+                          </div>
+                          <div class="mockup-list-item" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>Auto-Publish Updates</div>
+                            <div class="mockup-toggle"></div>
+                          </div>
+                        </div>
                         <div style="display: flex; gap: 20px;">
-                          <div style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px;"></div>
-                          <div style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px;"></div>
+                          <div style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📈</div>
+                          <div style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👥</div>
                         </div>
                       </div>
                     </div>
