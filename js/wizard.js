@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function submitForm() {
+  async function submitForm() {
     btnNext.textContent = "Submitting...";
     btnNext.disabled = true;
     
@@ -376,25 +376,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkedFeatures = Array.from(document.querySelectorAll('.feature-checkbox:checked')).map(cb => cb.value);
     
     const payload = {
-      platform: selectedPlatform,
-      businessCategory: selectedBusiness,
-      businessName: document.getElementById('businessName').value.trim(),
-      location: document.getElementById('location').value.trim(),
-      selectedFeatures: checkedFeatures,
-      specificRequirements: document.getElementById('specificRequirements').value.trim(),
-      contact: {
-        name: document.getElementById('contactName').value.trim(),
-        email: document.getElementById('contactEmail').value.trim(),
-        phone: document.getElementById('contactPhone').value.trim()
-      }
+      name: document.getElementById('contactName').value.trim(),
+      email: document.getElementById('contactEmail').value.trim(),
+      company: document.getElementById('businessName').value.trim(),
+      service: selectedPlatform || 'web-development',
+      message: `New Project Inquiry:
+
+Platform: ${selectedPlatform}
+Business Category: ${selectedBusiness}
+Business Name: ${document.getElementById('businessName').value.trim()}
+Location: ${document.getElementById('location').value.trim()}
+Selected Features: ${checkedFeatures.join(', ')}
+Specific Requirements: ${document.getElementById('specificRequirements').value.trim()}
+Phone: ${document.getElementById('contactPhone').value.trim()}
+
+---
+Submitted via Start Your Project wizard`
     };
 
     console.log("🚀 Project Submission Payload:", payload);
+
+    // Use relative URL in production, localhost in development
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3000/api/contact'
+      : '/api/contact';
     
-    setTimeout(() => {
-      alert("Thank you! Your project request has been submitted successfully.");
-      window.location.href = "/";
-    }, 1500);
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("Thank you! Your project request has been submitted successfully. We'll be in touch soon!");
+        window.location.href = "/";
+      } else {
+        alert("There was an error submitting your request. Please try again or contact us directly at contactuswynklo@gmail.com");
+        btnNext.textContent = "Submit Request";
+        btnNext.disabled = false;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert("There was an error submitting your request. Please try again or contact us directly at contactuswynklo@gmail.com");
+      btnNext.textContent = "Submit Request";
+      btnNext.disabled = false;
+    }
   }
 
   // Init
