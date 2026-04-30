@@ -23,7 +23,12 @@ export const initContactForm = () => {
         message: formData.get('message')
       };
       
-      const response = await fetch('http://localhost:3000/api/contact', {
+      // Use relative URL in production, localhost in development
+      const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3000/api/contact'
+        : '/api/contact';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
