@@ -7,20 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const indicators = document.querySelectorAll('.step-indicator');
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
-  
+
   const platformCards = document.querySelectorAll('.platform-card');
   const businessCards = document.querySelectorAll('.business-card');
   const dynamicFeatures = document.getElementById('dynamic-features');
 
   const aiLoading = document.getElementById('ai-loading');
   const interactiveMockup = document.getElementById('interactive-mockup');
-  
+
   const devicePhone = document.getElementById('device-phone');
   const deviceMac = document.getElementById('device-mac');
 
   let currentStep = 1;
   const totalSteps = 5;
-  
+
   // State
   let selectedPlatform = null;
   let selectedBusiness = null;
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (currentStep === 1) {
       if (!selectedPlatform || !selectedBusiness) isValid = false;
-    } 
+    }
     else if (currentStep === 2) {
       const bName = document.getElementById('businessName').value.trim();
       const loc = document.getElementById('location').value.trim();
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!selectedBusiness) return;
     const data = businessData[selectedBusiness];
     dynamicFeatures.innerHTML = '';
-    
+
     let featuresToShow = [];
     if (selectedPlatform === 'app') featuresToShow = data.appFeatures;
     else if (selectedPlatform === 'web') featuresToShow = data.webFeatures;
@@ -194,13 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Remove duplicates if any
     featuresToShow = [...new Set(featuresToShow)];
-    
+
     featuresToShow.forEach((feat, index) => {
       const id = `feat-${index}`;
       const item = document.createElement('label');
       item.className = 'feature-item';
       item.setAttribute('for', id);
-      
+
       item.innerHTML = `
         <input type="checkbox" id="${id}" class="feature-checkbox" value="${feat}" checked />
         <span class="feature-name">${feat}</span>
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function triggerAIPreview() {
     if (!selectedBusiness) return;
     const data = businessData[selectedBusiness];
-    
+
     // Device Visibility
     devicePhone.style.display = (selectedPlatform === 'app' || selectedPlatform === 'both') ? 'flex' : 'none';
     deviceMac.style.display = (selectedPlatform === 'web' || selectedPlatform === 'both') ? 'flex' : 'none';
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get currently checked features from Step 3
     const checkedFeatures = Array.from(document.querySelectorAll('.feature-checkbox:checked')).map(cb => cb.value);
     const displayFeatures = checkedFeatures.length > 0 ? checkedFeatures : [...(data.appFeatures || []), ...(data.webFeatures || [])];
-    
+
     // Populate Features Tab
     document.querySelectorAll('.mockup-features-list').forEach(list => {
       list.innerHTML = '';
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.style.borderRadius = '10px';
         item.style.display = 'flex';
         item.style.alignItems = 'center';
-        
+
         item.innerHTML = `
           <div style="font-size: 1.2rem; margin-right: 15px; background: rgba(253, 208, 17, 0.1); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 6px;">✨</div>
           <div class="mockup-item-text" style="flex: 1;">
@@ -267,9 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset mockups to Home view
     document.querySelectorAll('.mockup-nav-item').forEach(n => {
       n.classList.remove('active');
-      if(n.dataset.target === 'mockup-view-home') n.classList.add('active');
+      if (n.dataset.target === 'mockup-view-home') n.classList.add('active');
     });
-    
+
     document.querySelectorAll('.mockup-view').forEach(v => v.classList.remove('active'));
     document.querySelectorAll('.mockup-view-home').forEach(v => v.classList.add('active'));
 
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Mockup Interactions ──
   function showToast(device, message) {
     const toast = document.querySelector(`#device-${device} .mockup-toast`);
-    if(toast) {
+    if (toast) {
       toast.textContent = message;
       toast.classList.add('show');
       setTimeout(() => {
@@ -298,16 +298,16 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       const device = e.target.closest('.phone-mockup') ? 'phone' : 'mac';
       const originalText = btn.textContent;
-      
+
       // Simulate Processing State
       btn.classList.add('loading');
       btn.textContent = 'Processing...';
-      
+
       setTimeout(() => {
         btn.classList.remove('loading');
         btn.textContent = '✅ Success';
         showToast(device, originalText + ' Completed!');
-        
+
         // Revert back
         setTimeout(() => {
           btn.textContent = originalText;
@@ -330,17 +330,17 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.addEventListener('click', (e) => {
       const device = nav.dataset.device;
       const targetClass = nav.dataset.target; // e.g. mockup-view-home
-      
+
       // Update nav styling for THIS device
       const container = document.getElementById(`device-${device}`);
       container.querySelectorAll('.mockup-nav-item').forEach(n => n.classList.remove('active'));
       nav.classList.add('active');
-      
+
       // Switch view for THIS device
       container.querySelectorAll('.mockup-view').forEach(v => v.classList.remove('active'));
       const targetView = container.querySelector(`.${targetClass}`);
       if (targetView) targetView.classList.add('active');
-      
+
       // Show toast
       const tabNames = {
         'mockup-view-home': 'Home',
@@ -371,10 +371,10 @@ document.addEventListener('DOMContentLoaded', () => {
   async function submitForm() {
     btnNext.textContent = "Submitting...";
     btnNext.disabled = true;
-    
+
     // Gather Data Payload
     const checkedFeatures = Array.from(document.querySelectorAll('.feature-checkbox:checked')).map(cb => cb.value);
-    
+
     const payload = {
       name: document.getElementById('contactName').value.trim(),
       email: document.getElementById('contactEmail').value.trim(),

@@ -36,7 +36,7 @@
 
   <main class="wizard-section">
     <div class="container">
-      
+
       <!-- Stepper -->
       <div class="wizard-stepper" id="wizard-stepper">
         <div class="step-indicator active" data-step="1">
@@ -85,7 +85,7 @@
         <div class="wizard-header" style="margin-top: 3rem; margin-bottom: 1.5rem;">
           <h2 style="font-size: 1.8rem;">We build for every kind of business</h2>
         </div>
-        
+
         <div class="business-grid">
           <div class="business-card" data-business="food">
             <div class="business-icon">🍔</div>
@@ -177,20 +177,21 @@
           <h2>What features do you need?</h2>
           <p>Select the basic features you require, and tell us any specifics.</p>
         </div>
-        
+
         <div class="features-list" id="dynamic-features">
           <!-- Populated dynamically via JS -->
         </div>
 
         <div class="form-group" style="margin-top: 2rem;">
           <label for="specificRequirements">Specific Requirements (Optional)</label>
-          <textarea id="specificRequirements" class="wizard-textarea" placeholder="Tell us more about custom features or unique workflows..."></textarea>
+          <textarea id="specificRequirements" class="wizard-textarea"
+            placeholder="Tell us more about custom features or unique workflows..."></textarea>
         </div>
       </div>
 
       <!-- Step 4: Preview -->
       <div class="wizard-step-content" id="step-4">
-        
+
         <!-- Loading Animation -->
         <div class="ai-loading-container" id="ai-loading">
           <div class="ai-spinner">
@@ -207,9 +208,9 @@
             <h2>Your First Look</h2>
             <p>Try out the interactive wireframes we've generated for you.</p>
           </div>
-          
+
           <div class="mockup-devices-wrapper" id="mockup-devices-wrapper">
-            
+
             <!-- Phone Mockup -->
             <div class="phone-mockup" id="device-phone">
               <div class="phone-notch"></div>
@@ -220,7 +221,7 @@
                   <h4 class="mockup-title">App Name</h4>
                   <span class="mockup-profile">👤</span>
                 </div>
-                
+
                 <!-- Content Views -->
                 <div class="mockup-content-wrapper">
                   <!-- View: Home -->
@@ -243,22 +244,26 @@
                   <!-- View: Profile/Settings -->
                   <div class="mockup-view mockup-view-settings">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                      <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+                      <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1);">
+                      </div>
                       <div>
                         <div class="mockup-line short" style="margin-bottom: 8px;"></div>
                         <div class="mockup-line long"></div>
                       </div>
                     </div>
                     <div class="mockup-list">
-                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                      <div class="mockup-list-item"
+                        style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
                         <div><span style="margin-right: 10px;">🔔</span> Notifications</div>
                         <div class="mockup-toggle active"></div>
                       </div>
-                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                      <div class="mockup-list-item"
+                        style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
                         <div><span style="margin-right: 10px;">🔒</span> Privacy Mode</div>
                         <div class="mockup-toggle"></div>
                       </div>
-                      <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                      <div class="mockup-list-item"
+                        style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
                         <div><span style="margin-right: 10px;">🌙</span> Dark Theme</div>
                         <div class="mockup-toggle active"></div>
                       </div>
@@ -272,7 +277,7 @@
                   <div class="mockup-nav-item" data-target="mockup-view-features" data-device="phone">★</div>
                   <div class="mockup-nav-item" data-target="mockup-view-settings" data-device="phone">⚙</div>
                 </div>
-                
+
                 <!-- Interaction Toast -->
                 <div class="mockup-toast">Action Completed!</div>
               </div>
@@ -303,8 +308,11 @@
                   <div class="mockup-view active mockup-view-home">
                     <div class="mac-split">
                       <div class="mac-split-left">
-                        <div class="mockup-hero" style="height: 150px; text-align: left; justify-content: flex-start; padding: 20px; font-size: 2rem;">Hero Section</div>
-                        <button class="mockup-btn mockup-action-btn" style="width: auto; display: inline-block;">Action Button</button>
+                        <div class="mockup-hero"
+                          style="height: 150px; text-align: left; justify-content: flex-start; padding: 20px; font-size: 2rem;">
+                          Hero Section</div>
+                        <button class="mockup-btn mockup-action-btn" style="width: auto; display: inline-block;">Action
+                          Button</button>
                       </div>
                       <div class="mac-split-right">
                         <div class="mockup-list mockup-home-list">
@@ -316,8 +324,10 @@
 
                   <!-- View: Features -->
                   <div class="mockup-view mockup-view-features">
-                    <h5 style="margin-bottom: 20px; font-family: var(--font-heading); font-size: 1.5rem;">Included Features</h5>
-                    <div class="mockup-list mockup-features-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <h5 style="margin-bottom: 20px; font-family: var(--font-heading); font-size: 1.5rem;">Included
+                      Features</h5>
+                    <div class="mockup-list mockup-features-list"
+                      style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                       <!-- Populated dynamically -->
                     </div>
                   </div>
@@ -327,25 +337,38 @@
                     <div class="mac-split">
                       <div class="mac-split-left" style="flex: 0.3;">
                         <div class="mockup-list">
-                          <div class="mockup-list-item active" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">Dashboard</div>
-                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">Analytics</div>
-                          <div class="mockup-list-item" style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">Settings</div>
+                          <div class="mockup-list-item active"
+                            style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">
+                            Dashboard</div>
+                          <div class="mockup-list-item"
+                            style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">
+                            Analytics</div>
+                          <div class="mockup-list-item"
+                            style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">
+                            Settings</div>
                         </div>
                       </div>
                       <div class="mac-split-right" style="flex: 0.7;">
-                        <div style="background: rgba(255,255,255,0.02); height: auto; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                          <div class="mockup-list-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <div
+                          style="background: rgba(255,255,255,0.02); height: auto; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                          <div class="mockup-list-item"
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                             <div>Enable Analytics Tracking</div>
                             <div class="mockup-toggle active"></div>
                           </div>
-                          <div class="mockup-list-item" style="display: flex; justify-content: space-between; align-items: center;">
+                          <div class="mockup-list-item"
+                            style="display: flex; justify-content: space-between; align-items: center;">
                             <div>Auto-Publish Updates</div>
                             <div class="mockup-toggle"></div>
                           </div>
                         </div>
                         <div style="display: flex; gap: 20px;">
-                          <div style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📈</div>
-                          <div style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👥</div>
+                          <div
+                            style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            📈</div>
+                          <div
+                            style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            👥</div>
                         </div>
                       </div>
                     </div>
@@ -427,4 +450,5 @@
   <script type="module" src="/js/main.js"></script>
   <script type="module" src="/js/wizard.js"></script>
 </body>
+
 </html>
