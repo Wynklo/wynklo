@@ -1,0 +1,274 @@
+/* ========================================
+   Wynklo — Homepage Visual Enhancements
+   Premium layer on top of base styles
+   ======================================== */
+
+/* ── Ambient Background Glow ── */
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(253, 208, 17, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(253, 208, 17, 0.02) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Hero Enhancements ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--header-height);
+  position: relative;
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--color-yellow);
+  animation: lineGrow 1s var(--ease-out) 0.3s both;
+}
+
+@keyframes lineGrow {
+  from { width: 0; }
+  to { width: 40px; }
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 6vw, 6rem);
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  max-width: 100%;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Yellow accent on the word "Next" */
+.hero-heading .text-yellow {
+  color: var(--color-yellow);
+  position: relative;
+}
+
+/* Hero CTA buttons row below heading */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+.hero-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.9em 2em;
+  border-radius: var(--radius-pill);
+  background: var(--color-yellow);
+  color: var(--color-bg);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  text-decoration: none;
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(253, 208, 17, 0.25);
+}
+
+.hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  transition: color 0.3s, gap 0.3s;
+  text-decoration: none;
+}
+
+.hero-cta-secondary::after {
+  content: '→';
+  transition: transform 0.3s;
+}
+
+.hero-cta-secondary:hover {
+  color: var(--color-text);
+  gap: 0.8em;
+}
+
+.hero-cta-secondary:hover::after {
+  transform: translateX(3px);
+}
+
+/* ── Hero Image Card Enhancement ── */
+.hero-image-card {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 7;
+  cursor: none;
+  margin-bottom: var(--space-3xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Stats Enhancement — Yellow Numbers ── */
+.trust-number {
+  color: var(--color-yellow);
+}
+
+/* ── Services Cards Enhancement ── */
+.service-card {
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s, border-color 0.4s;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.service-card-icon svg {
+  transition: transform 0.4s var(--ease-out);
+}
+
+.service-card:hover .service-card-icon svg {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+/* ── Project Cards Enhancement ── */
+.project-card {
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s;
+}
+
+.project-card:hover {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-image img:not([aria-hidden]) {
+  transition: transform 0.8s var(--ease-out);
+}
+
+.project-card:hover .project-card-image img:not([aria-hidden]) {
+  transform: scale(1.04);
+}
+
+/* ── Testimonial Cards Enhancement ── */
+.testimonial-card {
+  transition: transform 0.4s var(--ease-out), border-color 0.4s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(253, 208, 17, 0.2);
+}
+
+.testimonial-stars {
+  background: linear-gradient(135deg, #fdd011, #f5c400);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── About Section Enhancement ── */
+.about-block {
+  position: relative;
+  padding-left: var(--space-lg);
+  border-left: 2px solid rgba(243, 241, 231, 0.06);
+  transition: border-color 0.4s;
+}
+
+.about-block:hover {
+  border-left-color: var(--color-yellow);
+}
+
+/* ── PPP Section Enhancement ── */
+.ppp-heading {
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-yellow) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Blog Card Enhancement ── */
+.blog-card {
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+}
+
+.blog-card-image img {
+  transition: transform 0.6s var(--ease-out);
+}
+
+.blog-card:hover .blog-card-image img {
+  transform: scale(1.05);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .hero-image-card {
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
