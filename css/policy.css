@@ -3,6 +3,7 @@
    ======================================== */
 
 .policy-page {
+  --color-yellow: var(--yellow-ink);
   padding-top: calc(var(--header-height) + 4rem);
   padding-bottom: var(--space-4xl);
   background: var(--color-bg);
@@ -16,7 +17,7 @@
 
 .policy-header {
   margin-bottom: var(--space-3xl);
-  border-bottom: 1px solid rgba(243, 241, 231, 0.1);
+  border-bottom: 1px solid var(--line);
   padding-bottom: var(--space-xl);
 }
 
@@ -33,8 +34,8 @@
 .policy-title {
   font-family: var(--font-heading);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 800;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -0.04em;
   color: var(--color-text);
   line-height: 1;
   margin-bottom: var(--space-sm);
@@ -145,7 +146,7 @@
 
 .policy-callout p {
   font-size: 0.95rem;
-  color: rgba(243, 241, 231, 0.8);
+  color: var(--fg-muted);
   margin: 0;
 }
 
@@ -165,8 +166,8 @@
 }
 
 .sitemap-group {
-  background: rgba(243, 241, 231, 0.02);
-  border: 1px solid rgba(243, 241, 231, 0.05);
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   display: flex;
@@ -186,7 +187,7 @@
   font-weight: 700;
   text-transform: uppercase;
   color: var(--color-yellow);
-  border-bottom: 1px solid rgba(243, 241, 231, 0.08);
+  border-bottom: 1px solid var(--line);
   padding-bottom: var(--space-xs);
   margin: 0;
 }
