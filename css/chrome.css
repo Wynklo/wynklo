@@ -404,7 +404,10 @@
 }
 
 .footer-credit nav a {
-  padding: 0.4rem 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1.1rem;
   border-radius: var(--radius-pill);
   box-shadow: inset 0 0 0 1px rgba(243, 241, 231, 0.12);
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;

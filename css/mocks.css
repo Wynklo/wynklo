@@ -232,10 +232,10 @@
   flex: none;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.55rem 0.8rem;
+  padding: 0.5rem 0.6rem 0.5rem 0.9rem;
   background: #1b1622;
-  color: rgba(246, 241, 251, 0.65);
-  font-size: 0.75rem;
+  color: rgba(246, 241, 251, 0.7);
+  font-size: 0.8125rem;
 }
 
 .live-bar > i {
@@ -281,6 +281,10 @@
 }
 
 .live-bar > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 0.6rem;
   color: #fff;
   white-space: nowrap;
   text-decoration: none;

@@ -387,7 +387,7 @@
 .bd-sum-label,
 .bd-stats dt {
   display: block;
-  font-size: 0.72rem;
+  font-size: var(--fs-label);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--fg-muted);
@@ -711,8 +711,8 @@
 
   .bd-stage {
     z-index: 5;
-    height: 50svh;
-    padding: 5rem 0 0.75rem;
+    height: 56svh;
+    padding: calc(var(--header-height) + 0.75rem) 0 0.75rem;
     background: var(--bg);
   }
 
@@ -750,8 +750,8 @@
 
 @media (max-width: 560px) {
   .bd-stage {
-    height: 44svh;
-    padding-top: 4.6rem;
+    height: 48svh;
+    padding-top: calc(var(--header-height) + 0.5rem);
   }
 
   .bd-stage-inner {

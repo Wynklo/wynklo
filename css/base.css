@@ -43,14 +43,14 @@ html.lenis body {
   font-size: var(--fs-display);
   font-weight: 500;
   letter-spacing: -0.045em;
-  line-height: 0.98;
+  line-height: 1.02;
 }
 
 .h1 {
   font-size: var(--fs-h1);
   font-weight: 500;
   letter-spacing: -0.04em;
-  line-height: 1;
+  line-height: 1.05;
 }
 
 .h2 {
@@ -196,6 +196,7 @@ html.lenis body {
 }
 
 .text-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -206,6 +207,12 @@ html.lenis body {
   background-position: 0 100%;
   background-repeat: no-repeat;
   transition: background-size 0.5s var(--ease-out);
+}
+
+.text-link::before {
+  content: '';
+  position: absolute;
+  inset: -0.75rem -0.25rem;
 }
 
 .text-link:hover {
