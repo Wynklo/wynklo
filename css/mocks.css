@@ -118,6 +118,121 @@
   font-size: 1.05em;
 }
 
+.ph-status {
+  position: absolute;
+  top: 0.6em;
+  left: 1.5em;
+  right: 1.3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72em;
+  font-weight: 600;
+}
+
+.ph-status i {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.18em;
+}
+
+.ph-status i::before {
+  content: '';
+  width: 1.1em;
+  height: 0.7em;
+  background: linear-gradient(90deg, currentColor 0 20%, transparent 20% 27%, currentColor 27% 47%, transparent 47% 54%, currentColor 54% 74%, transparent 74% 81%, currentColor 81%);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.ph-status i::after {
+  content: '';
+  width: 1.5em;
+  height: 0.75em;
+  border-radius: 0.2em;
+  box-shadow: inset 0 0 0 1.5px currentColor, inset 0 0 0 3px var(--mk-bg);
+  background: currentColor;
+}
+
+.ph-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: auto -1em -1em;
+  padding: 0.55em 0.4em 0.8em;
+  border-top: 1px solid var(--mk-line);
+  background: var(--mk-bg);
+}
+
+.ph-tabs span {
+  display: grid;
+  justify-items: center;
+  gap: 0.25em;
+  font-size: 0.6em;
+  color: var(--mk-muted);
+}
+
+.ph-tabs span::before {
+  content: '';
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.55em;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.ph-tabs .on {
+  color: var(--mk-fg);
+  font-weight: 600;
+}
+
+.ph-tabs .on::before {
+  background: var(--mk-ac);
+  box-shadow: none;
+}
+
+.ph-screen > .mk-btn + .ph-tabs {
+  margin-top: 0.4em;
+}
+
+/* Browser + phone side by side in one tile */
+.mk-rig {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 4%;
+  width: 100%;
+  height: 100%;
+}
+
+.mk-rig > .mk-wrap {
+  height: 100%;
+}
+
+@media (max-width: 560px) {
+  .mk-rig {
+    grid-template-columns: 1fr;
+  }
+
+  .mk-rig > .mk-wrap + .mk-wrap {
+    display: none;
+  }
+}
+
+/* Two phone screens side by side */
+.mk-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6%;
+  width: 100%;
+  height: 100%;
+}
+
+.mk-pair > .mk-wrap {
+  height: 100%;
+}
+
+.mk-pair > .mk-wrap:last-child {
+  transform: translateY(5%);
+}
+
 /* ── Atoms ── */
 .mk-title {
   font-size: 1.25em;
