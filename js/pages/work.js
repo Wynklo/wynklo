@@ -17,7 +17,7 @@ export function init() {
     yTo(e.clientY);
   });
 
-  document.querySelectorAll('.work-media').forEach((media) => {
+  document.querySelectorAll('.work-media:not(.live-tile)').forEach((media) => {
     media.addEventListener('pointerenter', () => gsap.to(cursor, { scale: 1, duration: 0.5, ease: 'wk' }));
     media.addEventListener('pointerleave', () => gsap.to(cursor, { scale: 0, duration: 0.4, ease: 'power2.out' }));
   });

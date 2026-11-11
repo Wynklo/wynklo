@@ -7,6 +7,7 @@ import { initChrome } from './menu.js';
 import { initTransitions } from './transition.js';
 import { initPopup } from './popup.js';
 import { initCal } from './cal.js';
+import { initLivePreviews } from './live.js';
 
 const pages = {
   home: () => import('./pages/home.js'),
@@ -23,6 +24,7 @@ async function boot() {
   initChrome();
   initCal();
   initPopup();
+  initLivePreviews();
 
   if (document.fonts && document.fonts.ready) {
     try {
