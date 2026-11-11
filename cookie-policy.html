@@ -22,7 +22,7 @@
   <link rel="canonical" href="https://www.wynklo.com/cookie-policy.html" />
 
   <!-- ══ Motion flags (before CSS to avoid flashes) ══ -->
-  <script>(function(d){var c=d.documentElement.classList;c.add(matchMedia('(prefers-reduced-motion: reduce)').matches?'rm':'motion');try{if(sessionStorage.getItem('wk-curtain')==='1')c.add('via-curtain')}catch(e){}})(document)</script>
+  <script>(function(d){var c=d.documentElement.classList,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;c.add(rm?'rm':'motion');try{if(!rm&&sessionStorage.getItem('wk-loaded')!=='1')c.add('preload')}catch(e){}})(document)</script>
 
   <!-- ══ Stylesheets ══ -->
   <link rel="stylesheet" href="/css/variables.css" />
@@ -38,8 +38,6 @@
 </head>
 
 <body data-page="policy">
-
-  <div class="curtain" aria-hidden="true"><span class="curtain-word">wynklo</span></div>
 
   <!-- ══ Header ══ -->
   <header class="site-header" id="site-header">

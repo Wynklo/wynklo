@@ -596,70 +596,58 @@
   visibility: hidden;
 }
 
-/* ── Page curtain ── */
-.curtain {
+/* ── Preloader (first page of a session) ── */
+.preload::after {
+  content: '';
   position: fixed;
   inset: 0;
-  z-index: 10001;
-  display: grid;
-  place-items: center;
-  background: var(--yellow);
-  visibility: hidden;
-  transform: translateY(100%);
-  pointer-events: none;
+  z-index: 10000;
+  background: var(--ink);
 }
 
-.via-curtain .curtain {
-  visibility: visible;
-  transform: none;
+.preload body {
+  overflow: hidden;
 }
 
-.curtain-word {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  color: var(--ink);
-}
-
-.rm .curtain {
-  display: none;
-}
-
-/* ── Preloader ── */
 .preloader {
   position: fixed;
   inset: 0;
   z-index: 10000;
   display: grid;
   place-items: center;
-  align-content: center;
-  gap: 1.5rem;
-  background: var(--ink);
-  color: var(--cream);
-}
-
-.no-preload .preloader,
-.rm .preloader {
-  display: none;
-}
-
-.preloader-video {
-  width: min(86vw, 640px);
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
   background: var(--ink);
 }
 
-.preloader-hold-wrap {
-  overflow: hidden;
+.preloader-mark {
+  width: min(380px, 58vw);
 }
 
-.preloader-hold {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: rgba(243, 241, 231, 0.7);
+.preloader-mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
+
+.preloader-tri,
+.preloader-ghost {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.preloader-tri {
+  animation: wk-hop 3.2s infinite;
+}
+
+.preloader-ghost {
+  opacity: 0;
+  animation: wk-ghost 3.2s infinite;
+}
+
+@keyframes wk-hop{
+  0%{transform:translate(0px,0px) rotate(0deg) scale(1);animation-timing-function:cubic-bezier(.45,0,.55,1)}12%{transform:translate(0px,0px) rotate(0deg) scale(1);animation-timing-function:cubic-bezier(.5,0,.9,.4)}18%{transform:translate(0px,0px) rotate(0deg) scale(0);animation-timing-function:step-end}18.01%{transform:translate(-1337px,-169px) rotate(0deg) scale(0);animation-timing-function:cubic-bezier(.2,.9,.3,1.25)}24%{transform:translate(-1337px,-169px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}31%{transform:translate(-1337px,-169px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}33.5%{transform:translate(-1150px,-290px) rotate(-12deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}36.5%{transform:translate(-985px,-300px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}42%{transform:translate(-632px,-99px) rotate(8deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}43.5%{transform:translate(-632px,-99px) rotate(0deg) scale(0.46);animation-timing-function:cubic-bezier(.45,0,.55,1)}46%{transform:translate(-632px,-99px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}48%{transform:translate(-632px,-99px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}50.5%{transform:translate(-560px,-235px) rotate(-10deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}53.5%{transform:translate(-455px,-250px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}59%{transform:translate(-277px,233px) rotate(8deg) scale(0.4);animation-timing-function:cubic-bezier(.45,0,.55,1)}60.5%{transform:translate(-277px,233px) rotate(0deg) scale(0.46);animation-timing-function:cubic-bezier(.45,0,.55,1)}63%{transform:translate(-277px,233px) rotate(0deg) scale(0.4);animation-timing-function:cubic-bezier(.4,0,.2,1)}74%{transform:translate(18px,-26px) rotate(0deg) scale(1.1);animation-timing-function:cubic-bezier(.45,0,.55,1)}80%{transform:translate(0px,0px) rotate(0deg) scale(1);animation-timing-function:cubic-bezier(.45,0,.55,1)}100%{transform:translate(0px,0px) rotate(0deg) scale(1);animation-timing-function:cubic-bezier(.45,0,.55,1)}}
+
+@keyframes wk-ghost{0%,17%{opacity:0}22%,70%{opacity:.3}78%,100%{opacity:0}}
 
 /* ── Sticky CTA popup ── */
 .cta-popup {

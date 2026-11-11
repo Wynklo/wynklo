@@ -4,7 +4,7 @@
 
 import { initLenis, initMotion, ScrollTrigger } from './motion.js';
 import { initChrome } from './menu.js';
-import { initTransitions } from './transition.js';
+import { runPreloader } from './preloader.js';
 import { initPopup } from './popup.js';
 import { initCal } from './cal.js';
 import { initLivePreviews } from './live.js';
@@ -19,8 +19,8 @@ const pages = {
 };
 
 async function boot() {
-  initTransitions();
   initLenis();
+  runPreloader();
   initChrome();
   initCal();
   initPopup();
