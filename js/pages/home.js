@@ -28,10 +28,16 @@ function heroReel() {
     { clipPath: 'inset(0% 7% 0% 7% round 32px)' },
     { clipPath: 'inset(0% 0% 0% 0% round 32px)', ease: 'none', scrollTrigger: trigger }
   );
+  const tiles = gsap.utils.toArray('.hero-reel-tile', frame);
   gsap.fromTo(
-    frame.querySelectorAll('.mk-wrap'),
-    { yPercent: 8 },
-    { yPercent: -4, ease: 'none', scrollTrigger: { ...trigger } }
+    tiles,
+    { yPercent: (i) => (i === 1 ? 6 : 16), scale: (i) => (i === 1 ? 0.94 : 0.9) },
+    { yPercent: 0, scale: 1, ease: 'none', scrollTrigger: { ...trigger } }
+  );
+  gsap.fromTo(
+    frame.querySelectorAll('.phone'),
+    { yPercent: 22, rotation: (i) => [-7, 4, 7][i] ?? 0 },
+    { yPercent: -5, rotation: 0, ease: 'none', scrollTrigger: { ...trigger, end: 'bottom 40%' } }
   );
 }
 
