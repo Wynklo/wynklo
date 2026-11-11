@@ -21,7 +21,7 @@
     content="web development portfolio, app development projects, Wynklo work, website design examples, digital agency portfolio Pune, case studies" />
   <meta name="author" content="Wynklo" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="theme-color" content="#1a1a18" />
+  <meta name="theme-color" content="#f3f1e7" />
   <link rel="canonical" href="https://www.wynklo.com/work.html" />
 
   <!-- ══ Open Graph / Facebook ══ -->
@@ -55,477 +55,426 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/css/variables.css?v=3.1" />
-  <link rel="stylesheet" href="/css/reset.css?v=3.1" />
-  <link rel="stylesheet" href="/css/base.css?v=3.1" />
-  <link rel="stylesheet" href="/css/header.css?v=3.1" />
-  <link rel="stylesheet" href="/css/insights-section.css?v=3.1" />
-  <link rel="stylesheet" href="/css/marquee.css?v=3.1" />
-  <link rel="stylesheet" href="/css/footer.css?v=3.1" />
-  <link rel="stylesheet" href="/css/popup.css?v=3.1" />
-  <link rel="stylesheet" href="/css/whatsapp.css?v=3.1" />
+  <!-- ══ Motion flags (before CSS to avoid flashes) ══ -->
+  <script>(function(d){var c=d.documentElement.classList;c.add(matchMedia('(prefers-reduced-motion: reduce)').matches?'rm':'motion');try{if(sessionStorage.getItem('wk-curtain')==='1')c.add('via-curtain')}catch(e){}})(document)</script>
+
+  <!-- ══ Stylesheets ══ -->
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/chrome.css" />
+  <link rel="stylesheet" href="/css/mocks.css" />
+  <link rel="stylesheet" href="/css/work.css" />
 
   <!-- ══ Favicon ══ -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/images/og-image.png" />
-  <style>
-    .work-hero {
-      padding-top: calc(var(--header-height) + 4rem);
-      padding-bottom: var(--space-2xl);
-    }
-
-    .work-hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: var(--space-2xl);
-      flex-wrap: wrap;
-      margin-top: var(--space-lg);
-    }
-
-    .work-hero h1 {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: clamp(3rem, 8vw, 6rem);
-      text-transform: uppercase;
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      color: var(--color-text);
-    }
-
-    .work-filters {
-      display: flex;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
-      align-items: baseline;
-      padding-top: var(--space-xs);
-    }
-
-    .work-filter-btn {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: clamp(1.2rem, 2.5vw, 2rem);
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: color 0.3s;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.3em;
-    }
-
-    .work-filter-btn:hover,
-    .work-filter-btn.active {
-      color: var(--color-text);
-    }
-
-    .work-filter-count {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--color-text-muted);
-    }
-
-    /* View toggle buttons */
-    .work-view-toggle {
-      display: flex;
-      gap: 0.3rem;
-      padding: var(--space-sm) var(--container-padding);
-      padding-bottom: var(--space-lg);
-    }
-
-    .view-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(243, 241, 231, 0.2);
-      background: transparent;
-      color: var(--color-text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.9rem;
-    }
-
-    .view-btn.active {
-      background: var(--color-text);
-      color: var(--color-bg);
-      border-color: var(--color-text);
-    }
-
-    .view-btn:hover {
-      border-color: var(--color-text);
-    }
-
-    /* Work Grid - 3 columns matching screenshot */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-lg);
-      padding-bottom: var(--space-section);
-    }
-
-    .work-card {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
-      display: block;
-    }
-
-    .work-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .work-card-image {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .work-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease-out);
-    }
-
-    .work-card:hover .work-card-image img {
-      transform: scale(1.05);
-    }
-
-    /* Card with colored background */
-    .work-card--purple .work-card-image {
-      background: #7c3aed;
-    }
-
-    .work-card--red .work-card-image {
-      background: var(--color-red);
-    }
-
-    .work-card--blue .work-card-image {
-      background: var(--color-blue);
-    }
-
-    .work-card--teal .work-card-image {
-      background: var(--color-teal);
-    }
-
-    .work-card--olive .work-card-image {
-      background: #d4c9a3;
-    }
-
-    .work-card-image img {
-      border-radius: 0;
-    }
-
-    @media (max-width: 900px) {
-      .work-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .work-hero-top {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </head>
 
-<body>
+<body data-page="work">
 
-  </div>
+  <div class="curtain" aria-hidden="true"><span class="curtain-word">wynklo</span></div>
 
+  <!-- ══ Header ══ -->
   <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a href="/" class="logo">Wynklo</a>
-      <nav class="nav-desktop" id="nav-desktop">
-        <a href="/work.html" class="nav-link" data-chars>Work</a>
-        <a href="/about.html" class="nav-link" data-chars>About</a>
-        <button class="nav-link nav-link-services" id="services-toggle" data-chars>Services <span
-            class="chevron">▾</span></button>
-        <a href="#" class="nav-link" data-chars>Insights</a>
-        <a href="/contact.html" class="nav-link" data-chars>Contact</a>
-        <a href="/start.html" class="header-cta">Start a Project</a>
-      </nav>
-      <button class="menu-toggle" id="menu-toggle"
-        aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="container site-header-inner">
+      <a href="/" class="brand" aria-label="Wynklo home">
+        <img src="/favicon.png" alt="" width="38" height="38" />
+        <span>Wynklo</span>
+      </a>
+      <div class="header-actions">
+        <a href="https://cal.com/pulkit-giddu-c098j5/30min" class="btn btn--small header-cta" data-cal>Book a Call</a>
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-menu">
+          <span class="menu-btn-label">Menu</span>
+          <span class="menu-btn-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
     </div>
   </header>
-  <div class="mega-menu" id="mega-menu">
-    <button class="mega-menu-close-btn" id="mega-menu-close" aria-label="Close menu">&times;</button>
 
-    <div class="mega-menu-slider" id="mega-menu-slider">
-      <!-- Page 1 -->
-      <div class="mega-menu-inner mega-menu-page">
-        <div class="mega-menu-column">
-          <h3>Web Development</h3>
-          <p>Custom websites and web applications built with modern frameworks like Next.js, React, and Node.js</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Responsive Design</span>
-            <span class="mega-menu-feature">SEO Optimized</span>
-            <span class="mega-menu-feature">Fast Loading</span>
-            <span class="mega-menu-feature">Modern UI/UX</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>App Development</h3>
-          <p>Native and cross-platform mobile applications for iOS and Android with seamless user experience</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Cross-Platform</span>
-            <span class="mega-menu-feature">Native Performance</span>
-            <span class="mega-menu-feature">App Store Ready</span>
-            <span class="mega-menu-feature">Push Notifications</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>Domain & Hosting</h3>
-          <p>Complete hosting solutions with domain registration, SSL certificates, and reliable uptime</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">99.9% Uptime</span>
-            <span class="mega-menu-feature">SSL Included</span>
-            <span class="mega-menu-feature">Daily Backups</span>
-            <span class="mega-menu-feature">24/7 Support</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Page 2 -->
-      <div class="mega-menu-inner mega-menu-page">
-        <div class="mega-menu-column">
-          <h3>AI Integration</h3>
-          <p>Chatbots and AI-powered features to enhance user engagement and automate customer support</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Smart Chatbots</span>
-            <span class="mega-menu-feature">AI Analytics</span>
-            <span class="mega-menu-feature">Automation</span>
-            <span class="mega-menu-feature">Custom Training</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>Design Services</h3>
-          <p>Professional design services including Figma designs, posters, and complete brand identity</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Figma Designs</span>
-            <span class="mega-menu-feature">Brand Identity</span>
-            <span class="mega-menu-feature">Print Design</span>
-            <span class="mega-menu-feature">UI/UX Design</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>Tech Integration</h3>
-          <p>Integration of new technologies and third-party services to enhance your digital ecosystem</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">API Integration</span>
-            <span class="mega-menu-feature">Database Setup</span>
-            <span class="mega-menu-feature">Cloud Services</span>
-            <span class="mega-menu-feature">Security Implementation</span>
-          </div>
-        </div>
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav class="site-menu-nav" aria-label="Main">
+        <a href="/" class="menu-link"><span class="menu-link-num">01</span><span class="menu-link-text">Home</span></a>
+        <a href="/work.html" class="menu-link"><span class="menu-link-num">02</span><span class="menu-link-text">Work</span></a>
+        <a href="/process.html" class="menu-link"><span class="menu-link-num">03</span><span class="menu-link-text">Process</span></a>
+        <a href="/about.html" class="menu-link"><span class="menu-link-num">04</span><span class="menu-link-text">About</span></a>
+        <a href="/contact.html" class="menu-link"><span class="menu-link-num">05</span><span class="menu-link-text">Contact</span></a>
+      </nav>
+      <div class="site-menu-side">
+        <p class="label">Say hello</p>
+        <button type="button" class="copy-line" data-copy="contactuswynklo@gmail.com">contactuswynklo@gmail.com <small>Copy</small></button>
+        <button type="button" class="copy-line" data-copy="+918491041426">+91 84910 41426 <small>Copy</small></button>
+        <a class="copy-line" href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener">WhatsApp <small>Chat</small></a>
+        <a href="https://cal.com/pulkit-giddu-c098j5/30min" class="btn btn--yellow" data-cal>Book a Call</a>
       </div>
     </div>
-
-    <button class="mega-menu-arrow" id="mega-menu-arrow" aria-label="Next services">&#8594;</button>
   </div>
-  <nav class="nav-mobile" id="nav-mobile">
-    <a href="/work.html" class="nav-link">Work</a><a href="/about.html" class="nav-link">About</a> <a
-      href="javascript:void(0)" class="nav-link" id="mobile-services-toggle">Services</a><a href="#"
-      class="nav-link">Insights</a><a href="/contact.html" class="nav-link">Contact</a>
-  </nav>
+
 
   <main>
-    <section class="work-hero">
-      <div class="container">
-        <hr class="separator" />
-          <h1 class="reveal">Our Work</h1>
-      </div>
+    <section class="page-hero container">
+      <p class="label" data-reveal>Selected work</p>
+      <h1 class="display" data-split>The proof is in the <em class="accent">preview.</em></h1>
+      <p class="lead" data-reveal>Every one of these started as a clickable preview our clients could see and approve before we built it.</p>
     </section>
 
-    <section class="work-section">
+    <section class="work-grid-section">
+      <div class="container work-grid">
+        <article class="work-card" data-reveal>
+          <div class="work-media mk-tile" style="--tile:#e8e4da" role="img" aria-label="The Big Issue news website">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="browser mk" style="--mk-ac:#e1251b;--mk-ac-fg:#fff;--mk-card:#f2f2f2">
+                <div class="br-bar"><i></i><i></i><i></i><span>bigissue.com</span></div>
+                <div class="br-body">
+                  <div class="mk-nav"><b class="mk-pill mk-pill--ac">THE BIG ISSUE</b><span>News</span><span>Culture</span><span>Campaigns</span><span class="mk-pill">Subscribe</span></div>
+                  <div class="mk-split">
+                    <div class="mk-block mk-stack" style="--c:#1a1a1a;color:#fff;padding:1.2em;align-content:end;min-height:12em">
+                      <span class="mk-pill mk-pill--ac" style="justify-self:start">Investigation</span>
+                      <b class="mk-h">Street journalism that changes lives</b>
+                      <span class="mk-small" style="color:rgba(255,255,255,.6)">12 min read</span>
+                    </div>
+                    <div class="mk-stack">
+                      <div class="mk-row"><span class="mk-thumb" style="--c:#f4a261"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Vendors of the year</b><div class="mk-line" style="--w:80%"></div></div></div>
+                      <div class="mk-row"><span class="mk-thumb" style="--c:#2a9d8f"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Housing, explained</b><div class="mk-line" style="--w:65%"></div></div></div>
+                      <div class="mk-row"><span class="mk-thumb" style="--c:#264653"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Letters from readers</b><div class="mk-line" style="--w:72%"></div></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <h2 class="h3">The Big Issue</h2>
+            <span class="work-tags">Website</span>
+          </div>
+          <p class="muted">A bold digital platform for social change and street journalism.</p>
+        </article>
+        <article class="work-card" data-reveal>
+          <div class="work-media mk-tile" style="--tile:#12355b" role="img" aria-label="Group Accommodation travel booking platform">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="browser mk" style="--mk-ac:#f28c28;--mk-ac-fg:#fff;--mk-card:#f3f6fa">
+                <div class="br-bar"><i></i><i></i><i></i><span>groupaccommodation.com</span></div>
+                <div class="br-body">
+                  <div class="mk-nav"><b style="color:#12355b">Group Accommodation</b><span>Venues</span><span>Retreats</span><span>Schools</span></div>
+                  <p class="mk-h" style="color:#12355b">Stays for the whole group.</p>
+                  <div class="mk-card mk-row" style="background:#fff;box-shadow:0 0 0 1px var(--mk-line)">
+                    <div style="flex:1"><span class="mk-small">Where</span><b>Goa</b></div>
+                    <div style="flex:1"><span class="mk-small">When</span><b>12–15 Dec</b></div>
+                    <div style="flex:1"><span class="mk-small">Group</span><b>24 guests</b></div>
+                    <span class="mk-btn">Search</span>
+                  </div>
+                  <div class="mk-split" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="mk-stack"><div class="mk-block" style="--c:#7fb7be;height:4.5em"></div><b>Palm Grove Villa</b><span class="mk-small">Sleeps 30 · ₹1,850/night</span></div>
+                    <div class="mk-stack"><div class="mk-block" style="--c:#d3a588;height:4.5em"></div><b>Fort Hostel</b><span class="mk-small">Sleeps 42 · ₹950/night</span></div>
+                    <div class="mk-stack"><div class="mk-block" style="--c:#8e9aaf;height:4.5em"></div><b>Hilltop Lodge</b><span class="mk-small">Sleeps 26 · ₹1,400/night</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <h2 class="h3">Group Accommodation</h2>
+            <span class="work-tags">Software · Website</span>
+          </div>
+          <p class="muted">A leading group travel platform, continuously evolving for scale.</p>
+        </article>
+        <article class="work-card" data-reveal>
+          <div class="work-media mk-tile" style="--tile:#d7efe9" role="img" aria-label="ChequP health check booking website">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="browser mk" style="--mk-ac:#0f9d8a;--mk-ac-fg:#fff;--mk-card:#eef8f6">
+                <div class="br-bar"><i></i><i></i><i></i><span>chequp.com</span></div>
+                <div class="br-body">
+                  <div class="mk-nav"><b style="color:#0f9d8a">ChequP</b><span>Tests</span><span>Clinics</span><span class="mk-pill mk-pill--ac">Book</span></div>
+                  <div class="mk-split">
+                    <div class="mk-stack" style="align-content:center">
+                      <p class="mk-h">Your wellness check, booked in 60 seconds.</p>
+                      <span class="mk-small">Home sample collection across 40+ cities</span>
+                      <div class="mk-row"><span class="mk-pill mk-pill--ac">Book a check</span><span class="mk-pill">How it works</span></div>
+                    </div>
+                    <div class="mk-card mk-stack">
+                      <b>Full body check</b>
+                      <div class="mk-chips"><span class="on">Blood</span><span class="on">Thyroid</span><span>Vitamin D</span><span class="on">Lipids</span></div>
+                      <span class="mk-small">Pick a slot</span>
+                      <div class="mk-slots"><span>7:00</span><span class="on">7:30</span><span>8:00</span></div>
+                      <div class="mk-btn">Confirm · ₹1,299</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <h2 class="h3">ChequP</h2>
+            <span class="work-tags">Website</span>
+          </div>
+          <p class="muted">A health-tech platform making wellness checks accessible to all.</p>
+        </article>
+        <article class="work-card" data-reveal>
+          <div class="work-media mk-tile" style="--tile:#6b8f71" role="img" aria-label="Floresco wellbeing website">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="browser mk" style="--mk-bg:#f6f1e7;--mk-ac:#6b8f71;--mk-ac-fg:#fff;--mk-card:#ebe4d4">
+                <div class="br-bar"><i></i><i></i><i></i><span>floresco.co</span></div>
+                <div class="br-body" style="justify-items:center;text-align:center">
+                  <div class="mk-nav" style="width:100%"><b style="font-family:var(--font-serif);font-style:italic">Floresco</b><span>Classes</span><span>Retreats</span><span>Journal</span></div>
+                  <div style="width:6em;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9d8b6,#6b8f71)"></div>
+                  <p class="mk-h" style="font-family:var(--font-serif);font-weight:400">Find your <em>calm.</em></p>
+                  <div class="mk-chips" style="justify-content:center"><span>Yoga</span><span class="on">Breathwork</span><span>Sound baths</span></div>
+                  <span class="mk-pill mk-pill--ac">Book a session</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <h2 class="h3">Floresco</h2>
+            <span class="work-tags">Website</span>
+          </div>
+          <p class="muted">An elegant digital home for holistic wellbeing and mindful living.</p>
+        </article>
+        <article class="work-card" data-reveal>
+          <div class="work-media mk-tile" style="--tile:#1a1a1a" role="img" aria-label="WorkRoom desk booking platform">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="browser mk" style="--mk-bg:#202020;--mk-fg:#f3f1e7;--mk-muted:rgba(243,241,231,.55);--mk-line:rgba(243,241,231,.12);--mk-ac:#c6f432;--mk-ac-fg:#1a1a1a;--mk-card:#2a2a2a">
+                <div class="br-bar"><i></i><i></i><i></i><span>workroom.space/book</span></div>
+                <div class="br-body">
+                  <div class="mk-nav"><b>WorkRoom</b><span>Desks</span><span>Meeting rooms</span><span class="mk-pill mk-pill--ac">Members</span></div>
+                  <div class="mk-split">
+                    <div class="mk-card mk-stack">
+                      <div class="mk-between"><b>Floor 2 · Today</b><span class="mk-small">14 free</span></div>
+                      <div class="wr-desks"><i></i><i class="x"></i><i></i><i class="x"></i><i class="me"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i></div>
+                    </div>
+                    <div class="mk-stack">
+                      <p class="mk-title">Desk D5</p>
+                      <span class="mk-small">Window side · Monitor · Locker</span>
+                      <div class="mk-between"><span>Hot desk</span><b>₹499/day</b></div>
+                      <div class="mk-between"><span>Community</span><b>86 members</b></div>
+                      <div class="mk-btn">Book desk</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <h2 class="h3">WorkRoom</h2>
+            <span class="work-tags">Website</span>
+          </div>
+          <p class="muted">A flexible workspace platform built for community and growth.</p>
+        </article>
+        <article class="work-card" data-reveal>
+          <div class="work-media mk-tile" style="--tile:#ff5a36" role="img" aria-label="Forward Studio creative agency website">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="browser mk" style="--mk-bg:#0e0e0e;--mk-fg:#f5f2ea;--mk-muted:rgba(245,242,234,.5);--mk-line:rgba(245,242,234,.12);--mk-ac:#ff5a36;--mk-ac-fg:#0e0e0e">
+                <div class="br-bar"><i></i><i></i><i></i><span>forward.studio</span></div>
+                <div class="br-body">
+                  <div class="mk-nav"><b>F/S</b><span>Work</span><span>Studio</span><span class="mk-pill mk-pill--ac">Let's talk</span></div>
+                  <p class="mk-h" style="font-size:4.4em;letter-spacing:-.06em">Forward<span style="color:var(--mk-ac)">.</span></p>
+                  <div class="mk-between"><span class="mk-small">Brand · Digital · Motion</span><span class="mk-small">Selected work ↓</span></div>
+                  <div class="mk-split" style="grid-template-columns:2fr 1fr 1fr">
+                    <div class="mk-block" style="--c:#ff5a36;height:8em"></div>
+                    <div class="mk-block" style="--c:#f5f2ea;height:8em"></div>
+                    <div class="mk-block" style="--c:#3b3bff;height:8em"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <h2 class="h3">Forward Studio</h2>
+            <span class="work-tags">Design</span>
+          </div>
+          <p class="muted">A creative digital space for brand growth.</p>
+        </article>
+      </div>
+      <div class="work-cursor" aria-hidden="true">View</div>
+    </section>
+
+    <section class="section concepts">
       <div class="container">
-        <div class="work-grid">
-          <a href="#" class="blog-card reveal">
-            <div class="blog-card-image"><img src="/images/bigissue-mockup.png" alt="The Big Issue" loading="lazy" />
-            </div>
-            <div class="blog-card-body">
-              <h3 class="blog-card-title">The Big Issue: A bold digital platform for social change and street journalism
-              </h3>
-              <div class="blog-card-footer">
-                <span class="blog-card-tag">Websites</span>
+        <div class="section-head">
+          <p class="label">Preview concepts</p>
+          <h2 class="h1" data-split>Apps we've <em class="accent">imagined</em></h2>
+          <p class="lead" data-reveal>A few of the app previews we design for founders to click through before they build.</p>
+        </div>
+        <div class="concepts-row">
+          <figure class="concept" data-reveal>
+            <div class="concept-media mk-tile" style="--tile:var(--yellow)" role="img" aria-label="Food delivery app concept with live order tracking">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="phone mk" style="--mk-bg:#151515;--mk-fg:#f3f1e7;--mk-muted:rgba(243,241,231,.55);--mk-card:#232323;--mk-line:rgba(243,241,231,.1)">
+                  <div class="ph-screen">
+                    <div class="ph-top"><b>QuickBites</b><span class="mk-pill mk-pill--ac">Live</span></div>
+                    <span class="mk-small">Order status</span>
+                    <div class="mk-steps"><i class="on"></i><i class="on"></i><i class="cur"></i><i></i></div>
+                    <div class="mk-map">
+                      <svg viewBox="0 0 200 160">
+                        <path class="route-bg" d="M24 136 H84 V48 H168 V112" />
+                        <path class="route" d="M24 136 H84 V48 H168 V112" />
+                        <circle cx="24" cy="136" r="6" /><circle cx="168" cy="112" r="6" />
+                      </svg>
+                    </div>
+                    <div class="mk-card mk-between"><div><b>Pizza Aroma</b><span class="mk-small">2 items</span></div><b>14 min</b></div>
+                    <div class="mk-btn">Track order</div>
+                  </div>
+                </div>
               </div>
             </div>
-          </a>
-
-          <a href="#" class="blog-card reveal reveal-delay-1">
-            <div class="blog-card-image"><img src="/images/groupaccommodation-mockup.png" alt="Group Accommodation"
-                loading="lazy" /></div>
-            <div class="blog-card-body">
-              <h3 class="blog-card-title">Group Accommodation: A leading group travel platform, continuously evolving
-                for scale</h3>
-              <div class="blog-card-footer">
-                <span class="blog-card-tag">Software</span>
-                <span class="blog-card-tag">Websites</span>
+            <figcaption>Food delivery</figcaption>
+          </figure>
+          <figure class="concept" data-reveal>
+            <div class="concept-media mk-tile" style="--tile:#1a1a1a" role="img" aria-label="Fitness app concept with a daily activity ring and weekly workouts">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="phone mk" style="--mk-bg:#f4f4f0;--mk-ac:#ff5a36;--mk-ac-fg:#fff;--mk-card:#fff">
+                  <div class="ph-screen">
+                    <div class="ph-top"><b>PulseFit</b><span class="mk-avatar">AR</span></div>
+                    <span class="mk-small">Today · Leg day</span>
+                    <div class="mk-ring-wrap" style="padding:.4em 0"><div class="mk-ring" style="--p:72;width:8em"></div><b>72%</b></div>
+                    <div class="mk-row" style="align-items:stretch">
+                      <div class="mk-card" style="flex:1"><span class="mk-small">Burned</span><b>486 kcal</b></div>
+                      <div class="mk-card" style="flex:1"><span class="mk-small">Streak</span><b>12 days</b></div>
+                    </div>
+                    <div class="mk-card mk-stack">
+                      <span class="mk-small">This week</span>
+                      <div class="mk-bars" style="height:3em"><i style="--h:40%"></i><i style="--h:70%"></i><i style="--h:30%"></i><i style="--h:85%"></i><i class="on" style="--h:60%"></i><i style="--h:10%"></i><i style="--h:10%"></i></div>
+                    </div>
+                    <div class="mk-btn">Start workout</div>
+                  </div>
+                </div>
               </div>
             </div>
-          </a>
-
-          <a href="#" class="blog-card reveal reveal-delay-2">
-            <div class="blog-card-image"><img src="/images/chequp-mockup.png" alt="ChequP" loading="lazy" /></div>
-            <div class="blog-card-body">
-              <h3 class="blog-card-title">ChequP: A health-tech platform making wellness checks accessible to all</h3>
-              <div class="blog-card-footer">
-                <span class="blog-card-tag">Websites</span>
+            <figcaption>Fitness</figcaption>
+          </figure>
+          <figure class="concept" data-reveal>
+            <div class="concept-media mk-tile" style="--tile:#e8d5cf" role="img" aria-label="Salon booking app concept with services, time slots and a stylist">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="phone mk" style="--mk-bg:#fbf6ef;--mk-fg:#2b2320;--mk-ac:#c9776b;--mk-ac-fg:#fff;--mk-card:#fff">
+                  <div class="ph-screen">
+                    <div class="ph-top"><b>Glow Studio</b><span class="mk-avatar">AK</span></div>
+                    <p class="mk-title">Book a service</p>
+                    <div class="mk-chips"><span class="on">Haircut</span><span>Colour</span><span>Spa</span></div>
+                    <span class="mk-small">Thu, 14 Nov</span>
+                    <div class="mk-slots"><span>10:00</span><span class="on">11:30</span><span>13:00</span><span class="off">15:30</span><span>17:00</span><span>18:30</span></div>
+                    <div class="mk-card mk-row"><span class="mk-avatar">RS</span><div><b>Riya S.</b><span class="mk-small">Senior stylist · ★ 4.9</span></div></div>
+                    <div class="mk-btn">Confirm · ₹799</div>
+                  </div>
+                </div>
               </div>
             </div>
-          </a>
-
-          <a href="#" class="blog-card reveal">
-            <div class="blog-card-image"><img src="/images/floresco-mockup.png" alt="Floresco" loading="lazy" /></div>
-            <div class="blog-card-body">
-              <h3 class="blog-card-title">Floresco: An elegant digital home for holistic wellbeing and mindful living
-              </h3>
-              <div class="blog-card-footer">
-                <span class="blog-card-tag">Websites</span>
+            <figcaption>Salon booking</figcaption>
+          </figure>
+          <figure class="concept" data-reveal>
+            <div class="concept-media mk-tile" style="--tile:#2f4858" role="img" aria-label="Real estate app concept showing a 2BHK listing with rent and a book-a-visit button">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="phone mk" style="--mk-ac:#2f4858;--mk-ac-fg:#fff;--mk-card:#f1f4f6">
+                  <div class="ph-screen">
+                    <div class="ph-top"><b>Nestly</b><span class="mk-pill">Pune</span></div>
+                    <div class="mk-field">Search Baner, Kothrud…</div>
+                    <div class="mk-block" style="--c:linear-gradient(150deg,#9fb8c6,#2f4858);flex:1;min-height:5em;position:relative"><span class="mk-pill mk-pill--ac" style="position:absolute;top:.6em;left:.6em">Verified</span></div>
+                    <div class="mk-between"><span class="mk-title">2BHK · Baner</span><b>₹28k/mo</b></div>
+                    <span class="mk-small">950 sq ft · Furnished · Pets OK</span>
+                    <div class="mk-chips"><span class="on">2 BHK</span><span>Parking</span><span>Gym</span></div>
+                    <div class="mk-btn">Book a visit</div>
+                  </div>
+                </div>
               </div>
             </div>
-          </a>
-
-          <a href="#" class="blog-card reveal reveal-delay-1">
-            <div class="blog-card-image"><img src="/images/workroom-mockup.png" alt="WorkRoom" loading="lazy" /></div>
-            <div class="blog-card-body">
-              <h3 class="blog-card-title">WorkRoom: A flexible workspace platform built for community and growth</h3>
-              <div class="blog-card-footer">
-                <span class="blog-card-tag">Websites</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="#" class="blog-card reveal reveal-delay-2">
-            <div class="blog-card-image"><img src="/images/forwardstudio-mockup.png" alt="Forward Studio"
-                loading="lazy" /></div>
-            <div class="blog-card-body">
-              <h3 class="blog-card-title">Forward Studio: A creative digital space for brand growth</h3>
-              <div class="blog-card-footer">
-                <span class="blog-card-tag">Design</span>
-              </div>
-            </div>
-          </a>
+            <figcaption>Real estate</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section class="marquee-section marquee-section--teal" id="marquee">
-      <div class="marquee-track">
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/start.html"
-            class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/start.html"
-            class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/start.html"
-            class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/start.html"
-            class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/start.html"
-            class="marquee-btn">Get in touch today</a></div>
-        <div class="marquee-item"><span class="marquee-text">Ready to push your platform?</span><a href="/start.html"
-            class="marquee-btn">Get in touch today</a></div>
+    <section class="cta theme-dark">
+      <div class="container cta-inner">
+        <h2 class="display" data-split>Your project <em class="accent">next?</em></h2>
+        <div class="cta-row">
+          <p class="lead">Get a free, clickable preview of your app before you commit to building it.</p>
+          <div class="cta-actions">
+            <a href="/contact.html" class="btn btn--yellow">Start a project
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a href="/contact.html" class="btn btn--ghost">Contact us</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-column">
-          <div class="footer-links"><a href="/">Home</a><a href="/work.html">Work</a><a href="#">Insights</a><a
-              href="/about.html">About</a><a href="#">Locations</a></div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-links"><a href="#">Web Design</a><a href="#">Web Development</a><a href="#">Digital
-              Platforms</a><a href="#">Agency Partnerships</a><a href="#">All Services</a></div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-links">
-            <a href="/contact.html">Contact</a>
-            <a href="#">Careers</a>
-            <a href="https://www.instagram.com/wynklo_tech/" target="_blank">Instagram</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Facebook</a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-contact">
-            <p class="footer-address">A3, Clover Park, Viman Nagar, Pune<br />Maharashtra - 411014</p>
-            <div class="footer-contact-links">
-              <a href="mailto:contactuswynklo@gmail.com">contactuswynklo@gmail.com</a>
-              <a href="tel:+918491041426">+91 8491041426</a>
-              <a href="tel:+919911433169">+91 9911433169</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom"><span class="footer-copyright">&copy;2026 Wynklo</span>
-        <div class="footer-legal"><a href="/cookie-policy.html">Cookie Policy</a><span class="footer-legal-sep">/</span><a
-            href="/privacy-policy.html">Privacy Policy</a><span class="footer-legal-sep">/</span><a href="/sitemap.html">Sitemap</a></div>
-      </div>
-    </div>
-    <!-- Trust Badges -->
-    <div class="footer-trust">
-      <span class="footer-trust-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        </svg>
-        SSL Secured
-      </span>
-      <span class="footer-trust-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
-        Verified Business
-      </span>
-      <span class="footer-trust-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M2 12h20" />
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        </svg>
-        Global Clients
-      </span>
-      <span class="footer-trust-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-        </svg>
-        Registered Company
-      </span>
-    </div>
 
-    <div class="footer-made-in">
-      <span>Crafted with precision in India</span>
-      <span class="flag">🇮🇳</span>
+  <!-- ══ Footer ══ -->
+  <footer class="site-footer theme-dark">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <p class="label">Got an idea?</p>
+          <h2 class="display footer-tagline">Let's make it <em class="accent">a sight to see.</em></h2>
+        </div>
+        <div class="footer-cta">
+          <a href="https://cal.com/pulkit-giddu-c098j5/30min" class="btn btn--yellow" data-cal>Book a call
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+          <a href="/start.html" class="btn btn--ghost">See it before you build it</a>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="label">Explore</p>
+          <nav class="footer-nav" aria-label="Footer">
+            <a href="/">Home</a>
+            <a href="/work.html">Work</a>
+            <a href="/process.html">Process</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <p class="label">Say hello</p>
+          <button type="button" class="copy-line" data-copy="contactuswynklo@gmail.com">contactuswynklo@gmail.com <small>Copy</small></button>
+          <button type="button" class="copy-line" data-copy="+918491041426">+91 84910 41426 <small>Copy</small></button>
+          <button type="button" class="copy-line" data-copy="+919911433169">+91 99114 33169 <small>Copy</small></button>
+        </div>
+        <div class="footer-col">
+          <p class="label">Studio</p>
+          <address>A3, Clover Park, Viman Nagar<br />Pune, Maharashtra 411014</address>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/wynklo_tech/" target="_blank" rel="noopener">Instagram ↗</a>
+            <a href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener">WhatsApp ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Wynklo · Crafted in Pune, India</p>
+        <nav class="footer-legal" aria-label="Legal">
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="/cookie-policy.html">Cookie Policy</a>
+          <a href="/sitemap.html">Sitemap</a>
+        </nav>
+      </div>
     </div>
-    <div class="footer-watermark" aria-hidden="true">W<span>y</span>nkl<span>o</span></div>
+    <div class="footer-sign">
+      <div class="footer-wordmark" aria-hidden="true">
+        <span class="fw-outline">wynklo</span>
+        <span class="fw-fill">wynklo</span>
+      </div>
+      <div class="container footer-sign-row">
+        <p>See it <em class="accent">before</em> you build it.</p>
+        <button type="button" class="to-top" data-to-top>Back to top
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+        </button>
+      </div>
+    </div>
   </footer>
 
-  <div class="cta-popup" id="cta-popup">
-    <button class="cta-popup-close" id="cta-popup-close" aria-label="Close">&times;</button>
-    <p class="cta-popup-text">Got a project in mind?<br />We'd love to hear about it.</p>
-    <a href="/start.html" class="cta-popup-link">Get in touch</a>
+
+  <div class="cta-popup" id="cta-popup" role="dialog" aria-label="Get a free preview">
+    <button type="button" class="cta-popup-close" id="cta-popup-close" aria-label="Close">&times;</button>
+    <h3>Got an idea?</h3>
+    <p>See a free preview of your app before you commit to building it.</p>
+    <a href="/start.html" class="btn btn--yellow btn--small">See it before you build it</a>
   </div>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I'm%20interested%20in%20your%20services" target="_blank"
-    class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <div class="whatsapp-btn">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
-    </div>
-    <span class="whatsapp-tooltip">Chat with us</span>
-  </a>
   <script type="module" src="/js/main.js"></script>
 </body>
 
