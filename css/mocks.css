@@ -206,12 +206,31 @@
   height: 100%;
 }
 
+/* Portrait tiles: browser on top, phone overlapping bottom right */
+.mk-rig--stack {
+  position: relative;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.mk-rig--stack > .mk-wrap:first-child {
+  height: 58%;
+}
+
+.mk-rig--stack > .mk-wrap:last-child {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  height: 64%;
+}
+
 @media (max-width: 560px) {
-  .mk-rig {
+  .mk-rig:not(.mk-rig--stack) {
     grid-template-columns: 1fr;
   }
 
-  .mk-rig > .mk-wrap + .mk-wrap {
+  .mk-rig:not(.mk-rig--stack) > .mk-wrap + .mk-wrap {
     display: none;
   }
 }
@@ -231,6 +250,102 @@
 
 .mk-pair > .mk-wrap:last-child {
   transform: translateY(5%);
+}
+
+/* ClubMates brand bits */
+.cm {
+  --mk-bg: #0d0a12;
+  --mk-fg: #f6f1fb;
+  --mk-muted: rgba(246, 241, 251, 0.6);
+  --mk-card: #1b1622;
+  --mk-line: rgba(246, 241, 251, 0.1);
+  --mk-ac: linear-gradient(120deg, #7c3aed, #db2777 60%, #fb923c);
+  --mk-ac-fg: #fff;
+}
+
+.cm .br-bar {
+  background: #1b1622;
+  color: rgba(246, 241, 251, 0.6);
+}
+
+.cm .br-bar span {
+  background: rgba(246, 241, 251, 0.08);
+}
+
+.cm .mk-btn,
+.cm .mk-pill--ac,
+.cm .mk-avatar,
+.cm .mk-chips .on {
+  background: var(--mk-ac);
+  color: #fff;
+  border-color: transparent;
+}
+
+.cm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.cm-logo::before {
+  content: '';
+  width: 1.5em;
+  height: 1.2em;
+  background:
+    radial-gradient(circle at 25% 22%, #a855f7 0 17%, transparent 18%),
+    radial-gradient(circle at 75% 22%, #fb923c 0 17%, transparent 18%),
+    radial-gradient(ellipse 48% 42% at 28% 85%, #7c3aed 0 98%, transparent),
+    radial-gradient(ellipse 48% 42% at 72% 85%, #f472b6 0 98%, transparent);
+}
+
+.cm-night {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(251, 191, 36, 0.35) 0 3%, transparent 4%),
+    radial-gradient(circle at 72% 16%, rgba(244, 114, 182, 0.35) 0 4%, transparent 5%),
+    radial-gradient(circle at 88% 40%, rgba(251, 146, 60, 0.3) 0 3%, transparent 4%),
+    radial-gradient(circle at 40% 12%, rgba(255, 255, 255, 0.18) 0 2%, transparent 3%),
+    radial-gradient(ellipse 70% 60% at 70% 30%, #3b1d4f, transparent 70%),
+    linear-gradient(180deg, #24152f, #0d0a12 85%);
+}
+
+.cm-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.cm-kicker {
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e9d5ff;
+}
+
+.cm-faces {
+  display: flex;
+}
+
+.cm-faces i {
+  width: 1.9em;
+  height: 1.9em;
+  margin-right: -0.55em;
+  border-radius: 50%;
+  border: 2px solid var(--mk-card);
+  background: var(--c);
+}
+
+.cm-faces b {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  border: 2px solid var(--mk-card);
+  background: #2a2233;
+  font-size: 0.75em;
 }
 
 /* ── Atoms ── */
