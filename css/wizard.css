@@ -101,8 +101,10 @@
 
 .wizard-header h2 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
   margin-bottom: var(--space-sm);
 }
 
@@ -145,8 +147,9 @@
 
 .option-title {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
-  text-transform: uppercase;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 /* ── Form Inputs (Step 2 & 5) ── */
@@ -266,9 +269,8 @@
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--color-text);
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: var(--font-sans);
+  font-weight: 500;
   padding: 1em 2em;
   border-radius: 50px;
   cursor: pointer;
