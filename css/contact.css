@@ -283,3 +283,28 @@
     position: static;
   }
 }
+
+@media (max-width: 560px) {
+  .reach-item {
+    gap: 0.9rem;
+  }
+
+  .reach-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 0.85rem;
+  }
+
+  .reach-icon svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .reach-icon--cal {
+    font-size: 1.1rem;
+  }
+
+  .reach-text b {
+    overflow-wrap: normal;
+  }
+}

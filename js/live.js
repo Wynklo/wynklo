@@ -7,7 +7,7 @@ function fit(view) {
   const frame = view.querySelector('iframe');
   const { width, height } = view.getBoundingClientRect();
   if (!frame || !width) return;
-  const base = width < 520 ? 820 : 1440;
+  const base = width < 480 ? 390 : width < 860 ? 1024 : 1440;
   const scale = width / base;
   frame.style.width = `${base}px`;
   frame.style.height = `${Math.ceil(height / scale)}px`;

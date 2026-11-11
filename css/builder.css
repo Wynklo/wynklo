@@ -768,6 +768,15 @@
     display: inline;
   }
 
+  .bd-sum b {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 0.9375rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
   .bd-seg span {
     flex-direction: column;
     gap: 0.25rem;

@@ -257,6 +257,16 @@
   text-overflow: ellipsis;
 }
 
+@media (max-width: 560px) {
+  .live-bar > i {
+    display: none;
+  }
+
+  .live-bar > span {
+    margin-left: 0;
+  }
+}
+
 .live-badge {
   display: inline-flex;
   align-items: center;

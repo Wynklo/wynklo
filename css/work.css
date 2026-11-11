@@ -138,6 +138,17 @@
     aspect-ratio: 4 / 3;
   }
 
+  @media (max-width: 560px) {
+    .work-card--feature .work-media {
+      aspect-ratio: 4 / 5;
+    }
+
+    .concept-media {
+      aspect-ratio: 1 / 1.1;
+      padding: 6% 4% 7%;
+    }
+  }
+
   .concepts-row {
     grid-template-columns: 1fr;
   }

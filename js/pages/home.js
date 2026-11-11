@@ -56,7 +56,7 @@ function problemPin() {
       duration: 1,
       ease: 'power2.out',
     })
-    .to(cards, { y: (i) => driftY[i], duration: 0.8, ease: 'none' })
+    .to(cards, { y: (i) => driftY[i] * (window.innerWidth < 560 ? 0.3 : 1), duration: 0.8, ease: 'none' })
     .fromTo(
       '.problem-panel',
       { clipPath: 'inset(100% 0% 0% 0%)' },

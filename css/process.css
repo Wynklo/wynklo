@@ -138,6 +138,14 @@
   }
 }
 
+@media (max-width: 900px) and (max-height: 799px) {
+  .step-card,
+  .step-card:nth-child(n) {
+    position: relative;
+    top: auto;
+  }
+}
+
 @media (max-width: 560px) {
   .step-media {
     min-height: 0;
