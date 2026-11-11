@@ -655,48 +655,144 @@
   right: 1.25rem;
   bottom: 1.25rem;
   z-index: 900;
-  width: min(360px, calc(100vw - 2.5rem));
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  background: var(--ink);
+  width: min(372px, calc(100vw - 2.5rem));
+  padding: 1.25rem 1.25rem 1rem;
+  border-radius: 28px;
+  background: rgba(26, 26, 26, 0.92);
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  backdrop-filter: saturate(160%) blur(20px);
   color: var(--cream);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
-  transform: translateY(130%);
-  transition: transform 0.8s var(--ease-out);
+  box-shadow:
+    inset 0 0 0 1px rgba(243, 241, 231, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    0 30px 60px -18px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px) scale(0.96);
+  transform-origin: bottom right;
+  transition:
+    transform 0.7s var(--ease-out),
+    opacity 0.4s ease,
+    visibility 0s linear 0.7s;
 }
 
 .cta-popup.visible {
-  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    transform 0.7s var(--ease-out),
+    opacity 0.4s ease,
+    visibility 0s;
 }
 
 .cta-popup-close {
   position: absolute;
-  top: 0.9rem;
-  right: 0.9rem;
-  width: 2rem;
-  height: 2rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
-  color: rgba(243, 241, 231, 0.7);
-  font-size: 1.2rem;
-  line-height: 1;
+  color: rgba(243, 241, 231, 0.55);
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.cta-popup-close svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .cta-popup-close:hover {
+  color: var(--cream);
+  background: rgba(243, 241, 231, 0.08);
+}
+
+.cta-popup-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-right: 2.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.cta-popup-art {
+  position: relative;
+  flex: none;
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0 0.95rem;
+  border-radius: 14px;
+  background: var(--yellow);
+}
+
+.cta-popup-art::before {
+  content: '';
+  position: absolute;
+  inset: 0.45rem 0.7rem;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+}
+
+.cta-popup-art i {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.cta-popup-art i:nth-child(2) {
+  width: 70%;
+  opacity: 0.55;
+}
+
+.cta-popup-art i:nth-child(3) {
+  width: 45%;
+  opacity: 0.55;
+}
+
+.cta-popup-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 500;
   color: var(--yellow);
+  margin-bottom: 0.15rem;
 }
 
 .cta-popup h3 {
-  font-size: 1.3rem;
-  font-weight: 500;
+  font-size: 1.25rem;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  padding-right: 2rem;
-  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
-.cta-popup p {
-  font-size: 0.92rem;
-  color: rgba(243, 241, 231, 0.65);
+.cta-popup-copy {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: rgba(243, 241, 231, 0.68);
   margin-bottom: 1.1rem;
+}
+
+.cta-popup-btn {
+  width: 100%;
+  height: 3rem;
+}
+
+.cta-popup-note {
+  margin-top: 0.7rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(243, 241, 231, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-popup,
+  .cta-popup.visible {
+    transition: none;
+  }
 }
 
 /* ── Responsive ── */
@@ -757,34 +853,21 @@
     bottom: 0.75rem;
     left: 0.75rem;
     width: auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 0.6rem 0.6rem 1.1rem;
-    border-radius: var(--radius-pill);
+    padding: 0.75rem;
+    border-radius: 24px;
+    transform-origin: bottom center;
   }
 
-  .cta-popup p {
+  .cta-popup-head {
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-popup-copy,
+  .cta-popup-note {
     display: none;
   }
 
-  .cta-popup h3 {
-    flex: 1;
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-  }
-
-  .cta-popup .btn {
-    order: 2;
-    height: 2.4rem;
-    padding: 0 1rem;
-    font-size: 0.85rem;
-  }
-
-  .cta-popup-close {
-    position: static;
-    order: 3;
-    flex: none;
+  .cta-popup-btn {
+    height: 2.875rem;
   }
 }

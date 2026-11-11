@@ -208,11 +208,22 @@
   </footer>
 
 
-  <div class="cta-popup" id="cta-popup" role="dialog" aria-label="Get a free preview">
-    <button type="button" class="cta-popup-close" id="cta-popup-close" aria-label="Close">&times;</button>
-    <h3>Got an idea?</h3>
-    <p>See a free preview of your app before you commit to building it.</p>
-    <a href="/start.html" class="btn btn--yellow btn--small">See it before you build it</a>
+  <div class="cta-popup" id="cta-popup" role="dialog" aria-labelledby="cta-popup-title">
+    <button type="button" class="cta-popup-close" id="cta-popup-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+    </button>
+    <div class="cta-popup-head">
+      <span class="cta-popup-art" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div>
+        <p class="cta-popup-eyebrow">Free preview · 24 hours</p>
+        <h3 id="cta-popup-title">Got an app idea?</h3>
+      </div>
+    </div>
+    <p class="cta-popup-copy">Pick a few options and we'll turn it into a clickable preview, before you spend anything on code.</p>
+    <a href="/start.html" class="btn btn--yellow cta-popup-btn">See it before you build it
+      <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+    </a>
+    <p class="cta-popup-note">No sign-up. No commitment.</p>
   </div>
 
   <script type="module" src="/js/main.js"></script>
