@@ -13,8 +13,29 @@
   gap: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 2.5vw, 2rem);
 }
 
-.work-card:nth-child(even) {
+.work-card:nth-child(odd):not(:first-child) {
   margin-top: clamp(0rem, 8vw, 8rem);
+}
+
+.work-card--feature {
+  grid-column: 1 / -1;
+}
+
+.work-card--feature .work-media {
+  aspect-ratio: 16 / 7.5;
+  padding: 4% 5%;
+}
+
+.work-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--yellow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  vertical-align: middle;
 }
 
 .work-card {
@@ -82,13 +103,13 @@
 /* ── Concepts ── */
 .concepts-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 .concept-media {
-  aspect-ratio: 3 / 4;
-  padding: 9% 8%;
+  aspect-ratio: 1 / 0.9;
+  padding: 7% 9% 9%;
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
@@ -99,16 +120,25 @@
   color: var(--fg-muted);
 }
 
+.concept figcaption b {
+  font-weight: 500;
+  color: var(--fg);
+}
+
 @media (max-width: 760px) {
   .work-grid {
     grid-template-columns: 1fr;
   }
 
-  .work-card:nth-child(even) {
+  .work-card:nth-child(odd):not(:first-child) {
     margin-top: 0;
   }
 
+  .work-card--feature .work-media {
+    aspect-ratio: 4 / 3;
+  }
+
   .concepts-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 }
