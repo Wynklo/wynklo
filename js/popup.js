@@ -8,15 +8,15 @@ export function initPopup() {
 
   if (!popup || !closeBtn) return;
 
-  // Show popup after scrolling 40% of the page
   let hasShown = false;
-  let isDismissed = false;
+  let isDismissed = sessionStorage.getItem('wk-popup-dismissed') === '1';
 
   function checkScroll() {
     if (isDismissed || hasShown) return;
 
-    const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    if (scrollPercent > 0.25) {
+    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    const threshold = window.matchMedia('(max-width: 560px)').matches ? 0.6 : 0.35;
+    if (scrollPercent > threshold) {
       popup.classList.add('visible');
       hasShown = true;
     }
@@ -24,10 +24,9 @@ export function initPopup() {
 
   window.addEventListener('scroll', checkScroll, { passive: true });
 
-  // Close popup
   closeBtn.addEventListener('click', () => {
     popup.classList.remove('visible');
-    popup.classList.add('hidden');
     isDismissed = true;
+    sessionStorage.setItem('wk-popup-dismissed', '1');
   });
 }
