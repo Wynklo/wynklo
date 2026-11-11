@@ -1,0 +1,279 @@
+/* ========================================
+   Wynklo - Contact page ("Let's chat")
+   ======================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.chat {
+  padding-top: calc(var(--header-height) + clamp(3rem, 8vw, 7rem));
+  padding-bottom: var(--section-y);
+}
+
+.chat-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.chat-title {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+/* ── Form: oversized, borderless fields ── */
+.chat-form {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.chat-input,
+.chat-textarea {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  letter-spacing: -0.035em;
+  appearance: none;
+}
+
+.chat-input {
+  font-size: clamp(2rem, 5.2vw, 4.6rem);
+  font-weight: 500;
+  line-height: 1.15;
+  caret-color: var(--yellow-ink);
+}
+
+.chat-textarea {
+  min-height: 9rem;
+  margin-top: 0.5rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  resize: none;
+}
+
+.chat-input::placeholder,
+.chat-textarea::placeholder {
+  color: rgba(26, 26, 26, 0.2);
+  transition: color 0.3s ease;
+}
+
+.chat-input:focus,
+.chat-textarea:focus {
+  outline: none;
+}
+
+.chat-input:focus::placeholder,
+.chat-textarea:focus::placeholder {
+  color: rgba(26, 26, 26, 0.32);
+}
+
+.chat-input.field-error::placeholder {
+  color: rgba(194, 58, 58, 0.45);
+}
+
+.chat-input.field-error {
+  color: #b3261e;
+}
+
+.chat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.form-submit .btn-arrow {
+  margin: 0 0.1rem 0 -0.2rem;
+}
+
+.form-submit[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.form-status {
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.form-status.is-success {
+  color: #1f7a45;
+}
+
+.form-status.is-error {
+  color: #b3261e;
+}
+
+/* ── Side: testimonial + reach card ── */
+.chat-side {
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.chat-quote {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.chat-quote-mark {
+  font-family: var(--font-serif);
+  height: 1.4rem;
+  font-size: 3.5rem;
+  line-height: 0.9;
+  color: var(--yellow-ink);
+}
+
+.chat-quote blockquote {
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+}
+
+.chat-quote figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.chat-quote figcaption span:last-child {
+  display: grid;
+}
+
+.chat-quote small {
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.chat-quote-logo {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.8rem;
+  background: var(--cream-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.reach {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: var(--radius-lg);
+}
+
+.reach h2 {
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.reach-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.reach-item {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  width: 100%;
+  text-align: left;
+}
+
+.reach-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.05rem;
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  transition: transform 0.5s var(--ease-out);
+}
+
+.reach-item:hover .reach-icon {
+  transform: translateY(-3px) rotate(-4deg);
+}
+
+.reach-icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.reach-icon--wa {
+  background: linear-gradient(180deg, #5fe07a, #1fb84a);
+  color: #fff;
+}
+
+.reach-icon--mail {
+  background: linear-gradient(180deg, #5fa8ff, #2463eb);
+  color: #fff;
+}
+
+.reach-icon--cal {
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.reach-icon--cal i {
+  position: absolute;
+  right: -0.25rem;
+  bottom: -0.25rem;
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 3px solid var(--yellow);
+  border-radius: 50%;
+  background: #2e9d5b;
+}
+
+.reach-text {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.reach-text small {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.reach-text b {
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.reach-early {
+  font-size: var(--fs-small);
+  font-style: normal;
+  opacity: 0.55;
+}
+
+@media (max-width: 960px) {
+  .chat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-side {
+    position: static;
+  }
+}

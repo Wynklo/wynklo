@@ -1,198 +1,112 @@
-export const initContactForm = () => {
-  const contactForm = document.getElementById('contact-form');
-  
-  if (!contactForm) return;
+/* ========================================
+   Wynklo - Contact page: form + next call slot
+   ======================================== */
 
-  // ── Inline field validation ──
-  const requiredFields = contactForm.querySelectorAll('[required]');
-  requiredFields.forEach(field => {
-    field.addEventListener('blur', () => validateField(field));
-    field.addEventListener('input', () => {
-      if (field.classList.contains('field-error')) {
-        validateField(field);
-      }
-    });
-  });
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  function validateField(field) {
-    const value = field.value.trim();
-    let isValid = true;
+// Call slots: Mon–Sat, 10:00–19:00 IST, every 30 minutes, at least 1 hour out.
+const IST_OFFSET_MIN = 330;
+const OPEN_HOUR = 10;
+const CLOSE_HOUR = 19;
 
-    if (!value) {
-      isValid = false;
-    } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      isValid = false;
-    }
+function nextSlot(now = new Date()) {
+  const ist = new Date(now.getTime() + (IST_OFFSET_MIN + now.getTimezoneOffset()) * 60000);
+  const slot = new Date(ist.getTime() + 60 * 60000);
+  slot.setSeconds(0, 0);
+  slot.setMinutes(slot.getMinutes() <= 30 ? 30 : 60);
 
-    if (isValid) {
-      field.classList.remove('field-error');
-      field.classList.add('field-valid');
-    } else {
-      field.classList.add('field-error');
-      field.classList.remove('field-valid');
-    }
-
-    return isValid;
+  for (let i = 0; i < 14 * 48; i++) {
+    const h = slot.getHours();
+    const open = slot.getDay() !== 0 && h >= OPEN_HOUR && h < CLOSE_HOUR;
+    if (open) break;
+    slot.setMinutes(slot.getMinutes() + 30);
   }
 
-  // ── Form Submit ──
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Validate all fields
-    let allValid = true;
-    requiredFields.forEach(field => {
-      if (!validateField(field)) allValid = false;
-    });
+  // Back from IST wall-clock to a real instant, then show it in the visitor's own time.
+  return new Date(slot.getTime() - (IST_OFFSET_MIN + now.getTimezoneOffset()) * 60000);
+}
 
-    if (!allValid) {
-      showMessage('Please fill in all required fields correctly.', 'error');
+function formatSlot(date, now = new Date()) {
+  const time = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }).toLowerCase();
+  const startOf = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const days = Math.round((startOf(date) - startOf(now)) / 86400000);
+  if (days === 0) return `Today ${time}`;
+  if (days === 1) return `Tomorrow ${time}`;
+  return `${date.toLocaleDateString([], { weekday: 'short' })} ${time}`;
+}
+
+function initNextSlot() {
+  const el = document.querySelector('[data-next-slot]');
+  if (!el) return;
+  const update = () => (el.textContent = formatSlot(nextSlot()));
+  update();
+  setInterval(update, 60000);
+}
+
+function initForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const status = form.querySelector('.form-status');
+  const submit = form.querySelector('.form-submit');
+  const label = submit.querySelector('span');
+  const required = form.querySelectorAll('[required]');
+
+  const setStatus = (text, type = '') => {
+    status.textContent = text;
+    status.className = `form-status${type ? ` is-${type}` : ''}`;
+  };
+
+  const validate = (field) => {
+    const value = field.value.trim();
+    const ok = field.type === 'email' ? EMAIL_RE.test(value) : value.length > 0;
+    field.classList.toggle('field-error', !ok);
+    field.setAttribute('aria-invalid', String(!ok));
+    return ok;
+  };
+
+  required.forEach((field) => {
+    field.addEventListener('blur', () => field.value && validate(field));
+    field.addEventListener('input', () => field.classList.contains('field-error') && validate(field));
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const invalid = [...required].filter((field) => !validate(field));
+    if (invalid.length) {
+      setStatus('Add your name and a valid email so we can reply.', 'error');
+      invalid[0].focus();
       return;
     }
 
-    const submitButton = contactForm.querySelector('.form-submit');
-    const originalText = submitButton.textContent;
-    
-    // Show loading state
-    submitButton.innerHTML = '<span class="btn-spinner"></span> Sending...';
-    submitButton.disabled = true;
-    submitButton.style.opacity = '0.7';
-    
+    const data = Object.fromEntries(new FormData(form));
+    submit.disabled = true;
+    label.textContent = 'Sending…';
+    setStatus('');
+
     try {
-      const formData = new FormData(contactForm);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        company: formData.get('company'),
-        service: formData.get('service'),
-        message: formData.get('message')
-      };
-      
-      // Use relative URL in production, localhost in development
-      const apiUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3000/api/contact'
-        : '/api/contact';
-      
-      const response = await fetch(apiUrl, {
+      const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/api/contact' : '/api/contact';
+      const res = await fetch(apiUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        showMessage('Message sent successfully! We\'ll be in touch within 24 hours.', 'success');
-        contactForm.reset();
-        // Clear validation states
-        requiredFields.forEach(field => {
-          field.classList.remove('field-valid', 'field-error');
-        });
-      } else {
-        showMessage('Failed to send message. Please try again or contact us directly.', 'error');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      showMessage('An error occurred. Please try again or call us at +91 8491041426.', 'error');
+      const result = await res.json();
+      if (!result.success) throw new Error('Send failed');
+
+      form.reset();
+      setStatus("Sent! We'll get back to you within 24 hours.", 'success');
+    } catch {
+      setStatus("That didn't go through. Try again or WhatsApp us on +91 84910 41426.", 'error');
     } finally {
-      submitButton.textContent = originalText;
-      submitButton.disabled = false;
-      submitButton.style.opacity = '1';
+      submit.disabled = false;
+      label.textContent = 'Send';
     }
   });
-};
+}
 
-function showMessage(message, type) {
-  // Remove any existing messages
-  const existing = document.querySelector('.contact-toast');
-  if (existing) existing.remove();
-
-  const toast = document.createElement('div');
-  toast.className = `contact-toast contact-toast--${type}`;
-  
-  const icon = type === 'success' ? '✓' : '✕';
-  toast.innerHTML = `
-    <span class="contact-toast-icon">${icon}</span>
-    <span class="contact-toast-text">${message}</span>
-  `;
-
-  // Inject styles once
-  if (!document.getElementById('contact-toast-styles')) {
-    const style = document.createElement('style');
-    style.id = 'contact-toast-styles';
-    style.textContent = `
-      .contact-toast {
-        position: fixed;
-        top: calc(var(--header-height) + 1rem);
-        right: 1.5rem;
-        padding: 1rem 1.5rem;
-        border-radius: var(--radius-lg);
-        font-family: var(--font-body);
-        font-size: 0.9rem;
-        z-index: 10001;
-        max-width: 380px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        animation: toastSlideIn 0.4s var(--ease-out);
-        border: 1px solid transparent;
-      }
-      .contact-toast--success {
-        background: var(--color-yellow);
-        color: var(--color-bg);
-        border-color: rgba(0,0,0,0.1);
-      }
-      .contact-toast--error {
-        background: var(--color-bg-card);
-        color: var(--color-text);
-        border-color: rgba(196, 58, 58, 0.5);
-      }
-      .contact-toast-icon {
-        font-weight: 800;
-        font-size: 1.2rem;
-        flex-shrink: 0;
-      }
-      @keyframes toastSlideIn {
-        from { transform: translateX(120%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-      @keyframes toastSlideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(120%); opacity: 0; }
-      }
-      /* Field validation styles */
-      .field-error {
-        border-color: #c23a3a !important;
-        box-shadow: 0 0 0 1px rgba(194, 58, 58, 0.3);
-      }
-      .field-valid {
-        border-color: #25D366 !important;
-      }
-      .btn-spinner {
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        border: 2px solid rgba(0,0,0,0.2);
-        border-top-color: currentColor;
-        border-radius: 50%;
-        animation: spin 0.6s linear infinite;
-        vertical-align: middle;
-      }
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  document.body.appendChild(toast);
-
-  // Auto-dismiss
-  setTimeout(() => {
-    toast.style.animation = 'toastSlideOut 0.4s var(--ease-out) forwards';
-    setTimeout(() => toast.remove(), 400);
-  }, 5000);
+export function initContactForm() {
+  initForm();
+  initNextSlot();
 }
