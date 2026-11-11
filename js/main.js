@@ -13,6 +13,7 @@ const pages = {
   process: () => import('./pages/process.js'),
   about: () => import('./pages/about.js'),
   work: () => import('./pages/work.js'),
+  start: () => import('./pages/start.js'),
   contact: () => import('./contact.js').then((m) => ({ init: m.initContactForm })),
 };
 

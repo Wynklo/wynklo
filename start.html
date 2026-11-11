@@ -14,9 +14,9 @@
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
 
   <!-- Primary SEO Meta Tags -->
-  <title>Start Your Project | Free Preview & Quote | Wynklo</title>
+  <title>See It Before You Build It | Free Preview Builder | Wynklo</title>
   <meta name="description"
-    content="Start your project with Wynklo. Tell us about your idea and get a free AI-powered preview before you build. Web development, app development, and digital solutions." />
+    content="Start your project with Wynklo. Build a free live preview of your app or website in a minute, then get a clickable prototype before you build. Web development, app development, and digital solutions." />
   <meta name="keywords"
     content="start project, free website preview, web development quote, app development estimate, Wynklo project wizard" />
   <meta name="author" content="Wynklo" />
@@ -47,7 +47,8 @@
   <link rel="stylesheet" href="/css/reset.css" />
   <link rel="stylesheet" href="/css/base.css" />
   <link rel="stylesheet" href="/css/chrome.css" />
-  <link rel="stylesheet" href="/css/wizard.css" />
+  <link rel="stylesheet" href="/css/mocks.css" />
+  <link rel="stylesheet" href="/css/builder.css" />
 
   <!-- ══ Favicon ══ -->
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
@@ -96,387 +97,148 @@
   </div>
 
 
-  <main class="wizard-section theme-dark">
-    <div class="container">
+  <main class="builder" id="builder">
+    <div class="bd-grid">
+      <section class="bd-stage" aria-label="Live preview">
+        <div class="bd-stage-inner">
+          <div class="bd-stage-top">
+            <span class="bd-live">Live preview</span>
+            <span class="bd-stage-kind" data-bd-out="kind"></span>
+          </div>
+          <div class="bd-canvas" id="bd-canvas" aria-hidden="true"></div>
+        </div>
+      </section>
 
-      <!-- Stepper -->
-      <div class="wizard-stepper" id="wizard-stepper">
-        <div class="step-indicator active" data-step="1">
-          <div class="step-number">1</div>
-          <span class="step-label">Category</span>
+      <section class="bd-panel">
+        <header class="bd-head">
+          <p class="label">See it before you build it</p>
+          <h1 class="bd-title">Build your <em class="accent">preview</em></h1>
+          <p class="bd-intro">Make a few picks and watch your product take shape. Free, no sign-up, no commitment.</p>
+        </header>
+
+        <fieldset class="bd-group">
+          <legend class="bd-legend"><span>01</span>What are we building?</legend>
+          <div class="bd-seg">
+            <label>
+              <input type="radio" name="platform" value="app" class="visually-hidden" checked />
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5" /><path d="M11 18h2" /></svg>Mobile app</span>
+            </label>
+            <label>
+              <input type="radio" name="platform" value="web" class="visually-hidden" />
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="M3 9h18" /></svg>Website</span>
+            </label>
+            <label>
+              <input type="radio" name="platform" value="both" class="visually-hidden" />
+              <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="14" height="11" rx="2" /><rect x="15" y="9" width="7" height="12" rx="1.8" /></svg>Both</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bd-group">
+          <legend class="bd-legend"><span>02</span>What's your business?</legend>
+          <div class="bd-biz" id="bd-biz"></div>
+        </fieldset>
+
+        <div class="bd-group">
+          <label class="bd-legend" for="bd-name"><span>03</span>Give it a name <small>Optional</small></label>
+          <input type="text" id="bd-name" class="bd-input" maxlength="24" placeholder="Your brand name" autocomplete="organization" />
         </div>
-        <div class="step-indicator" data-step="2">
-          <div class="step-number">2</div>
-          <span class="step-label">Details</span>
-        </div>
-        <div class="step-indicator" data-step="3">
-          <div class="step-number">3</div>
-          <span class="step-label">Features</span>
-        </div>
-        <div class="step-indicator" data-step="4">
-          <div class="step-number">4</div>
-          <span class="step-label">Preview</span>
-        </div>
-        <div class="step-indicator" data-step="5">
-          <div class="step-number">5</div>
-          <span class="step-label">Contact</span>
-        </div>
+
+        <fieldset class="bd-group">
+          <legend class="bd-legend"><span>04</span>Pick your features <small>Tap to add or remove</small></legend>
+          <div class="bd-feats" id="bd-feats"></div>
+        </fieldset>
+      </section>
+    </div>
+
+    <div class="bd-bar theme-dark">
+      <button type="button" class="bd-sum" data-bd-open="breakdown">
+        <span class="bd-sum-label">Your preview<span class="bd-sum-weeks"> · <span data-bd-out="weeks"></span></span></span>
+        <b data-bd-out="summary"></b>
+      </button>
+      <dl class="bd-stats">
+        <div><dt>Timeline</dt><dd data-bd-out="weeks"></dd></div>
+        <div><dt>Screens</dt><dd data-bd-out="screens"></dd></div>
+      </dl>
+      <div class="bd-actions">
+        <button type="button" class="btn btn--ghost btn--small" data-bd-open="breakdown">View breakdown</button>
+        <button type="button" class="btn btn--yellow btn--small" data-bd-open="send">Send me this</button>
       </div>
-
-      <!-- Step 1: Category -->
-      <div class="wizard-step-content active" id="step-1">
-        <div class="wizard-header">
-          <h2>What are we building?</h2>
-          <p>Select the platform for your next big idea.</p>
-        </div>
-        <div class="option-grid platform-grid">
-          <div class="option-card platform-card" data-platform="app">
-            <div class="option-icon">📱</div>
-            <div class="option-title">Mobile App</div>
-          </div>
-          <div class="option-card platform-card" data-platform="web">
-            <div class="option-icon">💻</div>
-            <div class="option-title">Website</div>
-          </div>
-          <div class="option-card platform-card" data-platform="both">
-            <div class="option-icon">🚀</div>
-            <div class="option-title">Both</div>
-          </div>
-        </div>
-
-        <div class="wizard-header" style="margin-top: 3rem; margin-bottom: 1.5rem;">
-          <h2 style="font-size: 1.8rem;">We build for every kind of business</h2>
-        </div>
-
-        <div class="business-grid">
-          <div class="business-card" data-business="food">
-            <div class="business-icon">🍔</div>
-            <div class="business-info">
-              <h4>Food & Restaurant</h4>
-              <p>Menus, orders, delivery</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="salon">
-            <div class="business-icon">💇</div>
-            <div class="business-info">
-              <h4>Salon & Beauty</h4>
-              <p>Bookings, services, staff</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="ecommerce">
-            <div class="business-icon">🛍️</div>
-            <div class="business-info">
-              <h4>E-Commerce</h4>
-              <p>Catalogue, cart, checkout</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="gym">
-            <div class="business-icon">🏋️</div>
-            <div class="business-info">
-              <h4>Gym & Fitness</h4>
-              <p>Memberships, classes, trainers</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="education">
-            <div class="business-icon">📚</div>
-            <div class="business-info">
-              <h4>Education</h4>
-              <p>Courses, enrollment, results</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="realestate">
-            <div class="business-icon">🏠</div>
-            <div class="business-info">
-              <h4>Real Estate</h4>
-              <p>Listings, inquiries, tours</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="portfolio">
-            <div class="business-icon">💼</div>
-            <div class="business-info">
-              <h4>Portfolio/Agency</h4>
-              <p>Work showcase, contact, leads</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="clinic">
-            <div class="business-icon">🏥</div>
-            <div class="business-info">
-              <h4>Clinic</h4>
-              <p>Appointments, records, doctors</p>
-            </div>
-          </div>
-          <div class="business-card" data-business="events">
-            <div class="business-icon">🎉</div>
-            <div class="business-info">
-              <h4>Events</h4>
-              <p>Ticketing, RSVP, schedules</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 2: Details -->
-      <div class="wizard-step-content" id="step-2">
-        <div class="wizard-header">
-          <h2>Tell us about your business</h2>
-          <p>Give us some context so we can tailor the experience.</p>
-        </div>
-        <div class="wizard-form">
-          <div class="form-group">
-            <label for="businessName">Business Name / Project Name</label>
-            <input type="text" id="businessName" class="wizard-input" placeholder="e.g. Wynklo Tech" />
-          </div>
-          <div class="form-group">
-            <label for="location">Where are you located?</label>
-            <input type="text" id="location" class="wizard-input" placeholder="e.g. New York, USA" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 3: Features -->
-      <div class="wizard-step-content" id="step-3">
-        <div class="wizard-header">
-          <h2>What features do you need?</h2>
-          <p>Select the basic features you require, and tell us any specifics.</p>
-        </div>
-
-        <div class="features-list" id="dynamic-features">
-          <!-- Populated dynamically via JS -->
-        </div>
-
-        <div class="form-group" style="margin-top: 2rem;">
-          <label for="specificRequirements">Specific Requirements (Optional)</label>
-          <textarea id="specificRequirements" class="wizard-textarea"
-            placeholder="Tell us more about custom features or unique workflows..."></textarea>
-        </div>
-      </div>
-
-      <!-- Step 4: Preview -->
-      <div class="wizard-step-content" id="step-4">
-
-        <!-- Loading Animation -->
-        <div class="ai-loading-container" id="ai-loading">
-          <div class="ai-spinner">
-            <div class="spinner-ring"></div>
-            <div class="spinner-core"></div>
-          </div>
-          <h3 class="ai-loading-text">Generating AI Preview...</h3>
-          <p>Synthesizing your requirements into an interface.</p>
-        </div>
-
-        <!-- Interactive Mockup (Hidden initially) -->
-        <div class="interactive-mockup-container" id="interactive-mockup" style="display: none;">
-          <div class="wizard-header">
-            <h2>Your First Look</h2>
-            <p>Try out the interactive wireframes we've generated for you.</p>
-          </div>
-
-          <div class="mockup-devices-wrapper" id="mockup-devices-wrapper">
-
-            <!-- Phone Mockup -->
-            <div class="phone-mockup" id="device-phone">
-              <div class="phone-notch"></div>
-              <div class="phone-screen" id="mockup-screen-phone">
-                <!-- Header -->
-                <div class="mockup-header">
-                  <span class="mockup-menu">☰</span>
-                  <h4 class="mockup-title">App Name</h4>
-                  <span class="mockup-profile">👤</span>
-                </div>
-
-                <!-- Content Views -->
-                <div class="mockup-content-wrapper">
-                  <!-- View: Home -->
-                  <div class="mockup-view active mockup-view-home">
-                    <div class="mockup-hero">Hero Section</div>
-                    <div class="mockup-list mockup-home-list" style="margin-bottom: 15px;">
-                      <!-- Populated dynamically -->
-                    </div>
-                    <button class="mockup-btn mockup-action-btn">Action Button</button>
-                  </div>
-
-                  <!-- View: Features -->
-                  <div class="mockup-view mockup-view-features">
-                    <h5 style="margin-bottom: 15px; font-family: var(--font-heading);">Included Features</h5>
-                    <div class="mockup-list mockup-features-list">
-                      <!-- Populated dynamically -->
-                    </div>
-                  </div>
-
-                  <!-- View: Profile/Settings -->
-                  <div class="mockup-view mockup-view-settings">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                      <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1);">
-                      </div>
-                      <div>
-                        <div class="mockup-line short" style="margin-bottom: 8px;"></div>
-                        <div class="mockup-line long"></div>
-                      </div>
-                    </div>
-                    <div class="mockup-list">
-                      <div class="mockup-list-item"
-                        style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-                        <div><span style="margin-right: 10px;">🔔</span> Notifications</div>
-                        <div class="mockup-toggle active"></div>
-                      </div>
-                      <div class="mockup-list-item"
-                        style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-                        <div><span style="margin-right: 10px;">🔒</span> Privacy Mode</div>
-                        <div class="mockup-toggle"></div>
-                      </div>
-                      <div class="mockup-list-item"
-                        style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-                        <div><span style="margin-right: 10px;">🌙</span> Dark Theme</div>
-                        <div class="mockup-toggle active"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Bottom Nav -->
-                <div class="mockup-bottom-nav">
-                  <div class="mockup-nav-item active" data-target="mockup-view-home" data-device="phone">⌂</div>
-                  <div class="mockup-nav-item" data-target="mockup-view-features" data-device="phone">★</div>
-                  <div class="mockup-nav-item" data-target="mockup-view-settings" data-device="phone">⚙</div>
-                </div>
-
-                <!-- Interaction Toast -->
-                <div class="mockup-toast">Action Completed!</div>
-              </div>
-            </div>
-
-            <!-- Mac Mockup -->
-            <div class="mac-mockup" id="device-mac" style="display: none;">
-              <div class="mac-topbar">
-                <div class="mac-traffic-lights">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="mac-address-bar">https://wynklo.com/preview</div>
-              </div>
-              <div class="mac-screen" id="mockup-screen-mac">
-                <!-- Header / Navbar -->
-                <div class="mac-header">
-                  <h4 class="mockup-title">Website Name</h4>
-                  <div class="mac-nav">
-                    <span class="mockup-nav-item active" data-target="mockup-view-home" data-device="mac">Home</span>
-                    <span class="mockup-nav-item" data-target="mockup-view-features" data-device="mac">Features</span>
-                    <span class="mockup-nav-item" data-target="mockup-view-settings" data-device="mac">Admin</span>
-                  </div>
-                </div>
-
-                <!-- Content Views -->
-                <div class="mockup-content-wrapper">
-                  <!-- View: Home -->
-                  <div class="mockup-view active mockup-view-home">
-                    <div class="mac-split">
-                      <div class="mac-split-left">
-                        <div class="mockup-hero"
-                          style="height: 150px; text-align: left; justify-content: flex-start; padding: 20px; font-size: 2rem;">
-                          Hero Section</div>
-                        <button class="mockup-btn mockup-action-btn" style="width: auto; display: inline-block;">Action
-                          Button</button>
-                      </div>
-                      <div class="mac-split-right">
-                        <div class="mockup-list mockup-home-list">
-                          <!-- Populated dynamically -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- View: Features -->
-                  <div class="mockup-view mockup-view-features">
-                    <h5 style="margin-bottom: 20px; font-family: var(--font-heading); font-size: 1.5rem;">Included
-                      Features</h5>
-                    <div class="mockup-list mockup-features-list"
-                      style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                      <!-- Populated dynamically -->
-                    </div>
-                  </div>
-
-                  <!-- View: Profile/Settings -->
-                  <div class="mockup-view mockup-view-settings">
-                    <div class="mac-split">
-                      <div class="mac-split-left" style="flex: 0.3;">
-                        <div class="mockup-list">
-                          <div class="mockup-list-item active"
-                            style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">
-                            Dashboard</div>
-                          <div class="mockup-list-item"
-                            style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">
-                            Analytics</div>
-                          <div class="mockup-list-item"
-                            style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; font-family: var(--font-heading);">
-                            Settings</div>
-                        </div>
-                      </div>
-                      <div class="mac-split-right" style="flex: 0.7;">
-                        <div
-                          style="background: rgba(255,255,255,0.02); height: auto; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                          <div class="mockup-list-item"
-                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                            <div>Enable Analytics Tracking</div>
-                            <div class="mockup-toggle active"></div>
-                          </div>
-                          <div class="mockup-list-item"
-                            style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>Auto-Publish Updates</div>
-                            <div class="mockup-toggle"></div>
-                          </div>
-                        </div>
-                        <div style="display: flex; gap: 20px;">
-                          <div
-                            style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                            📈</div>
-                          <div
-                            style="background: rgba(255,255,255,0.02); height: 100px; flex: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
-                            👥</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Interaction Toast -->
-                <div class="mockup-toast">Action Completed!</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Step 5: Contact -->
-      <div class="wizard-step-content" id="step-5">
-        <div class="wizard-header">
-          <h2>Let's make it happen</h2>
-          <p>Leave your details and we'll get back to you within 24 hours.</p>
-        </div>
-        <div class="wizard-form">
-          <div class="form-group">
-            <label for="contactName">Full Name</label>
-            <input type="text" id="contactName" class="wizard-input" placeholder="John Doe" />
-          </div>
-          <div class="form-group">
-            <label for="contactEmail">Email Address</label>
-            <input type="email" id="contactEmail" class="wizard-input" placeholder="john@example.com" />
-          </div>
-          <div class="form-group">
-            <label for="contactPhone">Phone Number</label>
-            <input type="tel" id="contactPhone" class="wizard-input" placeholder="+1 (555) 000-0000" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <div class="wizard-controls">
-        <button class="wizard-btn" id="btn-prev" style="visibility: hidden;">Back</button>
-        <button class="wizard-btn primary" id="btn-next" disabled>Next Step</button>
-      </div>
-
     </div>
   </main>
+
+  <div class="bd-sheet" id="bd-sheet" hidden>
+    <div class="bd-sheet-backdrop" data-bd-close></div>
+    <div class="bd-sheet-panel" role="dialog" aria-modal="true" aria-label="Your preview" data-lenis-prevent>
+      <button type="button" class="bd-sheet-close" data-bd-close aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+
+      <div data-view="breakdown">
+        <p class="label">Breakdown</p>
+        <h2 class="bd-sheet-title" tabindex="-1">Here's what you picked</h2>
+        <dl class="bd-rows">
+          <div><dt>Product</dt><dd data-bd-out="platform"></dd></div>
+          <div><dt>Business</dt><dd data-bd-out="business"></dd></div>
+          <div><dt>Name</dt><dd data-bd-out="name"></dd></div>
+          <div><dt>Timeline</dt><dd data-bd-out="weeks"></dd></div>
+          <div><dt>Screens</dt><dd data-bd-out="screens"></dd></div>
+        </dl>
+        <p class="bd-sheet-sub">Features</p>
+        <div class="bd-tags" data-bd-out="features"></div>
+
+        <p class="bd-sheet-sub">What happens next</p>
+        <ol class="bd-next">
+          <li><b>We review your picks</b><span>A real person looks at what you need, usually the same day.</span></li>
+          <li><b>We design a clickable preview</b><span>Free. You tap through it like the real thing.</span></li>
+          <li><b>You decide</b><span>Build it with us, change it, or walk away. No strings.</span></li>
+        </ol>
+        <p class="bd-note">Rough estimate based on similar projects. Not a quote.</p>
+        <button type="button" class="btn btn--yellow bd-sheet-cta" data-bd-open="send">Send me this preview</button>
+      </div>
+
+      <div data-view="send" hidden>
+        <p class="label">Almost there</p>
+        <h2 class="bd-sheet-title" tabindex="-1">Where should we send it?</h2>
+        <p class="bd-sheet-lead">We'll turn your picks into a clickable preview and get back to you within 24 hours.</p>
+        <form class="bd-form" id="bd-form" novalidate>
+          <div class="bd-field">
+            <label for="bd-f-name">Your name</label>
+            <input id="bd-f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="bd-field">
+            <label for="bd-f-email">Email</label>
+            <input id="bd-f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="bd-field">
+            <label for="bd-f-phone">Phone <small>Optional</small></label>
+            <input id="bd-f-phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="bd-field">
+            <label for="bd-f-notes">Anything else? <small>Optional</small></label>
+            <textarea id="bd-f-notes" name="notes" rows="2"></textarea>
+          </div>
+          <div class="bd-mini">
+            <span data-bd-out="summary"></span>
+            <span data-bd-out="weeks"></span>
+          </div>
+          <button type="submit" class="btn btn--yellow bd-sheet-cta">Send me this preview</button>
+          <p class="bd-status" id="bd-status" role="status" aria-live="polite"></p>
+          <p class="bd-note">This is a request, not a commitment. We'll never share your details.</p>
+        </form>
+      </div>
+
+      <div data-view="done" hidden>
+        <span class="bd-done-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg></span>
+        <h2 class="bd-sheet-title" tabindex="-1">Thanks for making the first move.</h2>
+        <p class="bd-sheet-lead">We've got your picks. Expect your preview, or a quick hello, within 24 hours.</p>
+        <div class="bd-done-actions">
+          <a href="/work.html" class="btn btn--yellow">See our work</a>
+          <button type="button" class="btn btn--ghost" data-bd-close>Keep playing</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- ══ Footer ══ -->
@@ -519,14 +281,7 @@
   </footer>
 
 
-  <div class="cta-popup" id="cta-popup" role="dialog" aria-label="Get a free preview">
-    <button type="button" class="cta-popup-close" id="cta-popup-close" aria-label="Close">&times;</button>
-    <h3>Got an idea?</h3>
-    <p>See a free preview of your app before you commit to building it.</p>
-    <a href="/start.html" class="btn btn--yellow btn--small">See it before you build it</a>
-  </div>
 
-  <script type="module" src="/js/wizard.js"></script>
   <script type="module" src="/js/main.js"></script>
 </body>
 
