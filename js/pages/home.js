@@ -22,22 +22,16 @@ function heroReel() {
   const frame = document.querySelector('.hero-reel-frame');
   if (!frame) return;
 
-  const trigger = { trigger: '.hero-reel', start: 'top 90%', end: 'bottom 70%', scrub: true };
+  const trigger = { trigger: '.hero-reel', start: 'top 95%', end: 'bottom 60%', scrub: 0.6 };
   gsap.fromTo(
-    frame,
-    { clipPath: 'inset(0% 7% 0% 7% round 32px)' },
-    { clipPath: 'inset(0% 0% 0% 0% round 32px)', ease: 'none', scrollTrigger: trigger }
-  );
-  const tiles = gsap.utils.toArray('.hero-reel-tile', frame);
-  gsap.fromTo(
-    tiles,
-    { yPercent: (i) => (i === 1 ? 6 : 16), scale: (i) => (i === 1 ? 0.94 : 0.9) },
-    { yPercent: 0, scale: 1, ease: 'none', scrollTrigger: { ...trigger } }
+    gsap.utils.toArray('.hero-reel-tile', frame),
+    { y: (i) => (i === 1 ? 24 : 64) },
+    { y: 0, ease: 'none', scrollTrigger: trigger }
   );
   gsap.fromTo(
     frame.querySelectorAll('.phone'),
-    { yPercent: 22, rotation: (i) => [-7, 4, 7][i] ?? 0 },
-    { yPercent: -5, rotation: 0, ease: 'none', scrollTrigger: { ...trigger, end: 'bottom 40%' } }
+    { yPercent: 14, rotation: (i) => [-6, 3, 6][i] ?? 0 },
+    { yPercent: -3, rotation: 0, ease: 'none', scrollTrigger: trigger }
   );
 }
 
