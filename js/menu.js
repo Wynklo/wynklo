@@ -2,7 +2,7 @@
    Wynklo - Header, menu overlay, copy-to-clipboard
    ======================================== */
 
-import { gsap, reducedMotion, stopScroll, startScroll, lenis } from './motion.js';
+import { gsap, reducedMotion, stopScroll, startScroll } from './motion.js';
 
 let toastTimer = null;
 
@@ -106,23 +106,16 @@ function initMenu() {
   });
 }
 
-function initFooterSign() {
-  document.querySelectorAll('[data-to-top]').forEach((btn) =>
-    btn.addEventListener('click', () => {
-      if (lenis) lenis.scrollTo(0, { duration: 1.6 });
-      else window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
-    })
-  );
-
-  const fill = document.querySelector('.fw-fill');
-  if (!fill || reducedMotion) return;
+function initFooterWordmark() {
+  const word = document.querySelector('.footer-wordmark span');
+  if (!word || reducedMotion) return;
   gsap.fromTo(
-    fill,
-    { clipPath: 'inset(-10% 100% -30% 0)' },
+    word,
+    { yPercent: 45 },
     {
-      clipPath: 'inset(-10% 0% -30% 0)',
+      yPercent: 0,
       ease: 'none',
-      scrollTrigger: { trigger: '.footer-sign', start: 'top 90%', end: 'bottom bottom', scrub: 0.6 },
+      scrollTrigger: { trigger: '.site-footer', start: 'top bottom', end: 'bottom bottom', scrub: 0.6 },
     }
   );
 }
@@ -131,5 +124,5 @@ export function initChrome() {
   initHeader();
   initMenu();
   initCopy();
-  initFooterSign();
+  initFooterWordmark();
 }
