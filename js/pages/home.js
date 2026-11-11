@@ -41,8 +41,8 @@ function problemPin() {
   if (!pin) return;
 
   const cards = gsap.utils.toArray('.pcard');
-  const startRot = [-18, 16, -12, 20];
-  const driftY = [-70, -110, -40, -130];
+  const startRot = [-18, 14, -10, 20, -16, 12];
+  const driftY = [-80, -60, -110, -50, -120, -90];
 
   gsap
     .timeline({
