@@ -65,27 +65,8 @@
   background: var(--yellow);
 }
 
-.hero-reel-tile--paper {
-  background: var(--cream-deep);
-}
-
-.hero-reel-tile--namkeen {
-  padding: 6% 10%;
-  background: #f6c48a;
-}
-
-@media (max-width: 900px) {
-  .hero-reel-tile--namkeen {
-    padding: 6% 8%;
-  }
-
-  .hero-reel-tile--namkeen .mk-pair {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-reel-tile--namkeen .mk-pair > .mk-wrap:last-child {
-    display: none;
-  }
+.hero-reel-tile--event {
+  background: #cfc4ff;
 }
 
 .hero-reel-tile .mk-wrap {
@@ -517,17 +498,17 @@
   overflow: visible;
 }
 
-.project-slide {
+.projects-swiper .project-slide {
   width: min(78vw, 560px);
 }
 
-.project-slide--live {
+.projects-swiper .project-slide--live {
   width: min(88vw, 860px);
 }
 
 .project-slide--live .project-media {
-  aspect-ratio: 16 / 10.5;
-  padding: 4%;
+  aspect-ratio: 16 / 8.6;
+  padding: 3%;
 }
 
 .project-slide--live .project-meta {
