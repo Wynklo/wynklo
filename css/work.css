@@ -22,8 +22,8 @@
 }
 
 .work-card--feature .work-media {
-  aspect-ratio: 16 / 7.5;
-  padding: 4% 5%;
+  aspect-ratio: 16 / 9;
+  padding: 3.5%;
 }
 
 .work-badge {

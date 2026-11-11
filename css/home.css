@@ -69,23 +69,23 @@
   background: var(--cream-deep);
 }
 
-.hero-reel-tile--cm {
-  position: relative;
-  padding: 9% 5% 6%;
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, #3b1d4f, #140d1a 75%);
+.hero-reel-tile--namkeen {
+  padding: 6% 10%;
+  background: #f6c48a;
 }
 
-.hero-reel-tag {
-  position: absolute;
-  top: clamp(0.75rem, 1.6vw, 1.25rem);
-  left: clamp(0.75rem, 1.6vw, 1.25rem);
-  z-index: 1;
-  padding: 0.35rem 0.8rem;
-  border-radius: var(--radius-pill);
-  background: var(--yellow);
-  color: var(--ink);
-  font-size: 0.75rem;
-  font-weight: 600;
+@media (max-width: 900px) {
+  .hero-reel-tile--namkeen {
+    padding: 6% 8%;
+  }
+
+  .hero-reel-tile--namkeen .mk-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-reel-tile--namkeen .mk-pair > .mk-wrap:last-child {
+    display: none;
+  }
 }
 
 .hero-reel-tile .mk-wrap {
@@ -519,6 +519,20 @@
 
 .project-slide {
   width: min(78vw, 560px);
+}
+
+.project-slide--live {
+  width: min(88vw, 860px);
+}
+
+.project-slide--live .project-media {
+  aspect-ratio: 16 / 10.5;
+  padding: 4%;
+}
+
+.project-slide--live .project-meta {
+  color: inherit;
+  text-decoration: none;
 }
 
 .project-media {
