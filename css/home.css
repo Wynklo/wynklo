@@ -69,6 +69,25 @@
   background: var(--cream-deep);
 }
 
+.hero-reel-tile--cm {
+  position: relative;
+  padding: 9% 5% 6%;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, #3b1d4f, #140d1a 75%);
+}
+
+.hero-reel-tag {
+  position: absolute;
+  top: clamp(0.75rem, 1.6vw, 1.25rem);
+  left: clamp(0.75rem, 1.6vw, 1.25rem);
+  z-index: 1;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
 .hero-reel-tile .mk-wrap {
   will-change: transform;
 }
