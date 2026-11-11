@@ -2,46 +2,59 @@
    Wynklo - Design Tokens
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500&display=swap');
 
 :root {
-  /* ── Colors ── */
-  --color-bg: #1a1a1a;
-  --color-bg-dark: #141414;
-  --color-bg-card: #222222;
-  --color-text: #f3f1e7;
-  --color-text-muted: #a8a6a0;
-  --color-text-dark: #1a1a1a;
+  /* ── Palette ── */
+  --cream: #f3f1e7;
+  --cream-deep: #ebe8dc;
+  --paper: #ffffff;
+  --ink: #1a1a1a;
+  --ink-soft: #2a2a28;
+  --muted: #6b6960;
+  --line: rgba(26, 26, 26, 0.12);
+  --yellow: #fdd011;
+  --yellow-ink: #8a6d00;
 
-  /* Accents */
-  --color-yellow: #fdd011;
-  --color-pink: #f472b6;
-  --color-red: #c23a3a;
-  --color-blue: #5a9ab5;
-  --color-purple: #4a3a8a;
-  --color-green: #2d6a4f;
-  --color-teal: #3a8a7a;
-  --color-cream: #f3f1e7;
-  --color-olive: #8a7a3a;
+  /* ── Semantic (light by default) ── */
+  --bg: var(--cream);
+  --surface: var(--paper);
+  --surface-2: var(--cream-deep);
+  --fg: var(--ink);
+  --fg-muted: var(--muted);
+  --border: var(--line);
 
-  /* ── Typography ── */
-  --font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Space Mono', 'Courier New', monospace;
+  /* ── Legacy names used by wizard.css / policy.css ── */
+  --color-bg: var(--bg);
+  --color-bg-dark: var(--cream-deep);
+  --color-bg-card: var(--surface);
+  --color-text: var(--fg);
+  --color-text-muted: var(--fg-muted);
+  --color-text-dark: var(--ink);
+  --color-yellow: var(--yellow);
+  --color-cream: var(--cream);
 
-  /* Sizes */
+  /* ── Type ── */
+  --font-sans: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Libre Baskerville', Baskerville, 'Baskerville Old Face', Georgia, serif;
+  --font-hand: 'Caveat', 'Bradley Hand', cursive;
+  --font-body: var(--font-sans);
+  --font-heading: var(--font-sans);
+  --font-mono: var(--font-sans);
+
+  --fs-display: clamp(2.9rem, 7.4vw, 7.6rem);
+  --fs-h1: clamp(2.5rem, 5.6vw, 5.6rem);
+  --fs-h2: clamp(2rem, 4.2vw, 4rem);
+  --fs-h3: clamp(1.35rem, 2vw, 1.9rem);
+  --fs-lead: clamp(1.05rem, 1.35vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.8125rem;
+
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 2rem;
-  --text-4xl: 2.5rem;
-  --text-5xl: 3.5rem;
-  --text-6xl: 4.5rem;
-  --text-hero: clamp(3rem, 7vw, 6.5rem);
-  --text-mega: clamp(4rem, 10vw, 10rem);
 
   /* ── Spacing ── */
   --space-xs: 0.5rem;
@@ -50,26 +63,43 @@
   --space-lg: 2rem;
   --space-xl: 3rem;
   --space-2xl: 4rem;
-  --space-3xl: 4.5rem;
-  --space-4xl: 6rem;
-  --space-section: clamp(2.5rem, 5vw, 4.5rem);
+  --space-3xl: 5rem;
+  --space-4xl: 7rem;
+  --section-y: clamp(5rem, 11vw, 10rem);
 
   /* ── Layout ── */
-  --container-max: 1380px;
-  --container-padding: clamp(1.5rem, 4vw, 7rem);
-  --header-height: 80px;
+  --container-max: 1440px;
+  --gutter: clamp(1.25rem, 4.5vw, 5rem);
+  --container-padding: var(--gutter);
+  --header-height: 84px;
 
-  /* ── Transitions ── */
+  /* ── Motion ── */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 0.2s;
-  --duration-normal: 0.4s;
-  --duration-slow: 0.8s;
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* ── Borders ── */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 20px;
-  --radius-pill: 100px;
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+}
+
+/* Dark sections: same palette, inverted */
+.theme-dark {
+  --bg: var(--ink);
+  --surface: #222220;
+  --surface-2: #2a2a28;
+  --fg: var(--cream);
+  --fg-muted: #a8a6a0;
+  --border: rgba(243, 241, 231, 0.12);
+
+  --color-bg: var(--bg);
+  --color-bg-dark: #141414;
+  --color-bg-card: var(--surface);
+  --color-text: var(--fg);
+  --color-text-muted: var(--fg-muted);
+
+  background: var(--bg);
+  color: var(--fg);
 }

@@ -1,0 +1,155 @@
+/* ========================================
+   Wynklo - Work page
+   ======================================== */
+
+.work-grid-section {
+  position: relative;
+  padding-bottom: var(--section-y);
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 2.5vw, 2rem);
+}
+
+.work-card:nth-child(odd):not(:first-child) {
+  margin-top: clamp(0rem, 8vw, 8rem);
+}
+
+.work-card--feature {
+  grid-column: 1 / -1;
+}
+
+.work-card--feature .work-media {
+  aspect-ratio: 16 / 9;
+  padding: 3.5%;
+}
+
+.work-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--yellow);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.work-card {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.work-media {
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: none;
+}
+
+.work-media .mk-wrap {
+  transition: transform 1.1s var(--ease-out);
+}
+
+.work-card:hover .work-media .mk-wrap {
+  transform: scale(1.04) translateY(-2%);
+}
+
+.work-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-top: 0.6rem;
+}
+
+.work-tags {
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.work-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  height: 6rem;
+  margin: -3rem 0 0 -3rem;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 500;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+@media (hover: none) {
+  .work-cursor {
+    display: none;
+  }
+
+  .work-media {
+    cursor: auto;
+  }
+}
+
+/* ── Concepts ── */
+.concepts-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.concept-media {
+  aspect-ratio: 1 / 0.9;
+  padding: 7% 9% 9%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.concept figcaption {
+  padding-top: 0.75rem;
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.concept figcaption b {
+  font-weight: 500;
+  color: var(--fg);
+}
+
+@media (max-width: 760px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-card:nth-child(odd):not(:first-child) {
+    margin-top: 0;
+  }
+
+  .work-card--feature .work-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  @media (max-width: 560px) {
+    .work-card--feature .work-media {
+      aspect-ratio: 4 / 5;
+    }
+
+    .concept-media {
+      aspect-ratio: 1 / 1.1;
+      padding: 6% 4% 7%;
+    }
+  }
+
+  .concepts-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -22,7 +22,7 @@
   <meta name="author" content="Wynklo" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow" />
-  <meta name="theme-color" content="#1a1a18" />
+  <meta name="theme-color" content="#f3f1e7" />
   <link rel="canonical" href="https://www.wynklo.com/" />
 
   <!-- ══ Open Graph / Facebook ══ -->
@@ -59,7 +59,7 @@
     "@type": "Organization",
     "name": "Wynklo",
     "url": "https://www.wynklo.com",
-    "logo": "https://www.wynklo.com/favicon.svg",
+    "logo": "https://www.wynklo.com/favicon.png",
     "description": "Wynklo is a digital design and development agency specializing in web development, app development, AI integration, and design services.",
     "foundingDate": "2024",
     "address": {
@@ -198,1486 +198,552 @@
   }
   </script>
 
+  <!-- ══ Motion flags (before CSS to avoid flashes) ══ -->
+  <script>(function(d){var c=d.documentElement.classList,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;c.add(rm?'rm':'motion');try{if(!rm&&sessionStorage.getItem('wk-loaded')!=='1')c.add('preload')}catch(e){}})(document)</script>
+
   <!-- ══ Stylesheets ══ -->
-  <link rel="stylesheet" href="/css/variables.css?v=3.1" />
-  <link rel="stylesheet" href="/css/reset.css?v=3.1" />
-  <link rel="stylesheet" href="/css/base.css?v=3.1" />
-  <link rel="stylesheet" href="/css/preloader.css?v=3.1" />
-  <link rel="stylesheet" href="/css/header.css?v=3.1" />
-  <link rel="stylesheet" href="/css/hero.css?v=3.1" />
-  <link rel="stylesheet" href="/css/projects.css?v=3.1" />
-  <link rel="stylesheet" href="/css/services.css?v=3.1" />
-  <link rel="stylesheet" href="/css/about-section.css?v=3.1" />
-  <link rel="stylesheet" href="/css/gallery.css?v=3.1" />
-  <link rel="stylesheet" href="/css/insights-section.css?v=3.1" />
-  <link rel="stylesheet" href="/css/testimonials.css?v=3.1" />
-  <link rel="stylesheet" href="/css/marquee.css?v=3.1" />
-  <link rel="stylesheet" href="/css/footer.css?v=3.1" />
-  <link rel="stylesheet" href="/css/popup.css?v=3.1" />
-  <link rel="stylesheet" href="/css/whatsapp.css?v=3.1" />
-  <link rel="stylesheet" href="/css/ppp.css?v=3.1" />
-  <link rel="stylesheet" href="/css/homepage.css?v=3.1" />
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/chrome.css" />
+  <link rel="stylesheet" href="/css/mocks.css" />
+  <link rel="stylesheet" href="/css/home.css" />
 
   <!-- ══ Favicon ══ -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/images/og-image.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </head>
 
-<body class="loading">
+<body data-page="home">
 
-  <!-- ══ Preloader (Royal Enfield–style sequential reveal) ══ -->
-  <div class="preloader" id="preloader">
-    <!-- Ambient floating particles -->
-    <div class="preloader-particles">
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-      <div class="preloader-particle"></div>
-    </div>
-
-    <!-- Corner ambient branding -->
-    <div class="preloader-corner-tl">Wynklo Tech</div>
-    <div class="preloader-corner-br">Pune, India</div>
-
-    <!-- Main content -->
-    <div class="preloader-inner">
-      <!-- Letter groups that fade in sequentially (like RE's 5 SVG parts) -->
-      <div class="preloader-logo-group">
-        <span class="preloader-letter">W</span>
-        <span class="preloader-letter">y</span>
-        <span class="preloader-letter">n</span>
-        <span class="preloader-letter">k</span>
-        <span class="preloader-letter">l</span>
-        <span class="preloader-letter">o</span>
-      </div>
-
-      <!-- Golden accent line that draws across -->
-      <div class="preloader-accent-line"></div>
-
-      <!-- Tagline -->
-      <div class="preloader-tagline">Design · Develop · Deliver</div>
-
-      <!-- Loading ellipsis dots (Royal Enfield–style) -->
-      <div class="loading-ellipsis">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-
-    <!-- Progress bar at bottom -->
-    <div class="preloader-progress"></div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       HEADER
-       ══════════════════════════════════════ -->
+  <!-- ══ Header ══ -->
   <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a href="/" class="logo" id="logo">
-        Wynklo
+    <div class="container site-header-inner">
+      <a href="/" class="brand" aria-label="Wynklo home">
+        <img src="/favicon.png" alt="" width="38" height="38" />
+        <span>Wynklo</span>
       </a>
-
-      <nav class="nav-desktop" id="nav-desktop">
-        <a href="/work.html" class="nav-link" data-chars>Work</a>
-        <a href="/about.html" class="nav-link" data-chars>About</a>
-        <button class="nav-link nav-link-services" id="services-toggle" data-chars>
-          Services <span class="chevron">▾</span>
+      <div class="header-actions">
+        <a href="https://cal.com/pulkit-giddu-c098j5/30min" class="btn btn--small header-cta" data-cal>Book a Call</a>
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-menu">
+          <span class="menu-btn-label">Menu</span>
+          <span class="menu-btn-icon" aria-hidden="true"><i></i><i></i></span>
         </button>
-        <a href="#" class="nav-link" data-chars>Insights</a>
-        <a href="/contact.html" class="nav-link" data-chars>Contact</a>
-        <a href="/start.html" class="header-cta">Start a Project</a>
-      </nav>
-
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      </div>
     </div>
   </header>
 
-  <!-- ── Services Mega Menu ── -->
-  <div class="mega-menu" id="mega-menu">
-    <button class="mega-menu-close-btn" id="mega-menu-close" aria-label="Close menu">&times;</button>
-
-    <div class="mega-menu-slider" id="mega-menu-slider">
-      <!-- Page 1 -->
-      <div class="mega-menu-inner mega-menu-page">
-        <div class="mega-menu-column">
-          <h3>Web Development</h3>
-          <p>Custom websites and web applications built with modern frameworks like Next.js, React, and Node.js</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Responsive Design</span>
-            <span class="mega-menu-feature">SEO Optimized</span>
-            <span class="mega-menu-feature">Fast Loading</span>
-            <span class="mega-menu-feature">Modern UI/UX</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>App Development</h3>
-          <p>Native and cross-platform mobile applications for iOS and Android with seamless user experience</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Cross-Platform</span>
-            <span class="mega-menu-feature">Native Performance</span>
-            <span class="mega-menu-feature">App Store Ready</span>
-            <span class="mega-menu-feature">Push Notifications</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>Domain & Hosting</h3>
-          <p>Complete hosting solutions with domain registration, SSL certificates, and reliable uptime</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">99.9% Uptime</span>
-            <span class="mega-menu-feature">SSL Included</span>
-            <span class="mega-menu-feature">Daily Backups</span>
-            <span class="mega-menu-feature">24/7 Support</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Page 2 -->
-      <div class="mega-menu-inner mega-menu-page">
-        <div class="mega-menu-column">
-          <h3>AI Integration</h3>
-          <p>Chatbots and AI-powered features to enhance user engagement and automate customer support</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Smart Chatbots</span>
-            <span class="mega-menu-feature">AI Analytics</span>
-            <span class="mega-menu-feature">Automation</span>
-            <span class="mega-menu-feature">Custom Training</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>Design Services</h3>
-          <p>Professional design services including Figma designs, posters, and complete brand identity</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">Figma Designs</span>
-            <span class="mega-menu-feature">Brand Identity</span>
-            <span class="mega-menu-feature">Print Design</span>
-            <span class="mega-menu-feature">UI/UX Design</span>
-          </div>
-        </div>
-        <div class="mega-menu-column">
-          <h3>Tech Integration</h3>
-          <p>Integration of new technologies and third-party services to enhance your digital ecosystem</p>
-          <div class="mega-menu-links">
-            <span class="mega-menu-feature">API Integration</span>
-            <span class="mega-menu-feature">Database Setup</span>
-            <span class="mega-menu-feature">Cloud Services</span>
-            <span class="mega-menu-feature">Security Implementation</span>
-          </div>
-        </div>
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav class="site-menu-nav" aria-label="Main">
+        <a href="/" class="menu-link"><span class="menu-link-num">01</span><span class="menu-link-text">Home</span></a>
+        <a href="/work.html" class="menu-link"><span class="menu-link-num">02</span><span class="menu-link-text">Work</span></a>
+        <a href="/process.html" class="menu-link"><span class="menu-link-num">03</span><span class="menu-link-text">Process</span></a>
+        <a href="/about.html" class="menu-link"><span class="menu-link-num">04</span><span class="menu-link-text">About</span></a>
+        <a href="/contact.html" class="menu-link"><span class="menu-link-num">05</span><span class="menu-link-text">Contact</span></a>
+      </nav>
+      <div class="site-menu-side">
+        <p class="label">Say hello</p>
+        <button type="button" class="copy-line" data-copy="contactuswynklo@gmail.com">contactuswynklo@gmail.com <small>Copy</small></button>
+        <button type="button" class="copy-line" data-copy="+918491041426">+91 84910 41426 <small>Copy</small></button>
+        <a class="copy-line" href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener">WhatsApp <small>Chat</small></a>
+        <a href="https://cal.com/pulkit-giddu-c098j5/30min" class="btn btn--yellow" data-cal>Book a Call</a>
       </div>
     </div>
-
-    <button class="mega-menu-arrow" id="mega-menu-arrow" aria-label="Next services">&#8594;</button>
   </div>
 
-  <!-- ── Mobile Nav ── -->
-  <nav class="nav-mobile" id="nav-mobile">
-    <a href="/work.html" class="nav-link">Work</a>
-    <a href="/about.html" class="nav-link">About</a>
-    <a href="javascript:void(0)" class="nav-link" id="mobile-services-toggle">Services</a>
-    <a href="#" class="nav-link">Insights</a>
-    <a href="/contact.html" class="nav-link">Contact</a>
-  </nav>
-
-
   <main>
-    <!-- ══════════════════════════════════════
-         HERO SECTION
-         ══════════════════════════════════════ -->
-    <section class="hero" id="hero">
 
-      <!-- Full-page particle canvas -->
-      <canvas id="hero-canvas"></canvas>
-
-      <!-- Atmospheric glow orbs -->
-      <div class="hero-atmosphere">
-        <div class="atm-glow atm-glow-1"></div>
-        <div class="atm-glow atm-glow-2"></div>
-        <div class="atm-glow atm-glow-3"></div>
-      </div>
-
-      <!-- Grid matrix background -->
-      <div class="hero-grid-bg"></div>
-
-      <!-- Ambient SVG flows -->
-      <svg class="hero-ambient-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="hg-flow" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(253,208,17,0)" />
-            <stop offset="50%" stop-color="rgba(253,208,17,0.25)" />
-            <stop offset="100%" stop-color="rgba(253,208,17,0)" />
-          </linearGradient>
-          <radialGradient id="hg-orb" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="rgba(253,208,17,0.12)" />
-            <stop offset="100%" stop-color="rgba(253,208,17,0)" />
-          </radialGradient>
-        </defs>
-        <!-- Flowing curves -->
-        <path class="connector-path" d="M 0 600 C 300 500, 700 700, 1100 400 S 1440 300, 1440 300" />
-        <path class="connector-path" style="animation-delay:-5s;opacity:0.5"
-          d="M 0 300 C 400 200, 800 450, 1200 250 S 1440 180, 1440 180" />
-        <!-- Ambient orb -->
-        <ellipse cx="1100" cy="260" rx="320" ry="280" fill="url(#hg-orb)" opacity="0.5" />
-        <ellipse cx="200" cy="500" rx="240" ry="200" fill="url(#hg-orb)" opacity="0.3" />
-        <!-- Orbit rings -->
-        <circle cx="1100" cy="260" r="180" fill="none" stroke="rgba(253,208,17,0.05)" stroke-width="1" />
-        <circle cx="1100" cy="260" r="280" fill="none" stroke="rgba(253,208,17,0.03)" stroke-width="1"
-          stroke-dasharray="6 12" />
-      </svg>
-
-      <!-- Main content -->
-      <div class="container">
-        <p class="hero-eyebrow">Digital Design &amp; Development Agency</p>
-        <h1 class="hero-heading">
-          Websites and<br />
-          Digital Platforms<br />
-          for What's <span class="text-yellow">Next</span>
-        </h1>
-
-        <!-- Floating UI fragment cards -->
-        <div class="hero-fragments-group">
-          <div class="hero-fragment frag-1" aria-hidden="true">
-            <div class="frag-card">
-              <div class="frag-label">Projects Shipped</div>
-              <div class="frag-value">15+</div>
-              <div class="frag-sub">Since 2024 · Active</div>
-              <div class="frag-dot-row">
-                <span class="fd on"></span><span class="fd on"></span>
-                <span class="fd on"></span><span class="fd"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-fragment frag-2" aria-hidden="true">
-            <div class="frag-card">
-              <div class="frag-label">Delivery Score</div>
-              <div class="frag-value">100%</div>
-              <div class="frag-bar-row">
-                <div class="fbar">
-                  <div class="fbar-fill" style="width:100%"></div>
-                </div>
-                <div class="fbar">
-                  <div class="fbar-fill" style="width:92%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-fragment frag-3" aria-hidden="true">
-            <div class="frag-card">
-              <div class="frag-label">System Uptime</div>
-              <div class="frag-value">99.9%</div>
-              <div class="frag-sub">Live · 24/7 Monitored</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-bottom-bar">
-          <!-- CTAs -->
-          <div class="hero-actions">
-            <a href="/start.html" class="hero-cta-primary">Start a Project</a>
-            <a href="/work.html" class="hero-cta-secondary">View Our Work</a>
-          </div>
-
-          <!-- Right: ambient metrics -->
-          <div class="hero-ambient-stats">
-            <span class="amb-stat">
-              <span class="amb-dot"></span>
-              System Online &nbsp;·&nbsp; Pune, India
-            </span>
-            <span class="amb-stat">
-              <span class="amb-dot amb-dot-yellow"></span>
-              Est. 2024 &nbsp;·&nbsp; Digital Studio
-            </span>
+    <!-- ══ Hero ══ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="label" data-hero-fade>Design &amp; development studio · Pune, India</p>
+        <h1 class="display hero-title" data-split="manual">Websites and apps for what's <em class="accent">next</em></h1>
+        <div class="hero-bottom">
+          <p class="lead" data-hero-fade>We design, build and launch digital products for people who want to move fast. And before you spend anything on code, you get to see your app first.</p>
+          <div class="hero-actions" data-hero-fade>
+            <a href="/contact.html" class="btn">Start a project
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a href="/work.html" class="text-link">See our work</a>
           </div>
         </div>
       </div>
 
-      <!-- Scroll hint -->
-      <div class="hero-scroll-hint" aria-hidden="true">
-        <div class="scroll-line"></div>
-        <span>Scroll</span>
-      </div>
-
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         CLIENT LOGOS MARQUEE
-         ══════════════════════════════════════ -->
-    <section class="logos-section" id="client-logos">
-      <div class="logos-track">
-        <!-- Set 1 -->
-        <div class="logo-item logo-item--serif"><span>Bet2Learn</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--condensed"><span>Snatchmart</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--mono"><span>⊕ FORWARD.</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--condensed"><span>BookIt</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--wide"><span>AadhaarConnect</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--mono"><span>⊠ Global Health Capital</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--serif"><span>Floresco</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--condensed"><span>BUSINESS TRAVELER</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item"><span>ChequP</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--wide"><span>WORKROOM</span></div>
-        <div class="logo-separator"></div>
-        <!-- Set 2 (duplicate for seamless loop) -->
-        <div class="logo-item logo-item--serif"><span>Exceptional</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--condensed"><span>ReclaimNOW</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--mono"><span>⊕ FORWARD.</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--condensed"><span>BIG ISSUE</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--wide"><span>BASE</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--mono"><span>⊠ Global Health Capital</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--serif"><span>Floresco</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--condensed"><span>BUSINESS TRAVELER</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item"><span>ChequP</span></div>
-        <div class="logo-separator"></div>
-        <div class="logo-item logo-item--wide"><span>WORKROOM</span></div>
-        <div class="logo-separator"></div>
-      </div>
-    </section>
-
-    <!-- ══ Trust Bar ══ -->
-    <section class="trust-bar" id="trust-bar">
-      <div class="container">
-        <div class="trust-bar-grid">
-          <div class="trust-item reveal">
-            <span class="trust-icon">🚀</span>
-            <span class="trust-number" data-target="50">15+</span>
-            <span class="trust-label">Projects Delivered</span>
-          </div>
-          <div class="trust-item reveal reveal-delay-1">
-            <span class="trust-icon">⭐</span>
-            <span class="trust-number">100%</span>
-            <span class="trust-label">Client Satisfaction</span>
-          </div>
-          <div class="trust-item reveal reveal-delay-2">
-            <span class="trust-icon">📅</span>
-            <span class="trust-number" data-target="2">2+</span>
-            <span class="trust-label">Years of Excellence</span>
-          </div>
-          <div class="trust-item reveal reveal-delay-3">
-            <span class="trust-icon">💬</span>
-            <span class="trust-number">24/7</span>
-            <span class="trust-label">Support Available</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         FEATURED WORK - Sticky Heading + Stacking Cards
-         ══════════════════════════════════════ -->
-    <section class="featured-work-section" id="featured-work">
-      <!-- Section Header -->
-      <div class="featured-work-header">
-        <h2 class="featured-work-heading">See Your App Before You Build It</h2>
-      </div>
-
-      <!-- Centered Segmented Control Bar -->
-      <div class="featured-tabs-wrapper">
-        <nav class="featured-slider-tabs" aria-label="Project Categories">
-          <button class="slider-tab active" data-index="0">
-            <span class="tab-num">01</span>
-            <span class="tab-label">Food Delivery</span>
-          </button>
-          <button class="slider-tab" data-index="1">
-            <span class="tab-num">02</span>
-            <span class="tab-label">E-Commerce Store</span>
-          </button>
-          <button class="slider-tab" data-index="2">
-            <span class="tab-num">03</span>
-            <span class="tab-label">AI Automation</span>
-          </button>
-          <button class="slider-tab" data-index="3">
-            <span class="tab-num">04</span>
-            <span class="tab-label">Cloud Hosting</span>
-          </button>
-        </nav>
-      </div>
-
-      <!-- Main Slider Shell / Unified Card Deck -->
-      <div class="featured-slider-deck">
-
-        <!-- Left Column: Details Pane and Controls -->
-        <div class="featured-slider-left">
-
-          <!-- Dynamic details content (changes based on active tab) -->
-          <div class="featured-slider-details">
-            <!-- Slide 0 details -->
-            <div class="slider-detail-pane active" data-index="0">
-              <span class="detail-tag">Mobile Application</span>
-              <h3 class="detail-title">Seamless Ordering</h3>
-              <p class="detail-desc">A beautiful menu that converts visitors into loyal customers instantly. Features
-                real-time tracking from kitchen to doorstep.</p>
-            </div>
-
-            <!-- Slide 1 details -->
-            <div class="slider-detail-pane" data-index="1">
-              <span class="detail-tag">Web Portal</span>
-              <h3 class="detail-title">Boost Your Sales</h3>
-              <p class="detail-desc">A high-converting online store with instant checkout flows, inventory telemetry,
-                and live sales dashboards.</p>
-            </div>
-
-            <!-- Slide 2 details -->
-            <div class="slider-detail-pane" data-index="2">
-              <span class="detail-tag">Neural System</span>
-              <h3 class="detail-title">Intelligent Actions</h3>
-              <p class="detail-desc">Streamline operations with smart LLM chatbot models, automated workflows, and
-                reactive neural node pipelines.</p>
-            </div>
-
-            <!-- Slide 3 details -->
-            <div class="slider-detail-pane" data-index="3">
-              <span class="detail-tag">Cloud Infrastructure</span>
-              <h3 class="detail-title">Scalable Systems</h3>
-              <p class="detail-desc">Deploy with absolute confidence. Active replication nodes, automatic backups, and
-                server grid uptime tracking.</p>
-            </div>
-          </div>
-
-          <!-- Horizontal arrows + Progress bar -->
-          <div class="slider-controls">
-            <button class="slider-arrow prev" aria-label="Previous Slide">
-              <svg viewBox="0 0 24 24">
-                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-              </svg>
-            </button>
-            <div class="slider-progress-track">
-              <div class="slider-progress-bar"></div>
-            </div>
-            <button class="slider-arrow next" aria-label="Next Slide">
-              <svg viewBox="0 0 24 24">
-                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Right: Immersive Preview Viewport -->
-        <div class="featured-slider-right">
-          <div class="featured-slider-viewport">
-            <div class="featured-slider-track">
-
-              <!-- Slide 0 Visual: Food Delivery -->
-              <div class="slider-panel active" data-index="0">
-                <div class="panel-visual panel-visual--food">
-                  <!-- Custom CSS mobile phone delivery mockup -->
-                  <div class="phone-mockup">
-                    <div class="phone-header">
-                      <span class="phone-logo">QuickBites</span>
-                      <div class="phone-status">ONLINE</div>
-                    </div>
-                    <div class="phone-body">
-                      <!-- Active order tracking status nodes -->
-                      <div class="order-status-steps">
-                        <div class="status-step active done">
-                          <span class="step-dot"></span>
-                          <span class="step-label">Ordered</span>
-                        </div>
-                        <div class="status-step active done">
-                          <span class="step-dot"></span>
-                          <span class="step-label">Preparing</span>
-                        </div>
-                        <div class="status-step active current">
-                          <span class="step-dot"></span>
-                          <span class="step-label">On Route</span>
-                        </div>
-                        <div class="status-step">
-                          <span class="step-dot"></span>
-                          <span class="step-label">Delivered</span>
-                        </div>
-                      </div>
-
-                      <!-- Animated Delivery Map Route -->
-                      <div class="delivery-map">
-                        <div class="map-grid"></div>
-                        <svg class="map-route-svg" viewBox="0 0 200 120">
-                          <path class="route-line-bg" d="M20,100 L80,100 L80,30 L160,30 L160,80" />
-                          <path class="route-line-active" d="M20,100 L80,100 L80,30 L160,30 L160,80" />
-                        </svg>
-                        <div class="glowing-courier"></div>
-                        <div class="map-marker store-marker" style="left: 20px; top: 100px;"></div>
-                        <div class="map-marker house-marker" style="left: 160px; top: 80px;"></div>
-                      </div>
-
-                      <div class="phone-details-card">
-                        <div class="card-title">Order #QB7482</div>
-                        <div class="card-eta">Estimated Delivery: <strong>14 mins</strong></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 1 Visual: E-Commerce -->
-              <div class="slider-panel" data-index="1">
-                <div class="panel-visual panel-visual--ecommerce">
-                  <!-- Custom CSS e-commerce check-out & ledger dashboard -->
-                  <div class="dashboard-mockup">
-                    <div class="dash-header">
-                      <div class="dash-window-controls">
-                        <span class="wc-dot red"></span>
-                        <span class="wc-dot yellow"></span>
-                        <span class="wc-dot green"></span>
-                      </div>
-                      <span class="dash-title">Checkout Portal</span>
-                    </div>
-                    <div class="dash-body">
-                      <!-- Grid abstraction -->
-                      <div class="dash-cols">
-                        <!-- Product selection / ledger -->
-                        <div class="dash-col-left">
-                          <div class="dash-item-card">
-                            <span class="item-icon"></span>
-                            <div class="item-meta">
-                              <span class="item-name">X-1 Hybrid Watch</span>
-                              <span class="item-price">$349</span>
-                            </div>
-                            <span class="item-qty">x1</span>
-                          </div>
-                          <div class="dash-item-card">
-                            <span class="item-icon"></span>
-                            <div class="item-meta">
-                              <span class="item-name">Neon Flow Jacket</span>
-                              <span class="item-price">$189</span>
-                            </div>
-                            <span class="item-qty">x1</span>
-                          </div>
-                          <div class="dash-item-divider"></div>
-                          <div class="dash-total">
-                            <span>Total</span>
-                            <strong class="total-value">$538.00</strong>
-                          </div>
-                        </div>
-
-                        <!-- Checkout steps and float card -->
-                        <div class="dash-col-right">
-                          <div class="checkout-process-card">
-                            <div class="checkout-steps">
-                              <span class="ch-step completed">Cart</span>
-                              <span class="ch-step active">Payment</span>
-                              <span class="ch-step">Success</span>
-                            </div>
-                            <div class="checkout-form-mock">
-                              <div class="form-line"></div>
-                              <div class="form-line"></div>
-                              <button class="checkout-btn-mock">
-                                <span class="btn-text">PAY NOW</span>
-                                <span class="btn-spinner"></span>
-                              </button>
-                            </div>
-                          </div>
-                          <!-- Success float overlay appearing after payment -->
-                          <div class="checkout-success-badge">
-                            <div class="success-icon">✔</div>
-                            <div class="success-txt">Payment Complete</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 2 Visual: AI & Automation -->
-              <div class="slider-panel" data-index="2">
-                <div class="panel-visual panel-visual--ai">
-                  <!-- Connected node/neural network and prompt box -->
-                  <div class="ai-console">
-                    <div class="prompt-box">
-                      <span class="prompt-prefix">> Ask AI:</span>
-                      <span class="prompt-text">Generate pricing layouts...</span>
-                      <span class="prompt-cursor"></span>
-                    </div>
-
-                    <!-- SVG Node system with pulsating network lines -->
-                    <div class="ai-neural-net">
-                      <svg class="neural-lines" viewBox="0 0 300 150">
-                        <!-- Connectors -->
-                        <line x1="50" y1="75" x2="130" y2="35" class="n-line active" />
-                        <line x1="50" y1="75" x2="130" y2="75" class="n-line active" />
-                        <line x1="50" y1="75" x2="130" y2="115" class="n-line" />
-
-                        <line x1="130" y1="35" x2="250" y2="75" class="n-line active" />
-                        <line x1="130" y1="75" x2="250" y2="75" class="n-line active" />
-                        <line x1="130" y1="115" x2="250" y2="75" class="n-line" />
-
-                        <!-- Pulsating signal nodes -->
-                        <circle cx="50" cy="75" r="6" class="n-node core-node" />
-                        <circle cx="130" cy="35" r="5" class="n-node active-node" />
-                        <circle cx="130" cy="75" r="5" class="n-node active-node" />
-                        <circle cx="130" cy="115" r="5" class="n-node" />
-                        <circle cx="250" cy="75" r="8" class="n-node output-node" />
-                      </svg>
-                      <!-- Data packets flowing -->
-                      <div class="data-packet p-1"></div>
-                      <div class="data-packet p-2"></div>
-                    </div>
-
-                    <!-- Flowing Output panel revealing styled components -->
-                    <div class="ai-components-reveal">
-                      <div class="abstract-card">
-                        <div class="card-line short yellow"></div>
-                        <div class="card-line long"></div>
-                        <div class="card-badge"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Slide 3 Visual: Cloud Hosting -->
-              <div class="slider-panel" data-index="3">
-                <div class="panel-visual panel-visual--cloud">
-                  <!-- Server infrastructure console layout -->
-                  <div class="cloud-monitor">
-                    <div class="monitor-header">
-                      <span>Server stack telemetry</span>
-                      <span class="uptime-badge">99.9% Uptime</span>
-                    </div>
-                    <div class="server-racks">
-                      <!-- Rack 1 -->
-                      <div class="server-rack">
-                        <div class="rack-label">Node-01</div>
-                        <div class="rack-lights">
-                          <span class="light active-green"></span>
-                          <span class="light active-green"></span>
-                          <span class="light active-green"></span>
-                        </div>
-                        <div class="rack-disk-load">
-                          <div class="load-fill" style="width: 70%;"></div>
-                        </div>
-                      </div>
-                      <!-- Rack 2 -->
-                      <div class="server-rack">
-                        <div class="rack-label">Node-02</div>
-                        <div class="rack-lights">
-                          <span class="light active-green"></span>
-                          <span class="light active-green"></span>
-                          <span class="light active-yellow"></span>
-                        </div>
-                        <div class="rack-disk-load">
-                          <div class="load-fill" style="width: 45%;"></div>
-                        </div>
-                      </div>
-                      <!-- Rack 3 -->
-                      <div class="server-rack">
-                        <div class="rack-label">Node-03</div>
-                        <div class="rack-lights">
-                          <span class="light active-green"></span>
-                          <span class="light active-green"></span>
-                          <span class="light active-green"></span>
-                        </div>
-                        <div class="rack-disk-load">
-                          <div class="load-fill" style="width: 82%;"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Live Uptime Bars Graph -->
-                    <div class="uptime-history-graph">
-                      <span class="graph-title">Active Data Replication (30 days)</span>
-                      <div class="uptime-bars">
-                        <!-- 20 mini bars representing uptime -->
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar half"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                        <span class="bar full"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div><!-- /.featured-slider-track -->
-          </div><!-- /.featured-slider-viewport -->
-        </div><!-- /.featured-slider-right -->
-
-      </div><!-- /.featured-slider-deck -->
-    </section><!-- /.featured-work-section -->
-
-
-    <!-- ══════════════════════════════════════
-         TESTIMONIAL SECTION
-         ══════════════════════════════════════ -->
-
-    <!-- ══════════════════════════════════════
-         SERVICES SECTION
-         ══════════════════════════════════════ -->
-    <section class="services-section section" id="services">
-      <div class="container">
-        <hr class="separator" style="margin-bottom: var(--space-3xl);" />
-        <div class="services-intro reveal">
-          <p class="services-intro-text">We solve the problems holding you
-            back, whether that means creating something new or improving what you already have.</p>
-        </div>
-
-        <div class="services-grid">
-          <!-- Web Development -->
-          <div class="service-card service-card--yellow reveal reveal-delay-1" id="service-webdev">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polyline points="16,14 6,24 16,34" />
-                <polyline points="32,14 42,24 32,34" />
-                <line x1="28" y1="8" x2="20" y2="40" />
-              </svg>
-            </div>
-            <h3>Web Development</h3>
-            <p class="service-card-description">Custom websites and web applications built with modern frameworks like
-              Next.js, React, and Node.js</p>
-            <div class="service-card-links">
-              <span class="service-feature">Responsive Design</span>
-              <span class="service-feature">SEO Optimized</span>
-              <span class="service-feature">Fast Loading</span>
-              <span class="service-feature">Modern UI/UX</span>
-            </div>
-          </div>
-
-          <!-- App Development -->
-          <div class="service-card service-card--pink reveal reveal-delay-2" id="service-appdev">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="12" y="4" width="24" height="40" rx="4" />
-                <line x1="24" y1="38" x2="24" y2="38.01" stroke-width="4" stroke-linecap="round" />
-              </svg>
-            </div>
-            <h3>App Development</h3>
-            <p class="service-card-description">Native and cross-platform mobile applications for iOS and Android with
-              seamless user experience</p>
-            <div class="service-card-links">
-              <span class="service-feature">Cross-Platform</span>
-              <span class="service-feature">Native Performance</span>
-              <span class="service-feature">App Store Ready</span>
-              <span class="service-feature">Push Notifications</span>
-            </div>
-          </div>
-
-          <!-- Domain & Hosting -->
-          <div class="service-card service-card--green reveal reveal-delay-3" id="service-hosting">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="24" cy="24" r="20" />
-                <path d="M4,24 h40" />
-                <path d="M24,4 c-8,8 -8,32 0,40" />
-                <path d="M24,4 c8,8 8,32 0,40" />
-              </svg>
-            </div>
-            <h3>Domain & Hosting</h3>
-            <p class="service-card-description">Complete hosting solutions with domain registration, SSL certificates,
-              and reliable uptime</p>
-            <div class="service-card-links">
-              <span class="service-feature">99.9% Uptime</span>
-              <span class="service-feature">SSL Included</span>
-              <span class="service-feature">Daily Backups</span>
-              <span class="service-feature">24/7 Support</span>
-            </div>
-          </div>
-
-          <!-- AI Integration -->
-          <div class="service-card service-card--yellow reveal reveal-delay-1" id="service-ai">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="8" y="16" width="32" height="24" rx="4" />
-                <path d="M16,16 v-8 c0-2.2 1.8-4 4-4 h8 c2.2,0 4,1.8 4,4 v8" />
-                <circle cx="18" cy="28" r="2" fill="currentColor" />
-                <circle cx="30" cy="28" r="2" fill="currentColor" />
-                <line x1="24" y1="34" x2="24" y2="34.01" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </div>
-            <h3>AI Integration</h3>
-            <p class="service-card-description">Chatbots and AI-powered features to enhance user engagement and automate
-              customer support</p>
-            <div class="service-card-links">
-              <span class="service-feature">Smart Chatbots</span>
-              <span class="service-feature">AI Analytics</span>
-              <span class="service-feature">Automation</span>
-              <span class="service-feature">Custom Training</span>
-            </div>
-          </div>
-
-          <!-- Design Services -->
-          <div class="service-card service-card--pink reveal reveal-delay-2" id="service-design-srv">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="4" y="4" width="40" height="32" rx="4" />
-                <line x1="4" y1="28" x2="44" y2="28" />
-                <line x1="24" y1="36" x2="24" y2="44" />
-                <line x1="16" y1="44" x2="32" y2="44" />
-              </svg>
-            </div>
-            <h3>Design Services</h3>
-            <p class="service-card-description">Professional design services including Figma designs, posters, and
-              complete brand identity</p>
-            <div class="service-card-links">
-              <span class="service-feature">Figma Designs</span>
-              <span class="service-feature">Brand Identity</span>
-              <span class="service-feature">Print Design</span>
-              <span class="service-feature">UI/UX Design</span>
-            </div>
-          </div>
-
-          <!-- Tech Integration -->
-          <div class="service-card service-card--green reveal reveal-delay-3" id="service-tech">
-            <div class="service-card-icon">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="6" y="8" width="36" height="10" rx="2" />
-                <rect x="6" y="24" width="36" height="10" rx="2" />
-                <line x1="14" y1="13" x2="14" y2="13.01" stroke-width="3" stroke-linecap="round" />
-                <line x1="14" y1="29" x2="14" y2="29.01" stroke-width="3" stroke-linecap="round" />
-              </svg>
-            </div>
-            <h3>Tech Integration</h3>
-            <p class="service-card-description">Integration of new technologies and third-party services to enhance your
-              digital ecosystem</p>
-            <div class="service-card-links">
-              <span class="service-feature">API Integration</span>
-              <span class="service-feature">Database Setup</span>
-              <span class="service-feature">Cloud Services</span>
-              <span class="service-feature">Security Implementation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         WHO WE ARE / ABOUT SECTION
-         ══════════════════════════════════════ -->
-    <section class="about-section section" id="about">
-      <div class="container">
-        <hr class="separator" style="margin-bottom: var(--space-3xl);" />
-        <div class="about-grid">
-          <div class="about-block reveal">
-            <h2>Who We Are</h2>
-            <p>We’re redefining how businesses go digital.
-              Instead of guessing what you’ll get, we let you experience it first - with live previews, clear features,
-              and transparent pricing.
-              Because building a business shouldn’t start with uncertainty.</p>
-            <a href="/about.html" class="link-arrow">About us</a>
-          </div>
-          <div class="about-block reveal reveal-delay-2">
-            <h2>Why Wynklo</h2>
-            <p>Stop guessing what your product will look like.
-              Start experiencing it.
-
-              We give you real previews, real features, and real clarity -
-              before you spend a single rupee.
-
-              Because great businesses aren’t built on assumptions.
-              They’re built on understanding.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════
-         TESTIMONIALS
-         ══════════════════════════════════════ -->
-    <section class="testimonials-section section" id="testimonials">
-      <div class="container">
-        <hr class="separator" style="margin-bottom: var(--space-3xl);" />
-        <div class="testimonials-header reveal">
-          <h2>What Our Clients Say</h2>
-          <p>Real feedback from businesses we've helped grow.</p>
-        </div>
-
-        <div class="testimonials-grid">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-card reveal reveal-delay-1">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">Wynklo delivered our e-commerce platform ahead of schedule with outstanding
-              quality. The AI-powered preview they showed us before development even started gave us complete confidence
-              in the final product.</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">R</div>
-              <div class="testimonial-author-info">
-                <span class="testimonial-author-name">Rahul Mehta</span>
-                <span class="testimonial-author-role">Founder, SnatchMart</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="testimonial-card reveal reveal-delay-2">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">Professional, responsive, and incredibly skilled. They understood our vision
-              from day one and turned it into a digital experience that our users love. Highly recommended for any
-              serious business.</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">S</div>
-              <div class="testimonial-author-info">
-                <span class="testimonial-author-name">Sarah Thompson</span>
-                <span class="testimonial-author-role">Director, Forward Studio</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="testimonial-card reveal reveal-delay-3">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">What sets Wynklo apart is their transparency. No hidden costs, no surprises.
-              They showed us exactly what we'd get, and the final result exceeded expectations. A truly trustworthy
-              team.</p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">A</div>
-              <div class="testimonial-author-info">
-                <span class="testimonial-author-name">Amit Patel</span>
-                <span class="testimonial-author-role">CEO, Bet2Learn</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-
-    <!-- ══════════════════════════════════════
-         PEOPLE, PLATFORMS, PROGRESS
-         ══════════════════════════════════════ -->
-    <section class="ppp-section section" id="ppp">
-      <div class="container">
-        <!-- Section Header -->
-        <div class="ppp-header reveal">
-          <span class="eyebrow">Our Core Focus</span>
-          <h2>People, Platform, Progress</h2>
-          <p>We combine high-performance talent, custom SaaS ecosystems, and structured data-driven growth strategies to
-            launch and scale exceptional digital ventures.</p>
-        </div>
-
-        <!-- Staggered Rows -->
-        <div class="ppp-row reveal">
-          <div class="ppp-content">
-            <span class="tag">01 / People</span>
-            <h3>Empowering elite technical talent</h3>
-            <p>We assemble high-caliber engineering, design, and strategic expertise customized to your startup's
-              vertical. No corporate red tape-just pure execution.</p>
-            <ul>
-              <li>Elite cross-functional teams ready from day one</li>
-              <li>Fully integrated with your product roadmap</li>
-              <li>Agile sprint cycles centered around swift, iterative delivery</li>
-            </ul>
-          </div>
-          <div class="ppp-visual ppp-visual-people">
-            <div class="people-network">
-              <!-- Central Core Node -->
-              <div class="center-core">
-                <span class="core-logo">WYNKLO</span>
-              </div>
-
-              <!-- Orbiting Nodes -->
-              <div class="network-node node-1">UX</div>
-              <div class="network-node node-2">DEV</div>
-              <div class="network-node node-3">OPS</div>
-              <div class="network-node node-4">PM</div>
-
-              <!-- Cable Connections (SVG lines with animated dash-offsets) -->
-              <svg class="network-cables" viewBox="0 0 400 300">
-                <path d="M 80 66 L 200 150" />
-                <path d="M 312 54 L 200 150" />
-                <path d="M 96 225 L 200 150" />
-                <path d="M 320 240 L 200 150" />
-              </svg>
-
-              <!-- Floating Glassmorphic Chat Bubbles -->
-              <div class="chat-bubble bubble-1">Branch merged to prod</div>
-              <div class="chat-bubble bubble-2">LCP optimized to 0.8s</div>
-
-              <!-- Live Collab Status Card -->
-              <div class="collab-status-card">
-                <div class="live-badge">LIVE</div>
-                <div class="collab-text">Collab Session</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ppp-divider" />
-
-        <div class="ppp-row reverse reveal">
-          <div class="ppp-visual ppp-visual-platform">
-            <div class="platform-ecosystem">
-              <!-- Spinning Pulse Core -->
-              <div class="ecosystem-core">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fdd011" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
-                <div class="core-pulse-ring"></div>
-              </div>
-
-              <!-- Webhooks Card -->
-              <div class="platform-card pcard-webhooks">
-                <div class="webhooks-header">
-                  <span class="webhooks-title">WEBHOOK STATUS</span>
-                  <span class="webhook-badge">ACTIVE</span>
-                </div>
-                <div class="webhooks-list">
-                  <div class="webhook-item">
-                    <span>stripe.charge.succeeded</span>
-                    <span class="webhook-badge">200 OK</span>
-                  </div>
-                  <div class="webhook-item">
-                    <span>user.signup.completed</span>
-                    <span class="webhook-badge">200 OK</span>
-                  </div>
-                  <div class="webhook-item">
-                    <span>telemetry.sync.success</span>
-                    <span class="webhook-badge">200 OK</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Latency Telemetry Card -->
-              <div class="platform-card pcard-latency">
-                <div class="latency-value">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fdd011" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                  </svg>
-                  <span>14ms</span>
-                </div>
-                <span class="latency-label">GLOBAL RESPONSE TIME</span>
-              </div>
-
-              <!-- Logs Console Stream Emulator -->
-              <div class="platform-card pcard-logs">
-                <div class="logs-header">
-                  <div class="logs-dot"></div>
-                  <span class="logs-title">logs@wynklo-platform</span>
-                </div>
-                <div class="logs-console">
-                  <div>&gt; GET /api/v1/health 200 OK</div>
-                  <div>&gt; DB connected to cluster_0</div>
-                  <div>&gt; Cache warmed up successfully</div>
-                  <div>&gt; Webhook sent to stripe</div>
-                  <div>&gt; Syncing workspace states...</div>
-                  <div>&gt; POST /api/v1/auth/login 200</div>
-                  <div>&gt; Process compiled in 240ms</div>
-                  <div>&gt; Telemetry synchronized</div>
-                  <div>&gt; GET /api/v1/health 200 OK</div>
-                  <div>&gt; DB connected to cluster_0</div>
-                  <div>&gt; Cache warmed up successfully</div>
-                  <div>&gt; Webhook sent to stripe</div>
-                  <div>&gt; Syncing workspace states...</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ppp-content">
-            <span class="tag">02 / Platform</span>
-            <h3>Building high-speed, modular architectures</h3>
-            <p>Our engineered software platforms guarantee lightning-fast performance, automated scaling, and absolute
-              security. We build bulletproof foundations that grow with your business.</p>
-            <ul>
-              <li>Optimized REST and GraphQL APIs with serverless edge caching</li>
-              <li>Automated CI/CD pipelines for sub-second deployment</li>
-              <li>Real-time telemetry and active systems error logs monitoring</li>
-            </ul>
-          </div>
-        </div>
-
-        <hr class="ppp-divider" />
-
-        <div class="ppp-row reveal">
-          <div class="ppp-content">
-            <span class="tag">03 / Progress</span>
-            <h3>Driving systematic, data-led growth</h3>
-            <p>Every development sprint is grounded in precise telemetry. We don't guess what users want-we track,
-              analyze, and optimize every pixel for optimal conversion.</p>
-            <ul>
-              <li>Dynamic dashboards measuring product and financial growth metrics</li>
-              <li>Custom funnel visualization and telemetry setups</li>
-              <li>Data-driven A/B testing frameworks engineered to convert</li>
-            </ul>
-          </div>
-          <div class="ppp-visual ppp-visual-progress">
-            <div class="progress-analytics">
-              <div class="progress-grid">
-                <!-- Left Pane -->
-                <div class="progress-left-pane">
-                  <!-- Bar Chart Card -->
-                  <div class="platform-card bar-chart-card">
-                    <div class="webhooks-header">
-                      <span class="webhooks-title" style="font-size:0.6rem;">QUARTERLY REVENUE</span>
-                      <span class="metric-trend" style="font-size:0.6rem;">+28% YoY</span>
-                    </div>
-                    <div class="bar-chart-grid">
-                      <div class="bar-wrapper">
-                        <div class="bar-chart-item" style="height: 30px;"></div>
-                        <span class="bar-chart-label">Q1</span>
-                      </div>
-                      <div class="bar-wrapper">
-                        <div class="bar-chart-item" style="height: 45px;"></div>
-                        <span class="bar-chart-label">Q2</span>
-                      </div>
-                      <div class="bar-wrapper">
-                        <div class="bar-chart-item" style="height: 60px;"></div>
-                        <span class="bar-chart-label">Q3</span>
-                      </div>
-                      <div class="bar-wrapper">
-                        <div class="bar-chart-item" style="height: 75px;"></div>
-                        <span class="bar-chart-label">Q4</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Metric Row -->
-                  <div class="mini-metric-row">
-                    <div class="platform-card metric-card">
-                      <span class="metric-trend">+24.8%</span>
-                      <span class="metric-val">$14.2K</span>
-                      <span class="metric-lbl">MRR GROWTH</span>
-                    </div>
-                    <div class="platform-card metric-card">
-                      <span class="metric-trend">+18.2%</span>
-                      <span class="metric-val">99.9%</span>
-                      <span class="metric-lbl">UPTIME RATIO</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Right Pane -->
-                <div class="progress-right-pane">
-                  <!-- Radial Dial Card -->
-                  <div class="platform-card progress-dial-card">
-                    <svg class="dial-svg" viewBox="0 0 130 130">
-                      <defs>
-                        <linearGradient id="dial-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stop-color="#fdd011" />
-                          <stop offset="100%" stop-color="#c19c00" />
-                        </linearGradient>
-                      </defs>
-                      <circle class="dial-track" cx="65" cy="65" r="60" />
-                      <circle class="dial-value-arc" cx="65" cy="65" r="60" />
+      <div class="hero-reel" data-hero-reel>
+        <div class="hero-reel-frame">
+          <div class="hero-reel-tile hero-reel-tile--yellow" role="img" aria-label="Food delivery app preview with live order tracking">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="phone mk" style="--mk-bg:#151515;--mk-fg:#f3f1e7;--mk-muted:rgba(243,241,231,.55);--mk-card:#232323;--mk-line:rgba(243,241,231,.1)">
+                <div class="ph-screen">
+                  <div class="ph-status"><span>9:58</span><i></i></div>
+                  <div class="ph-top"><b>Order #2841</b><span class="mk-pill mk-pill--ac">Live</span></div>
+                  <div class="mk-steps"><i class="on"></i><i class="on"></i><i class="cur"></i><i></i></div>
+                  <div class="mk-steps-labels"><span>Placed</span><span>Cooking</span><span>On way</span><span>Here</span></div>
+                  <div class="mk-map">
+                    <svg viewBox="0 0 200 160">
+                      <path class="route-bg" d="M24 136 H84 V48 H168 V112" />
+                      <path class="route" d="M24 136 H84 V48 H168 V112" />
+                      <circle cx="24" cy="136" r="6" /><circle cx="168" cy="112" r="6" />
                     </svg>
-                    <div class="dial-inner-text">
-                      <span class="dial-percentage">99.8%</span>
-                      <span class="dial-label">PERFORMANCE</span>
-                    </div>
                   </div>
+                  <div class="mk-card mk-row"><span class="mk-avatar">RK</span><div style="flex:1"><b>Ramesh is on the way</b><span class="mk-small">Arriving in 14 min · 1.2 km</span></div><span class="mk-pill mk-pill--ac">Call</span></div>
+                  <div class="mk-card mk-stack" style="gap:.35em">
+                    <div class="mk-between"><span>Margherita (M) × 1</span><span>₹340</span></div>
+                    <div class="mk-between"><span>Garlic bread × 1</span><span>₹149</span></div>
+                    <div class="mk-between"><b>Paid via UPI</b><b>₹489</b></div>
+                  </div>
+                  <div class="mk-btn">Track order</div>
                 </div>
               </div>
-
-              <!-- Floating Ascending Arrows -->
-              <div class="upward-arrows-bg">
-                <span class="upward-arrow">↑</span>
-                <span class="upward-arrow">↑</span>
+            </div>
+            <p class="hero-reel-cap" aria-hidden="true"><b>QuickBites</b><span>Food delivery</span></p>
+          </div>
+          <div class="hero-reel-tile hero-reel-tile--event" role="img" aria-label="Event management app preview: ticket sales, live check-ins and ticket tiers">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="phone mk" style="--mk-bg:#fff;--mk-fg:#1c1530;--mk-muted:rgba(28,21,48,.55);--mk-ac:#5b3df5;--mk-ac-fg:#fff;--mk-card:#f4f1ff;--mk-line:rgba(28,21,48,.08)">
+                <div class="ph-screen">
+                  <div class="ph-status"><span>6:40</span><i></i></div>
+                  <div class="ph-top"><div><span class="mk-small">Sat 23 Nov · Phoenix Arena</span><b>Indie Nights Pune</b></div><span class="mk-pill mk-pill--ac">● Live</span></div>
+                  <div class="mk-card mk-stack" style="gap:.35em">
+                    <div class="mk-between"><span class="mk-small">Tickets sold</span><b>1,284 / 1,500</b></div>
+                    <div class="mk-progress" style="--p:86%"></div>
+                  </div>
+                  <div class="mk-row" style="align-items:stretch">
+                    <div class="mk-card" style="flex:1"><span class="mk-small">Revenue</span><b style="font-size:1.2em">₹12.8L</b></div>
+                    <div class="mk-card" style="flex:1"><span class="mk-small">Checked in</span><b style="font-size:1.2em">642</b></div>
+                  </div>
+                  <b>Ticket tiers</b>
+                  <div class="mk-item"><div><b>General</b><span class="mk-small">₹1,499 · 212 left</span></div><b>78%</b></div>
+                  <div class="mk-item"><div><b>VIP lounge</b><span class="mk-small">₹4,999 · 4 left</span></div><span class="mk-pill mk-pill--ac">Hot</span></div>
+                  <div class="mk-btn">Scan tickets at gate</div>
+                  <div class="ph-tabs"><span class="on">Events</span><span>Guests</span><span>Scan</span><span>Payouts</span></div>
+                </div>
               </div>
+            </div>
+            <p class="hero-reel-cap" aria-hidden="true"><b>EventDesk</b><span>Event management</span></p>
+          </div>
+          <div class="hero-reel-tile hero-reel-tile--ink" role="img" aria-label="Stock broker app preview: live stock chart with buy and sell">
+            <div class="mk-wrap" aria-hidden="true">
+              <div class="phone mk" style="--mk-bg:#0b1220;--mk-fg:#eef2f8;--mk-muted:rgba(238,242,248,.55);--mk-ac:#22c55e;--mk-ac-fg:#04210f;--mk-card:#151e30;--mk-line:rgba(238,242,248,.08)">
+                <div class="ph-screen">
+                  <div class="ph-status"><span>11:42</span><i></i></div>
+                  <div class="ph-top"><b>← TradeNest</b><span class="mk-pill">NSE</span></div>
+                  <div><span class="mk-small">Reliance Industries</span><b style="font-size:1.6em;letter-spacing:-.02em">₹2,948.60</b><span class="mk-small" style="color:#4ade80">▲ ₹36.10 (1.24%) today</span></div>
+                  <svg viewBox="0 0 200 70" style="width:100%;height:5.2em" fill="none"><path d="M0 52 L12 48 L24 54 L36 44 L48 46 L60 36 L72 40 L84 30 L96 34 L108 24 L120 30 L132 20 L144 26 L156 14 L168 18 L180 8 L200 12" stroke="#22c55e" stroke-width="2.2" stroke-linejoin="round"/><path d="M0 52 L12 48 L24 54 L36 44 L48 46 L60 36 L72 40 L84 30 L96 34 L108 24 L120 30 L132 20 L144 26 L156 14 L168 18 L180 8 L200 12 V70 H0Z" fill="rgba(34,197,94,.13)"/><path d="M0 40 H200" stroke="rgba(238,242,248,.15)" stroke-dasharray="3 4"/></svg>
+                  <div class="mk-chips"><span class="on">1D</span><span>1W</span><span>1M</span><span>1Y</span></div>
+                  <div class="mk-card mk-stack" style="gap:.3em">
+                    <div class="mk-between"><span class="mk-small">Bid</span><span class="mk-small">Ask</span></div>
+                    <div class="mk-between"><b style="color:#4ade80">2,948.55 × 1,240</b><b style="color:#f87171">2,948.70 × 860</b></div>
+                  </div>
+                  <div class="mk-card mk-between"><div><span class="mk-small">You hold</span><b>25 shares</b></div><b style="color:#4ade80">+₹4,210</b></div>
+                  <div class="mk-row"><span class="mk-btn" style="flex:1;background:#ef4444;color:#fff">Sell</span><span class="mk-btn" style="flex:1">Buy</span></div>
+                  <div class="ph-tabs"><span>Watchlist</span><span class="on">Orders</span><span>Portfolio</span><span>Funds</span></div>
+                </div>
+              </div>
+            </div>
+            <p class="hero-reel-cap" aria-hidden="true"><b>TradeNest</b><span>Stock broking</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ Problem (pinned) ══ -->
+    <section class="problem" id="problem">
+      <div class="problem-pin">
+        <div class="container problem-head">
+          <p class="label">The problem</p>
+          <h2 class="h1 problem-title">Why is building an app such a <em class="accent">guessing game?</em></h2>
+        </div>
+
+        <div class="problem-cards" aria-hidden="true">
+          <div class="pcard pcard--wa">
+            <p>Your cousin says he knows a guy who'll make the whole app for ₹15k.</p>
+            <span class="pcard-meta">8:21 <svg class="ticks" viewBox="0 0 18 11"><path d="M1 6l3.5 3.5L11 1.5M7.5 9.5 8 10l7.5-8.5" /></svg></span>
+          </div>
+          <div class="pcard pcard--ai">
+            <p class="ai-ask">Why not just build it yourself with AI?</p>
+            <svg class="ai-spark" viewBox="0 0 24 24"><path d="M12 2.5v19M2.5 12h19M5.3 5.3l13.4 13.4M18.7 5.3 5.3 18.7" /></svg>
+            <p class="ai-reply">gooooood luck when payments break at 2 am.</p>
+            <div class="ai-actions"><i></i><i></i><i></i><i></i><span>Just now</span></div>
+          </div>
+          <div class="pcard pcard--slide">
+            <div class="slide-bar"><span class="slide-ico"></span><b>Agency_Proposal_v3</b><span class="slide-share">Share</span></div>
+            <div class="slide-tools"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="slide-page">
+              <p>Last time, you got a 40-slide proposal, three "discovery calls" and a request for 50% upfront.</p>
+              <p>Still not a single screen to look at.</p>
+              <svg class="slide-arrow" viewBox="0 0 100 100"><path d="M32 8h60v60L72 48 34 86 14 66l38-38z" /></svg>
+            </div>
+          </div>
+          <div class="pcard pcard--note">And the worst part? You still don't know what you're getting at the end.<br /><br />Or when.</div>
+          <div class="pcard pcard--ghost">
+            <p class="ghost-head"><span class="ghost-av">D</span><span><b>Dev Agency</b><small>last seen 6 days ago</small></span></p>
+            <p class="bubble bubble--out">Any update on the app? <svg class="ticks" viewBox="0 0 18 11"><path d="M1 6l3.5 3.5L11 1.5M7.5 9.5 8 10l7.5-8.5" /></svg></p>
+            <p class="bubble bubble--out">Hello?? 🙏 <svg class="ticks" viewBox="0 0 18 11"><path d="M1 6l3.5 3.5L11 1.5M7.5 9.5 8 10l7.5-8.5" /></svg></p>
+          </div>
+          <div class="pcard pcard--invoice">
+            <p class="pcard-top">Invoice #0042</p>
+            <p class="pcard-amount">+ ₹65,000</p>
+            <p class="pcard-why">"The login screen wasn't in scope."</p>
+            <p class="pcard-flag">Launch delayed · 3 months</p>
+          </div>
+        </div>
+
+        <div class="problem-panel on-yellow">
+          <div class="container problem-panel-inner">
+            <p class="label">Enter Wynklo</p>
+            <h2 class="h1">That's where Wynklo comes in. <em class="accent">See it before you build it.</em></h2>
+            <p class="lead">We design a clickable preview of your app first, free. You approve exactly what you see, and then we build exactly that. No guessing, no surprises.</p>
+            <div class="problem-actions">
+              <a href="/start.html" class="btn">See it before you build it
+                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a href="/process.html" class="text-link">How it works</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ══ Work slider ══ -->
+    <section class="section work-slider">
+      <div class="container work-slider-head">
+        <div>
+          <p class="label">Selected work</p>
+          <h2 class="h1" data-split>Work worth <em class="accent">a look</em></h2>
+        </div>
+        <div class="slider-nav">
+          <button type="button" class="slider-btn slider-prev" aria-label="Previous project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+          </button>
+          <button type="button" class="slider-btn slider-next" aria-label="Next project">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </button>
+        </div>
+      </div>
 
+      <div class="container">
+        <div class="swiper projects-swiper" data-reveal>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide project-slide project-slide--live">
+              <div class="project-media mk-tile live-tile" style="--tile:#1d1226">
+                <div class="live-browser">
+                  <div class="live-bar"><i></i><i></i><i></i><span>clubmates.in</span><em class="live-badge">Live</em><a href="https://www.clubmates.in/" target="_blank" rel="noopener">Open ↗</a></div>
+                  <div class="live-view" data-live-src="https://www.clubmates.in/" data-live-title="clubmates.in, live website" data-live-label="clubmates"></div>
+                </div>
+              </div>
+              <a href="/work.html" class="project-meta"><h3 class="h3">Clubmates</h3><p class="muted">Website · Social nightlife · Live ↗</p></a>
+            </div>
+            <a href="/work.html" class="swiper-slide project-slide">
+              <div class="project-media mk-tile" style="--tile:#e8e4da" role="img" aria-label="The Big Issue news website">
+                <div class="mk-wrap" aria-hidden="true">
+                  <div class="browser mk" style="--mk-ac:#e1251b;--mk-ac-fg:#fff;--mk-card:#f2f2f2">
+                    <div class="br-bar"><i></i><i></i><i></i><span>bigissue.com</span></div>
+                    <div class="br-body">
+                      <div class="mk-nav"><b class="mk-pill mk-pill--ac">THE BIG ISSUE</b><span>News</span><span>Culture</span><span>Campaigns</span><span class="mk-pill">Subscribe</span></div>
+                      <div class="mk-split">
+                        <div class="mk-block mk-stack" style="--c:#1a1a1a;color:#fff;padding:1.2em;align-content:end;min-height:12em">
+                          <span class="mk-pill mk-pill--ac" style="justify-self:start">Investigation</span>
+                          <b class="mk-h">Street journalism that changes lives</b>
+                          <span class="mk-small" style="color:rgba(255,255,255,.6)">12 min read</span>
+                        </div>
+                        <div class="mk-stack">
+                          <div class="mk-row"><span class="mk-thumb" style="--c:#f4a261"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Vendors of the year</b><div class="mk-line" style="--w:80%"></div></div></div>
+                          <div class="mk-row"><span class="mk-thumb" style="--c:#2a9d8f"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Housing, explained</b><div class="mk-line" style="--w:65%"></div></div></div>
+                          <div class="mk-row"><span class="mk-thumb" style="--c:#264653"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Letters from readers</b><div class="mk-line" style="--w:72%"></div></div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-meta"><h3 class="h3">The Big Issue</h3><p class="muted">Website · Social change</p></div>
+            </a>
+            <a href="/work.html" class="swiper-slide project-slide">
+              <div class="project-media mk-tile" style="--tile:#12355b" role="img" aria-label="Group Accommodation travel booking platform">
+                <div class="mk-wrap" aria-hidden="true">
+                  <div class="browser mk" style="--mk-ac:#f28c28;--mk-ac-fg:#fff;--mk-card:#f3f6fa">
+                    <div class="br-bar"><i></i><i></i><i></i><span>groupaccommodation.com</span></div>
+                    <div class="br-body">
+                      <div class="mk-nav"><b style="color:#12355b">Group Accommodation</b><span>Venues</span><span>Retreats</span><span>Schools</span></div>
+                      <p class="mk-h" style="color:#12355b">Stays for the whole group.</p>
+                      <div class="mk-card mk-row" style="background:#fff;box-shadow:0 0 0 1px var(--mk-line)">
+                        <div style="flex:1"><span class="mk-small">Where</span><b>Goa</b></div>
+                        <div style="flex:1"><span class="mk-small">When</span><b>12–15 Dec</b></div>
+                        <div style="flex:1"><span class="mk-small">Group</span><b>24 guests</b></div>
+                        <span class="mk-btn">Search</span>
+                      </div>
+                      <div class="mk-split" style="grid-template-columns:repeat(3,1fr)">
+                        <div class="mk-stack"><div class="mk-block" style="--c:#7fb7be;height:4.5em"></div><b>Palm Grove Villa</b><span class="mk-small">Sleeps 30 · ₹1,850/night</span></div>
+                        <div class="mk-stack"><div class="mk-block" style="--c:#d3a588;height:4.5em"></div><b>Fort Hostel</b><span class="mk-small">Sleeps 42 · ₹950/night</span></div>
+                        <div class="mk-stack"><div class="mk-block" style="--c:#8e9aaf;height:4.5em"></div><b>Hilltop Lodge</b><span class="mk-small">Sleeps 26 · ₹1,400/night</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-meta"><h3 class="h3">Group Accommodation</h3><p class="muted">Software · Travel</p></div>
+            </a>
+            <a href="/work.html" class="swiper-slide project-slide">
+              <div class="project-media mk-tile" style="--tile:#d7efe9" role="img" aria-label="ChequP health check booking website">
+                <div class="mk-wrap" aria-hidden="true">
+                  <div class="browser mk" style="--mk-ac:#0f9d8a;--mk-ac-fg:#fff;--mk-card:#eef8f6">
+                    <div class="br-bar"><i></i><i></i><i></i><span>chequp.com</span></div>
+                    <div class="br-body">
+                      <div class="mk-nav"><b style="color:#0f9d8a">ChequP</b><span>Tests</span><span>Clinics</span><span class="mk-pill mk-pill--ac">Book</span></div>
+                      <div class="mk-split">
+                        <div class="mk-stack" style="align-content:center">
+                          <p class="mk-h">Your wellness check, booked in 60 seconds.</p>
+                          <span class="mk-small">Home sample collection across 40+ cities</span>
+                          <div class="mk-row"><span class="mk-pill mk-pill--ac">Book a check</span><span class="mk-pill">How it works</span></div>
+                        </div>
+                        <div class="mk-card mk-stack">
+                          <b>Full body check</b>
+                          <div class="mk-chips"><span class="on">Blood</span><span class="on">Thyroid</span><span>Vitamin D</span><span class="on">Lipids</span></div>
+                          <span class="mk-small">Pick a slot</span>
+                          <div class="mk-slots"><span>7:00</span><span class="on">7:30</span><span>8:00</span></div>
+                          <div class="mk-btn">Confirm · ₹1,299</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-meta"><h3 class="h3">ChequP</h3><p class="muted">Website · Health-tech</p></div>
+            </a>
+            <a href="/work.html" class="swiper-slide project-slide">
+              <div class="project-media mk-tile" style="--tile:#6b8f71" role="img" aria-label="Floresco wellbeing website">
+                <div class="mk-wrap" aria-hidden="true">
+                  <div class="browser mk" style="--mk-bg:#f6f1e7;--mk-ac:#6b8f71;--mk-ac-fg:#fff;--mk-card:#ebe4d4">
+                    <div class="br-bar"><i></i><i></i><i></i><span>floresco.co</span></div>
+                    <div class="br-body" style="justify-items:center;text-align:center">
+                      <div class="mk-nav" style="width:100%"><b style="font-family:var(--font-serif);font-style:italic">Floresco</b><span>Classes</span><span>Retreats</span><span>Journal</span></div>
+                      <div style="width:6em;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9d8b6,#6b8f71)"></div>
+                      <p class="mk-h" style="font-family:var(--font-serif);font-weight:400">Find your <em>calm.</em></p>
+                      <div class="mk-chips" style="justify-content:center"><span>Yoga</span><span class="on">Breathwork</span><span>Sound baths</span></div>
+                      <span class="mk-pill mk-pill--ac">Book a session</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-meta"><h3 class="h3">Floresco</h3><p class="muted">Website · Wellbeing</p></div>
+            </a>
+            <a href="/work.html" class="swiper-slide project-slide">
+              <div class="project-media mk-tile" style="--tile:#1a1a1a" role="img" aria-label="WorkRoom desk booking platform">
+                <div class="mk-wrap" aria-hidden="true">
+                  <div class="browser mk" style="--mk-bg:#202020;--mk-fg:#f3f1e7;--mk-muted:rgba(243,241,231,.55);--mk-line:rgba(243,241,231,.12);--mk-ac:#c6f432;--mk-ac-fg:#1a1a1a;--mk-card:#2a2a2a">
+                    <div class="br-bar"><i></i><i></i><i></i><span>workroom.space/book</span></div>
+                    <div class="br-body">
+                      <div class="mk-nav"><b>WorkRoom</b><span>Desks</span><span>Meeting rooms</span><span class="mk-pill mk-pill--ac">Members</span></div>
+                      <div class="mk-split">
+                        <div class="mk-card mk-stack">
+                          <div class="mk-between"><b>Floor 2 · Today</b><span class="mk-small">14 free</span></div>
+                          <div class="wr-desks"><i></i><i class="x"></i><i></i><i class="x"></i><i class="me"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i></div>
+                        </div>
+                        <div class="mk-stack">
+                          <p class="mk-title">Desk D5</p>
+                          <span class="mk-small">Window side · Monitor · Locker</span>
+                          <div class="mk-between"><span>Hot desk</span><b>₹499/day</b></div>
+                          <div class="mk-between"><span>Community</span><b>86 members</b></div>
+                          <div class="mk-btn">Book desk</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-meta"><h3 class="h3">WorkRoom</h3><p class="muted">Website · Workspaces</p></div>
+            </a>
+            <a href="/work.html" class="swiper-slide project-slide project-slide--more">
+              <span class="h2">More <em class="accent">projects</em></span>
+              <span class="slider-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ══ Services ══ -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="services-head">
+          <p class="label">What we do</p>
+          <h2 class="h1" data-split>Everything you need to <em class="accent">launch</em></h2>
+        </div>
 
-    <section class="marquee-section" id="marquee">
-      <div class="marquee-track">
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
+        <ul class="service-list">
+          <li class="service-row" data-reveal>
+            <span class="service-num">01</span>
+            <h3 class="service-name">Web Development</h3>
+            <div class="service-detail"><div>
+              <p>Custom websites and web apps built with Next.js, React and Node.js. Fast, accessible and easy to grow.</p>
+              <span class="service-tags">Websites · Web apps · Dashboards</span>
+            </div></div>
+          </li>
+          <li class="service-row" data-reveal>
+            <span class="service-num">02</span>
+            <h3 class="service-name">App Development</h3>
+            <div class="service-detail"><div>
+              <p>Native and cross-platform mobile apps for iOS and Android, designed around the people who'll use them every day.</p>
+              <span class="service-tags">iOS · Android · Flutter · React Native</span>
+            </div></div>
+          </li>
+          <li class="service-row" data-reveal>
+            <span class="service-num">03</span>
+            <h3 class="service-name">AI Integration</h3>
+            <div class="service-detail"><div>
+              <p>Chatbots and AI-powered features that answer customers, automate busywork and make your product feel smarter.</p>
+              <span class="service-tags">Chatbots · Automation · LLM features</span>
+            </div></div>
+          </li>
+          <li class="service-row" data-reveal>
+            <span class="service-num">04</span>
+            <h3 class="service-name">Design Services</h3>
+            <div class="service-detail"><div>
+              <p>UI/UX design, Figma prototypes and complete brand identity. This is where your free preview comes from.</p>
+              <span class="service-tags">UI/UX · Prototypes · Branding</span>
+            </div></div>
+          </li>
+          <li class="service-row" data-reveal>
+            <span class="service-num">05</span>
+            <h3 class="service-name">Domain &amp; Hosting</h3>
+            <div class="service-detail"><div>
+              <p>Domain registration, SSL, hosting and monitoring, so your launch stays up and fast after day one.</p>
+              <span class="service-tags">Domains · SSL · Cloud hosting</span>
+            </div></div>
+          </li>
+          <li class="service-row" data-reveal>
+            <span class="service-num">06</span>
+            <h3 class="service-name">Tech Integration</h3>
+            <div class="service-detail"><div>
+              <p>Payments, CRMs, analytics and third-party services wired into one ecosystem that just works.</p>
+              <span class="service-tags">Payments · APIs · Analytics</span>
+            </div></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ Process teaser ══ -->
+    <section class="section process-teaser theme-dark">
+      <div class="container">
+        <div class="process-teaser-head">
+          <p class="label">How we work</p>
+          <h2 class="display" data-split>We keep it <em class="accent">simple</em></h2>
         </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
+        <ol class="teaser-steps">
+          <li data-reveal><span class="teaser-num">01</span><h3 class="h3">Discover</h3><p class="muted">A quick call to understand your idea, users and goals.</p></li>
+          <li data-reveal><span class="teaser-num">02</span><h3 class="h3">Free preview</h3><p class="muted">We design your app so you can click through it before committing.</p></li>
+          <li data-reveal><span class="teaser-num">03</span><h3 class="h3">Build</h3><p class="muted">Exactly what you approved, shipped in short weekly sprints.</p></li>
+          <li data-reveal><span class="teaser-num">04</span><h3 class="h3">Launch</h3><p class="muted">We go live together and stay on for support and growth.</p></li>
+        </ol>
+        <a href="/process.html" class="text-link teaser-link">How simple?
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══ Testimonials ══ -->
+    <section class="section testimonials">
+      <div class="container testimonials-grid">
+        <div class="testimonials-head">
+          <p class="label">Kind words</p>
+          <h2 class="h1" data-split>Don't take <em class="accent">our word</em> for it</h2>
         </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
+        <div class="quote-list">
+          <figure class="quote" data-reveal>
+            <blockquote>“Wynklo delivered our e-commerce platform ahead of schedule with outstanding quality. The preview they showed us before development even started gave us complete confidence in the final product.”</blockquote>
+            <figcaption><strong>Rahul Mehta</strong><span>Founder, SnatchMart</span></figcaption>
+          </figure>
+          <figure class="quote" data-reveal>
+            <blockquote>“Professional, responsive, and incredibly skilled. They understood our vision from day one and turned it into a digital experience that our users love.”</blockquote>
+            <figcaption><strong>Sarah Thompson</strong><span>Director, Forward Studio</span></figcaption>
+          </figure>
+          <figure class="quote" data-reveal>
+            <blockquote>“What sets Wynklo apart is their transparency. No hidden costs, no surprises. They showed us exactly what we'd get, and the final result exceeded expectations.”</blockquote>
+            <figcaption><strong>Amit Patel</strong><span>CEO, Bet2Learn</span></figcaption>
+          </figure>
         </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
-        </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
-        </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
-        </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
-        </div>
-        <div class="marquee-item">
-          <span class="marquee-text">Ready to push your platform?</span>
-          <a href="/start.html" class="marquee-btn">Get in touch today</a>
+      </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="cta on-yellow">
+      <div class="container cta-inner">
+        <h2 class="display" data-split>Ready to get <em class="accent">started?</em></h2>
+        <div class="cta-row">
+          <p class="lead">Tell us about your idea. We'll come back with a free preview of what it could look like.</p>
+          <div class="cta-actions">
+            <a href="/contact.html" class="btn">Start a project
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a href="https://cal.com/pulkit-giddu-c098j5/30min" class="btn btn--ghost" data-cal>Book a call</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-
-  <!-- ══════════════════════════════════════
-       FOOTER
-       ══════════════════════════════════════ -->
-  <footer class="site-footer" id="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-column">
-          <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/work.html">Work</a>
-            <a href="#">Insights</a>
-            <a href="/about.html">About</a>
-            <a href="#">Locations</a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-links">
-            <a href="#">Web Design</a>
-            <a href="#">Web Development</a>
-            <a href="#">Digital Platforms</a>
-            <a href="#">Agency Partnerships</a>
-            <a href="#">All Services</a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-links">
-            <a href="/contact.html">Contact</a>
-            <a href="#">Careers</a>
-            <a href="https://www.instagram.com/wynklo_tech/" target="_blank">Instagram</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Facebook</a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-contact">
-            <p class="footer-address">
-              A3, Clover Park, Viman Nagar, Pune<br />
-              Maharashtra - 411014
-            </p>
-            <div class="footer-contact-links">
-              <a href="mailto:contactuswynklo@gmail.com">contactuswynklo@gmail.com</a>
-              <a href="tel:+918491041426">+91 8491041426</a>
-              <a href="tel:+919911433169">+91 9911433169</a>
-            </div>
-          </div>
-        </div>
+  <!-- ══ Footer ══ -->
+  <footer class="site-footer theme-dark">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Wynklo home">
+          <img src="/favicon.png" alt="" width="44" height="44" loading="lazy" />
+          <span>Wynklo</span>
+        </a>
+        <p class="footer-tagline">See it <em class="accent">before</em><br />you build it.</p>
       </div>
-
-      <div class="footer-bottom">
-        <span class="footer-copyright">&copy;2026 Wynklo</span>
-        <div class="footer-legal">
-          <a href="/cookie-policy.html">Cookie Policy</a>
-          <span class="footer-legal-sep">/</span>
-          <a href="/privacy-policy.html">Privacy Policy</a>
-          <span class="footer-legal-sep">/</span>
-          <a href="/sitemap.html">Sitemap</a>
+      <div class="footer-links">
+        <nav class="footer-col" aria-label="Footer">
+          <p class="label footer-head">Menu</p>
+          <a href="/"><span>Home page</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+          <a href="/work.html"><span>Work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+          <a href="/process.html"><span>Process</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+          <a href="/about.html"><span>About us</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+          <a href="/contact.html"><span>Contact</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        </nav>
+        <div class="footer-col">
+          <p class="label footer-head">Contact</p>
+          <a href="mailto:contactuswynklo@gmail.com"><span>Email</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>
+          <a href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener"><span>WhatsApp</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>
+          <a href="https://www.instagram.com/wynklo_tech/" target="_blank" rel="noopener"><span>Instagram</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>
+          <a href="https://cal.com/pulkit-giddu-c098j5/30min" data-cal><span>Book a call</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>
         </div>
-      </div>
-
-      <!-- Trust Badges -->
-      <div class="footer-trust">
-        <span class="footer-trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
-          SSL Secured
-        </span>
-        <span class="footer-trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-            <polyline points="22 4 12 14.01 9 11.01" />
-          </svg>
-          Verified Business
-        </span>
-        <span class="footer-trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M2 12h20" />
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-          </svg>
-          Global Clients
-        </span>
-        <span class="footer-trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-          </svg>
-          Registered Company
-        </span>
-      </div>
-
-      <div class="footer-made-in">
-        <span>Crafted with precision in India</span>
-        <span class="flag">🇮🇳</span>
       </div>
     </div>
-
-    <div class="footer-watermark" aria-hidden="true">
-      W<span>y</span>nkl<span>o</span>
+    <div class="container footer-credit">
+      <p>Designed and built by <b>Wynklo</b> <i aria-hidden="true"></i> Pune, India &copy; 2026</p>
+      <nav aria-label="Legal">
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/cookie-policy.html">Cookies</a>
+        <a href="/sitemap.html">Sitemap</a>
+      </nav>
     </div>
+    <div class="footer-wordmark" aria-hidden="true"><span>wynklo</span></div>
   </footer>
 
 
-
-  <div class="cta-popup" id="cta-popup">
-    <button class="cta-popup-close" id="cta-popup-close" aria-label="Close">&times;</button>
-    <p class="cta-popup-text">Got a project in mind?<br />We'd love to hear about it.</p>
-    <a href="/start.html" class="cta-popup-link">Get in touch</a>
+  <div class="cta-dock">
+    <div class="cta-popup" id="cta-popup">
+      <a href="/start.html" class="cta-popup-link">
+        <span class="cta-eyes" aria-hidden="true"><span class="cta-eye"><i></i></span><span class="cta-eye"><i></i></span></span>
+        <span class="cta-popup-title">Got an app idea?</span>
+      </a>
+      <button type="button" class="cta-popup-close" id="cta-popup-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" /></svg>
+      </button>
+    </div>
+    <a class="cta-chat" href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h8A2.5 2.5 0 0 1 17 5.5V11a2.5 2.5 0 0 1-2.5 2.5H9L5.5 16v-2.6A2.5 2.5 0 0 1 4 11Z" /><path d="M17 8.5h.5A2.5 2.5 0 0 1 20 11v5a2.5 2.5 0 0 1-1.5 2.3V21L15 18.5h-4a2.5 2.5 0 0 1-2.3-1.5" /><path d="M8 8.3h.01M10.5 8.3h.01M13 8.3h.01" stroke-width="2.4" stroke-linecap="round" /></svg>
+      Chat
+    </a>
   </div>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/918491041426?text=Hi%20Wynklo%2C%20I'm%20interested%20in%20your%20services" target="_blank"
-    class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <div class="whatsapp-btn">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
-    </div>
-    <span class="whatsapp-tooltip">Chat with us</span>
-  </a>
-  <!-- Scripts -->
-  <script>
-    /* ── Hero Particle Canvas ── */
-    (function () {
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let W, H, particles = [], animId;
-      const COUNT = 80;
-      const LINK_DIST = 140;
-      const YELLOW = 'rgba(253,208,17,';
-      const WHITE = 'rgba(243,241,231,';
-
-      function resize() {
-        W = canvas.width = canvas.offsetWidth;
-        H = canvas.height = canvas.offsetHeight;
-      }
-
-      function Particle() {
-        this.reset = function () {
-          this.x = Math.random() * W;
-          this.y = Math.random() * H;
-          this.vx = (Math.random() - 0.5) * 0.3;
-          this.vy = -(Math.random() * 0.4 + 0.1);
-          this.r = Math.random() * 1.5 + 0.4;
-          this.life = 0;
-          this.maxLife = Math.random() * 300 + 200;
-          this.yellow = Math.random() < 0.25;
-        };
-        this.reset();
-        this.y = Math.random() * H; // start distributed
-      }
-
-      function init() {
-        particles = [];
-        for (let i = 0; i < COUNT; i++) particles.push(new Particle());
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-
-        // Draw particles
-        particles.forEach(p => {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life++;
-
-          if (p.y < -10 || p.life > p.maxLife) p.reset();
-
-          const alpha = Math.min(p.life / 60, 1) * Math.min((p.maxLife - p.life) / 60, 1);
-          const col = p.yellow ? YELLOW : WHITE;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = col + alpha + ')';
-          ctx.fill();
-        });
-
-        // Draw connecting lines between close particles
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const a = particles[i], b = particles[j];
-            const dx = a.x - b.x, dy = a.y - b.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < LINK_DIST) {
-              const alpha = (1 - dist / LINK_DIST) * 0.07;
-              ctx.beginPath();
-              ctx.moveTo(a.x, a.y);
-              ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = YELLOW + alpha + ')';
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
-        }
-
-        animId = requestAnimationFrame(draw);
-      }
-
-      function start() {
-        resize();
-        init();
-        draw();
-      }
-
-      window.addEventListener('resize', () => {
-        cancelAnimationFrame(animId);
-        resize();
-        draw();
-      });
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', start);
-      } else {
-        start();
-      }
-    })();
-  </script>
   <script type="module" src="/js/main.js"></script>
 </body>
 

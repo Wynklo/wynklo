@@ -2,27 +2,47 @@
    Wynklo - Main Entry Point
    ======================================== */
 
-import { initPreloader } from './preloader.js';
-import { initNav } from './nav.js';
-import { initScrollReveal } from './scroll-reveal.js';
-import { initCounter } from './counter.js';
+import { initLenis, initMotion, ScrollTrigger } from './motion.js';
+import { initChrome } from './menu.js';
+import { runPreloader } from './preloader.js';
 import { initPopup } from './popup.js';
-import { initFeaturedWork } from './featured-work.js';
-import { initCareersToast } from './careers.js';
-import { initInsightsToast } from './insights.js';
-import { initContactForm } from './contact.js';
+import { initCal } from './cal.js';
+import { initLivePreviews } from './live.js';
 
-// Initialize preloader immediately (before DOMContentLoaded)
-initPreloader();
+const pages = {
+  home: () => import('./pages/home.js'),
+  process: () => import('./pages/process.js'),
+  about: () => import('./pages/about.js'),
+  work: () => import('./pages/work.js'),
+  start: () => import('./pages/start.js'),
+  contact: () => import('./contact.js').then((m) => ({ init: m.initContactForm })),
+};
 
-// Initialize all modules when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  initNav();
-  initScrollReveal();
-  initCounter();
+async function boot() {
+  initLenis();
+  runPreloader();
+  initChrome();
+  initCal();
   initPopup();
-  initFeaturedWork();
-  initCareersToast();
-  initInsightsToast();
-  initContactForm();
-});
+  initLivePreviews();
+
+  if (document.fonts && document.fonts.ready) {
+    try {
+      await document.fonts.ready;
+    } catch {
+      /* fonts are optional */
+    }
+  }
+
+  const load = pages[document.body.dataset.page];
+  if (load) {
+    const mod = await load();
+    await mod.init?.();
+  }
+
+  await initMotion();
+
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+}
+
+boot();

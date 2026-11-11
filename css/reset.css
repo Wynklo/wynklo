@@ -11,46 +11,25 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   min-height: 100vh;
-  line-height: 1.6;
+  line-height: 1.55;
   font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  font-size: var(--fs-body);
+  color: var(--fg);
+  background-color: var(--bg);
   overflow-x: hidden;
-  position: relative;
-}
-
-/* Noise texture overlay for the dark background - matches original site */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-}
-
-/* Ensure all direct children sit above the noise */
-body>* {
-  position: relative;
-  z-index: 1;
 }
 
 img,
 picture,
 video,
-canvas,
 svg {
   display: block;
   max-width: 100%;
@@ -62,6 +41,12 @@ textarea,
 select {
   font: inherit;
   color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
 a {
@@ -80,17 +65,21 @@ h3,
 h4,
 h5,
 h6 {
+  font-weight: inherit;
   line-height: 1.05;
-  font-weight: 800;
-}
-
-button {
-  cursor: pointer;
-  background: none;
-  border: none;
+  overflow-wrap: break-word;
 }
 
 ::selection {
-  background: var(--color-yellow);
-  color: var(--color-bg);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.theme-dark :focus-visible {
+  outline-color: var(--yellow);
 }

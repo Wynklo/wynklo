@@ -1,57 +1,77 @@
 /* ========================================
-   Wynklo - Preloader Module (Royal Enfield–style)
+   Wynklo - Triangle preloader (first page of a session only)
    ======================================== */
 
-export function initPreloader() {
-  const preloader = document.getElementById('preloader');
-  if (!preloader) return;
+import { gsap, reducedMotion, stopScroll, startScroll } from './motion.js';
 
-  // The CSS animations handle the sequential letter reveal automatically.
-  // We just need to time the exit properly after the full reveal plays.
-  //
-  // Timeline:
-  //   0.1s–1.0s   → Letters fade in one by one
-  //   1.1s         → Accent line draws
-  //   1.3s         → Tagline fades in
-  //   1.5s         → Loading dots appear
-  //   ~2.5s        → Hold for visual impact
-  //   ~2.8s        → Exit animation begins
+const FLAG = 'wk-loaded';
+const CYCLE = 3200;
+const LANDED = 2700;
+const MAX_WAIT = 6000;
 
-  let hasExited = false;
+const TRI =
+  'M2072.5 1039.4C2063.4 1037.2 2060.5 1036.2 2053.2 1032.7C2033.8 1023.2 2021.3 1007.8 2014.8 985.5L2012.5 977.5L2012.5 778.5L2012.5 579.5L2015.3 570.5C2033.2 512.9 2101.5 487.1 2149.7 519.8C2152.9 521.9 2161.3 527.3 2168.5 531.7C2184.8 541.7 2201.9 552.4 2218.0 562.7C2224.9 567.1 2236.3 574.4 2243.5 578.9C2250.7 583.4 2264.4 592.2 2274.0 598.5C2283.6 604.8 2299.7 615.2 2309.8 621.7C2342.5 642.8 2431.2 701.9 2435.6 705.5C2470.1 733.8 2472.9 790.5 2441.4 823.9C2432.6 833.3 2437.2 830.2 2337.0 894.0C2292.7 922.2 2252.0 948.2 2246.5 951.8C2241.0 955.4 2232.7 960.7 2228.0 963.5C2223.3 966.3 2213.0 972.9 2205.0 978.1C2197.0 983.3 2184.2 991.5 2176.5 996.3C2160.9 1006.1 2131.1 1024.9 2123.6 1029.8C2111.6 1037.5 2085.3 1042.5 2072.5 1039.4Z';
 
-  const exitPreloader = () => {
-    if (hasExited) return;
-    hasExited = true;
+const MARKUP = `
+<div class="preloader-mark" role="img" aria-label="Loading Wynklo">
+  <svg viewBox="623 300 1940 1443" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FDD011" d="M1195.9 1633.5C1139.4 1624.7 1090.2 1589.6 1059.7 1536.5C1047.2 1514.7 1023.8 1474.1 1012.7 1455.0C1005.5 1442.6 995.3 1424.8 989.9 1415.5C984.6 1406.2 975.6 1390.6 970.0 1381.0C964.4 1371.4 956.0 1357.0 951.5 1349.0C947.0 1341.0 940.4 1329.5 937.0 1323.5C933.5 1317.5 923.3 1299.5 914.2 1283.5C905.2 1267.5 891.6 1243.7 884.0 1230.5C869.9 1205.8 851.3 1172.9 835.0 1144.0C829.9 1134.9 819.3 1116.2 811.5 1102.5C803.7 1088.8 791.6 1067.4 784.8 1055.0C777.9 1042.6 765.7 1020.7 757.6 1006.3C728.5 954.0 724.0 940.6 723.7 907.0C722.9 777.7 870.0 692.8 983.5 757.2C1025.2 780.8 1035.1 793.5 1090.5 893.0C1096.4 903.7 1102.5 914.5 1104.0 917.0C1105.6 919.5 1112.0 931.0 1118.3 942.5C1124.6 954.0 1133.9 970.9 1139.0 980.0C1144.1 989.1 1156.9 1012.0 1167.5 1031.0C1178.0 1050.0 1189.8 1070.9 1193.5 1077.5C1197.2 1084.1 1208.3 1103.9 1218.1 1121.5C1240.4 1161.5 1238.7 1159.0 1246.0 1163.8C1254.5 1169.3 1262.2 1170.8 1271.0 1168.5C1283.5 1165.3 1285.1 1163.6 1303.5 1135.0C1311.1 1123.2 1323.6 1103.8 1331.3 1092.0C1361.3 1046.0 1373.4 1027.2 1377.5 1021.0C1379.8 1017.4 1386.7 1006.7 1392.8 997.2C1399.0 987.8 1409.0 972.2 1415.2 962.8C1421.3 953.3 1432.0 936.7 1439.0 926.0C1446.0 915.3 1454.8 901.6 1458.6 895.7C1472.2 874.4 1474.7 870.9 1482.3 862.1C1530.6 806.2 1612.4 789.9 1676.6 823.5C1706.8 839.3 1721.9 853.9 1749.5 894.0C1757.7 905.8 1767.5 920.0 1771.3 925.5C1775.2 931.0 1783.6 943.1 1790.1 952.5C1796.6 961.9 1804.2 972.9 1807.1 977.0C1850.4 1039.3 1861.0 1054.6 1869.1 1066.3C1874.3 1073.8 1886.0 1090.9 1895.2 1104.3C1904.4 1117.6 1916.5 1135.2 1922.1 1143.5C1939.0 1168.2 1949.1 1177.0 1967.9 1183.2C1979.0 1186.9 1998.7 1188.2 2009.0 1186.0C2023.5 1182.9 2025.4 1185.0 2016.3 1194.2C2011.7 1198.9 2008.2 1201.3 1999.5 1205.5C1977.5 1216.1 1968.2 1230.8 1959.0 1269.0C1953.9 1290.3 1914.9 1447.1 1910.9 1462.5C1905.9 1481.5 1896.0 1522.2 1894.4 1530.0C1890.5 1548.6 1891.5 1574.3 1896.6 1589.6C1900.8 1602.1 1902.6 1604.9 1913.2 1615.6C1931.0 1633.6 1925.2 1635.6 1896.5 1621.3C1868.7 1607.4 1837.3 1579.6 1817.5 1551.4C1809.1 1539.6 1782.3 1502.2 1750.4 1458.0C1720.3 1416.2 1718.4 1413.6 1706.6 1397.5C1700.6 1389.2 1691.1 1376.2 1685.5 1368.5C1679.9 1360.8 1669.7 1346.6 1662.7 1337.0C1655.7 1327.4 1644.0 1311.2 1636.8 1301.1C1629.5 1291.0 1621.7 1280.5 1619.5 1277.7C1607.9 1263.1 1585.0 1260.8 1569.1 1272.5C1563.2 1276.9 1559.5 1281.5 1542.2 1306.2C1537.0 1313.5 1529.5 1324.2 1525.4 1330.0C1516.9 1342.1 1511.5 1349.8 1505.0 1359.1C1502.5 1362.7 1497.7 1369.7 1494.2 1374.6C1481.7 1392.4 1386.4 1530.6 1369.2 1556.0C1330.1 1613.6 1262.4 1643.8 1195.9 1633.5Z"/>
+    <path fill="#F3F1E7" d="M1966.0 1642.5C1903.3 1634.4 1878.8 1610.6 1878.8 1558.0C1878.8 1536.0 1879.6 1531.8 1897.0 1464.0C1909.0 1416.9 1935.3 1311.0 1944.9 1271.3C1957.2 1220.0 1976.9 1197.2 2021.8 1182.4C2031.5 1179.2 2039.1 1175.3 2053.5 1166.0C2067.7 1156.9 2091.9 1141.7 2109.9 1130.5C2117.0 1126.1 2132.8 1116.1 2145.1 1108.4C2157.4 1100.6 2182.1 1085.0 2200.0 1073.8C2259.6 1036.3 2300.2 1010.6 2334.8 988.4C2353.7 976.4 2370.5 965.6 2372.3 964.6C2374.1 963.5 2382.0 958.6 2389.9 953.7C2420.4 934.7 2424.9 933.2 2428.5 940.5C2431.8 947.1 2431.0 971.8 2426.4 999.6C2421.9 1027.4 2414.8 1052.5 2399.4 1095.0C2395.4 1106.1 2375.5 1146.5 2344.5 1206.5C2334.3 1226.3 2313.7 1266.6 2298.8 1296.0C2274.9 1343.2 2249.8 1392.4 2198.2 1493.0C2179.1 1530.3 2167.5 1547.5 2145.9 1571.2C2099.4 1622.1 2027.8 1650.5 1966.0 1642.5Z"/>
+    <path class="preloader-ghost" d="${TRI}" fill="none" stroke="#FDD011" stroke-width="12" stroke-dasharray="40 30" stroke-linejoin="round"/>
+    <path class="preloader-tri" fill="#FDD011" d="${TRI}"/>
+  </svg>
+</div>`;
 
-    preloader.classList.add('exit');
+let done;
 
-    // Wait for the exit animation to complete (800ms) then clean up
-    setTimeout(() => {
-      document.body.classList.remove('loading');
-      preloader.remove();
-    }, 800);
-  };
+/** Plays the loader on the first page of a session; resolves once it is gone (or right away if skipped). */
+export function runPreloader() {
+  if (done) return done;
 
-  // Primary trigger: wait for fonts + resources, then add a reveal hold
-  const triggerExit = () => {
-    // Total animation sequence is ~2s. 
-    // We wait at least 2.5s after page start before exiting
-    // so the full reveal plays, then hold briefly for impact.
-    const minDelay = 2500;
-    const elapsed = performance.now();
-    const remaining = Math.max(0, minDelay - elapsed);
-
-    setTimeout(exitPreloader, remaining + 300);
-  };
-
-  // Use Font Loading API if available
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(triggerExit);
-  } else {
-    // Fallback
-    window.addEventListener('load', triggerExit);
+  const root = document.documentElement;
+  if (reducedMotion || sessionStorage.getItem(FLAG) === '1') {
+    root.classList.remove('preload');
+    done = Promise.resolve();
+    return done;
   }
+  sessionStorage.setItem(FLAG, '1');
 
-  // Safety net: always exit after 4s max
-  setTimeout(exitPreloader, 4000);
+  const el = document.createElement('div');
+  el.className = 'preloader';
+  el.setAttribute('aria-hidden', 'true');
+  el.innerHTML = MARKUP;
+  document.body.prepend(el);
+  root.classList.remove('preload');
+  stopScroll();
+
+  const start = performance.now();
+  const loaded = new Promise((resolve) => {
+    if (document.readyState === 'complete') resolve();
+    else window.addEventListener('load', resolve, { once: true });
+  });
+  const ready = Promise.race([loaded, new Promise((r) => setTimeout(r, MAX_WAIT))]);
+
+  done = ready
+    .then(() => {
+      // Leave only once the triangle has landed back in the mark.
+      const elapsed = performance.now() - start;
+      const cycles = Math.max(0, Math.ceil((elapsed - LANDED) / CYCLE));
+      return new Promise((r) => setTimeout(r, start + cycles * CYCLE + LANDED - performance.now()));
+    })
+    .then(
+      () =>
+        new Promise((resolve) => {
+          gsap
+            .timeline({
+              onComplete: () => {
+                el.remove();
+                startScroll();
+              },
+            })
+            .to(el.firstElementChild, { scale: 0.92, opacity: 0, duration: 0.45, ease: 'power2.in' })
+            .to(el, { yPercent: -100, duration: 0.9, ease: 'wkInOut' }, '-=0.15')
+            .add(resolve, '-=0.5');
+        })
+    );
+  return done;
 }
