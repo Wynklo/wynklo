@@ -4,7 +4,7 @@
 
 import { stopScroll, startScroll } from './motion.js';
 
-const CAL_LINK = 'pulkit-giddu-c098j5/30min';
+const CAL_LINK = 'contactus-wynklo-jcuito/30min';
 const NS = 'wynklo';
 
 let modal = null;
@@ -52,7 +52,7 @@ function loadCal() {
   Cal.ns[NS]('inline', {
     elementOrSelector: '#cal-inline',
     calLink: CAL_LINK,
-    config: { layout: 'month_view', theme: 'light' },
+    config: { layout: 'month_view', theme: 'light', overlayCalendar: 'true' },
   });
   Cal.ns[NS]('ui', {
     theme: 'light',
@@ -87,7 +87,7 @@ function buildModal() {
           <h2 class="h3" id="cal-modal-title">30 minutes with <em class="accent">Wynklo</em></h2>
         </div>
         <div class="cal-head-actions">
-          <a class="cal-external" href="https://cal.com/${CAL_LINK}" target="_blank" rel="noopener">Open in Cal.com ↗</a>
+          <a class="cal-external" href="https://cal.com/${CAL_LINK}?overlayCalendar=true" target="_blank" rel="noopener">Open in Cal.com ↗</a>
           <button type="button" class="cal-close" data-cal-close aria-label="Close booking">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
           </button>
