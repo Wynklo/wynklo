@@ -407,161 +407,169 @@
       </div>
     </section>
 
-    <!-- ══ Work slider ══ -->
+    <!-- ══ Work showcase (browser) ══ -->
     <section class="section work-slider">
       <div class="container work-slider-head">
         <div>
           <p class="label">Selected work</p>
           <h2 class="h1" data-split>Work worth <em class="accent">a look</em></h2>
         </div>
-        <div class="slider-nav">
-          <button type="button" class="slider-btn slider-prev" aria-label="Previous project">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
-          </button>
-          <button type="button" class="slider-btn slider-next" aria-label="Next project">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          </button>
-        </div>
       </div>
 
       <div class="container">
-        <div class="swiper projects-swiper" data-reveal>
-          <div class="swiper-wrapper">
-            <div class="swiper-slide project-slide project-slide--live">
-              <div class="project-media mk-tile live-tile" style="--tile:#1d1226">
-                <div class="live-browser">
-                  <div class="live-bar"><i></i><i></i><i></i><span>clubmates.in</span><em class="live-badge">Live</em><a href="https://www.clubmates.in/" target="_blank" rel="noopener">Open ↗</a></div>
-                  <div class="live-view" data-live-src="https://www.clubmates.in/" data-live-title="clubmates.in, live website" data-live-label="clubmates"></div>
-                </div>
-              </div>
-              <a href="/work.html" class="project-meta"><h3 class="h3">Clubmates</h3><p class="muted">Website · Social nightlife · Live ↗</p></a>
+        <div class="sc-browser" data-reveal>
+          <div class="sc-top">
+            <span class="sc-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="sc-tabs" role="tablist" aria-label="Projects"></div>
+          </div>
+          <div class="sc-bar">
+            <div class="sc-url">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+              <span class="sc-url-text">clubmates.in</span>
             </div>
-            <a href="/work.html" class="swiper-slide project-slide">
-              <div class="project-media mk-tile" style="--tile:#e8e4da" role="img" aria-label="The Big Issue news website">
-                <div class="mk-wrap" aria-hidden="true">
-                  <div class="browser mk" style="--mk-ac:#e1251b;--mk-ac-fg:#fff;--mk-card:#f2f2f2">
-                    <div class="br-bar"><i></i><i></i><i></i><span>bigissue.com</span></div>
-                    <div class="br-body">
-                      <div class="mk-nav"><b class="mk-pill mk-pill--ac">THE BIG ISSUE</b><span>News</span><span>Culture</span><span>Campaigns</span><span class="mk-pill">Subscribe</span></div>
-                      <div class="mk-split">
-                        <div class="mk-block mk-stack" style="--c:#1a1a1a;color:#fff;padding:1.2em;align-content:end;min-height:12em">
-                          <span class="mk-pill mk-pill--ac" style="justify-self:start">Investigation</span>
-                          <b class="mk-h">Street journalism that changes lives</b>
-                          <span class="mk-small" style="color:rgba(255,255,255,.6)">12 min read</span>
-                        </div>
-                        <div class="mk-stack">
-                          <div class="mk-row"><span class="mk-thumb" style="--c:#f4a261"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Vendors of the year</b><div class="mk-line" style="--w:80%"></div></div></div>
-                          <div class="mk-row"><span class="mk-thumb" style="--c:#2a9d8f"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Housing, explained</b><div class="mk-line" style="--w:65%"></div></div></div>
-                          <div class="mk-row"><span class="mk-thumb" style="--c:#264653"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Letters from readers</b><div class="mk-line" style="--w:72%"></div></div></div>
-                        </div>
+            <em class="live-badge">Live</em>
+            <a class="sc-open" href="https://www.clubmates.in/" target="_blank" rel="noopener">Open <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="swiper projects-swiper sc-viewport">
+            <div class="swiper-wrapper">
+            <div class="swiper-slide sc-slide" data-title="Clubmates" data-meta="Website · Social nightlife" data-url="clubmates.in" data-href="https://www.clubmates.in/" data-color="#8b5cf6" data-live>
+              <div class="live-view" data-live-src="https://www.clubmates.in/" data-live-title="clubmates.in, live website" data-live-label="clubmates"></div>
+              <button type="button" class="sc-explore">Explore the live site</button>
+            </div>
+            <div class="swiper-slide sc-slide" data-title="SnatchMart" data-meta="Website · Price tracking" data-url="snatchmart.com" data-href="https://www.snatchmart.com/" data-color="#3b6ef5" data-live>
+              <div class="live-view live-view--light" data-live-src="https://www.snatchmart.com/" data-live-title="snatchmart.com, live website" data-live-label="snatchmart"></div>
+              <button type="button" class="sc-explore">Explore the live site</button>
+            </div>
+            <div class="swiper-slide sc-slide" data-title="The Big Issue" data-meta="Website · Social change" data-url="bigissue.com" data-color="#e1251b" role="img" aria-label="The Big Issue news website">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="browser mk" style="--mk-ac:#e1251b;--mk-ac-fg:#fff;--mk-card:#f2f2f2">
+                  <div class="br-bar"><i></i><i></i><i></i><span>bigissue.com</span></div>
+                  <div class="br-body">
+                    <div class="mk-nav"><b class="mk-pill mk-pill--ac">THE BIG ISSUE</b><span>News</span><span>Culture</span><span>Campaigns</span><span class="mk-pill">Subscribe</span></div>
+                    <div class="mk-split">
+                      <div class="mk-block mk-stack" style="--c:#1a1a1a;color:#fff;padding:1.2em;align-content:end;min-height:12em">
+                        <span class="mk-pill mk-pill--ac" style="justify-self:start">Investigation</span>
+                        <b class="mk-h">Street journalism that changes lives</b>
+                        <span class="mk-small" style="color:rgba(255,255,255,.6)">12 min read</span>
+                      </div>
+                      <div class="mk-stack">
+                        <div class="mk-row"><span class="mk-thumb" style="--c:#f4a261"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Vendors of the year</b><div class="mk-line" style="--w:80%"></div></div></div>
+                        <div class="mk-row"><span class="mk-thumb" style="--c:#2a9d8f"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Housing, explained</b><div class="mk-line" style="--w:65%"></div></div></div>
+                        <div class="mk-row"><span class="mk-thumb" style="--c:#264653"></span><div class="mk-stack" style="flex:1;gap:.35em"><b>Letters from readers</b><div class="mk-line" style="--w:72%"></div></div></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="project-meta"><h3 class="h3">The Big Issue</h3><p class="muted">Website · Social change</p></div>
-            </a>
-            <a href="/work.html" class="swiper-slide project-slide">
-              <div class="project-media mk-tile" style="--tile:#12355b" role="img" aria-label="Group Accommodation travel booking platform">
-                <div class="mk-wrap" aria-hidden="true">
-                  <div class="browser mk" style="--mk-ac:#f28c28;--mk-ac-fg:#fff;--mk-card:#f3f6fa">
-                    <div class="br-bar"><i></i><i></i><i></i><span>groupaccommodation.com</span></div>
-                    <div class="br-body">
-                      <div class="mk-nav"><b style="color:#12355b">Group Accommodation</b><span>Venues</span><span>Retreats</span><span>Schools</span></div>
-                      <p class="mk-h" style="color:#12355b">Stays for the whole group.</p>
-                      <div class="mk-card mk-row" style="background:#fff;box-shadow:0 0 0 1px var(--mk-line)">
-                        <div style="flex:1"><span class="mk-small">Where</span><b>Goa</b></div>
-                        <div style="flex:1"><span class="mk-small">When</span><b>12–15 Dec</b></div>
-                        <div style="flex:1"><span class="mk-small">Group</span><b>24 guests</b></div>
-                        <span class="mk-btn">Search</span>
-                      </div>
-                      <div class="mk-split" style="grid-template-columns:repeat(3,1fr)">
-                        <div class="mk-stack"><div class="mk-block" style="--c:#7fb7be;height:4.5em"></div><b>Palm Grove Villa</b><span class="mk-small">Sleeps 30 · ₹1,850/night</span></div>
-                        <div class="mk-stack"><div class="mk-block" style="--c:#d3a588;height:4.5em"></div><b>Fort Hostel</b><span class="mk-small">Sleeps 42 · ₹950/night</span></div>
-                        <div class="mk-stack"><div class="mk-block" style="--c:#8e9aaf;height:4.5em"></div><b>Hilltop Lodge</b><span class="mk-small">Sleeps 26 · ₹1,400/night</span></div>
-                      </div>
+            </div>
+            <div class="swiper-slide sc-slide" data-title="Group Accommodation" data-meta="Software · Travel" data-url="groupaccommodation.com" data-color="#f28c28" role="img" aria-label="Group Accommodation travel booking platform">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="browser mk" style="--mk-ac:#f28c28;--mk-ac-fg:#fff;--mk-card:#f3f6fa">
+                  <div class="br-bar"><i></i><i></i><i></i><span>groupaccommodation.com</span></div>
+                  <div class="br-body">
+                    <div class="mk-nav"><b style="color:#12355b">Group Accommodation</b><span>Venues</span><span>Retreats</span><span>Schools</span></div>
+                    <p class="mk-h" style="color:#12355b">Stays for the whole group.</p>
+                    <div class="mk-card mk-row" style="background:#fff;box-shadow:0 0 0 1px var(--mk-line)">
+                      <div style="flex:1"><span class="mk-small">Where</span><b>Goa</b></div>
+                      <div style="flex:1"><span class="mk-small">When</span><b>12–15 Dec</b></div>
+                      <div style="flex:1"><span class="mk-small">Group</span><b>24 guests</b></div>
+                      <span class="mk-btn">Search</span>
+                    </div>
+                    <div class="mk-split" style="grid-template-columns:repeat(3,1fr)">
+                      <div class="mk-stack"><div class="mk-block" style="--c:#7fb7be;height:4.5em"></div><b>Palm Grove Villa</b><span class="mk-small">Sleeps 30 · ₹1,850/night</span></div>
+                      <div class="mk-stack"><div class="mk-block" style="--c:#d3a588;height:4.5em"></div><b>Fort Hostel</b><span class="mk-small">Sleeps 42 · ₹950/night</span></div>
+                      <div class="mk-stack"><div class="mk-block" style="--c:#8e9aaf;height:4.5em"></div><b>Hilltop Lodge</b><span class="mk-small">Sleeps 26 · ₹1,400/night</span></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="project-meta"><h3 class="h3">Group Accommodation</h3><p class="muted">Software · Travel</p></div>
-            </a>
-            <a href="/work.html" class="swiper-slide project-slide">
-              <div class="project-media mk-tile" style="--tile:#d7efe9" role="img" aria-label="ChequP health check booking website">
-                <div class="mk-wrap" aria-hidden="true">
-                  <div class="browser mk" style="--mk-ac:#0f9d8a;--mk-ac-fg:#fff;--mk-card:#eef8f6">
-                    <div class="br-bar"><i></i><i></i><i></i><span>chequp.com</span></div>
-                    <div class="br-body">
-                      <div class="mk-nav"><b style="color:#0f9d8a">ChequP</b><span>Tests</span><span>Clinics</span><span class="mk-pill mk-pill--ac">Book</span></div>
-                      <div class="mk-split">
-                        <div class="mk-stack" style="align-content:center">
-                          <p class="mk-h">Your wellness check, booked in 60 seconds.</p>
-                          <span class="mk-small">Home sample collection across 40+ cities</span>
-                          <div class="mk-row"><span class="mk-pill mk-pill--ac">Book a check</span><span class="mk-pill">How it works</span></div>
-                        </div>
-                        <div class="mk-card mk-stack">
-                          <b>Full body check</b>
-                          <div class="mk-chips"><span class="on">Blood</span><span class="on">Thyroid</span><span>Vitamin D</span><span class="on">Lipids</span></div>
-                          <span class="mk-small">Pick a slot</span>
-                          <div class="mk-slots"><span>7:00</span><span class="on">7:30</span><span>8:00</span></div>
-                          <div class="mk-btn">Confirm · ₹1,299</div>
-                        </div>
+            </div>
+            <div class="swiper-slide sc-slide" data-title="ChequP" data-meta="Website · Health-tech" data-url="chequp.com" data-color="#0f9d8a" role="img" aria-label="ChequP health check booking website">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="browser mk" style="--mk-ac:#0f9d8a;--mk-ac-fg:#fff;--mk-card:#eef8f6">
+                  <div class="br-bar"><i></i><i></i><i></i><span>chequp.com</span></div>
+                  <div class="br-body">
+                    <div class="mk-nav"><b style="color:#0f9d8a">ChequP</b><span>Tests</span><span>Clinics</span><span class="mk-pill mk-pill--ac">Book</span></div>
+                    <div class="mk-split">
+                      <div class="mk-stack" style="align-content:center">
+                        <p class="mk-h">Your wellness check, booked in 60 seconds.</p>
+                        <span class="mk-small">Home sample collection across 40+ cities</span>
+                        <div class="mk-row"><span class="mk-pill mk-pill--ac">Book a check</span><span class="mk-pill">How it works</span></div>
+                      </div>
+                      <div class="mk-card mk-stack">
+                        <b>Full body check</b>
+                        <div class="mk-chips"><span class="on">Blood</span><span class="on">Thyroid</span><span>Vitamin D</span><span class="on">Lipids</span></div>
+                        <span class="mk-small">Pick a slot</span>
+                        <div class="mk-slots"><span>7:00</span><span class="on">7:30</span><span>8:00</span></div>
+                        <div class="mk-btn">Confirm · ₹1,299</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="project-meta"><h3 class="h3">ChequP</h3><p class="muted">Website · Health-tech</p></div>
-            </a>
-            <a href="/work.html" class="swiper-slide project-slide">
-              <div class="project-media mk-tile" style="--tile:#6b8f71" role="img" aria-label="Floresco wellbeing website">
-                <div class="mk-wrap" aria-hidden="true">
-                  <div class="browser mk" style="--mk-bg:#f6f1e7;--mk-ac:#6b8f71;--mk-ac-fg:#fff;--mk-card:#ebe4d4">
-                    <div class="br-bar"><i></i><i></i><i></i><span>floresco.co</span></div>
-                    <div class="br-body" style="justify-items:center;text-align:center">
-                      <div class="mk-nav" style="width:100%"><b style="font-family:var(--font-serif);font-style:italic">Floresco</b><span>Classes</span><span>Retreats</span><span>Journal</span></div>
-                      <div style="width:6em;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9d8b6,#6b8f71)"></div>
-                      <p class="mk-h" style="font-family:var(--font-serif);font-weight:400">Find your <em>calm.</em></p>
-                      <div class="mk-chips" style="justify-content:center"><span>Yoga</span><span class="on">Breathwork</span><span>Sound baths</span></div>
-                      <span class="mk-pill mk-pill--ac">Book a session</span>
-                    </div>
+            </div>
+            <div class="swiper-slide sc-slide" data-title="Floresco" data-meta="Website · Wellbeing" data-url="floresco.co" data-color="#6b8f71" role="img" aria-label="Floresco wellbeing website">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="browser mk" style="--mk-bg:#f6f1e7;--mk-ac:#6b8f71;--mk-ac-fg:#fff;--mk-card:#ebe4d4">
+                  <div class="br-bar"><i></i><i></i><i></i><span>floresco.co</span></div>
+                  <div class="br-body" style="justify-items:center;text-align:center">
+                    <div class="mk-nav" style="width:100%"><b style="font-family:var(--font-serif);font-style:italic">Floresco</b><span>Classes</span><span>Retreats</span><span>Journal</span></div>
+                    <div style="width:6em;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9d8b6,#6b8f71)"></div>
+                    <p class="mk-h" style="font-family:var(--font-serif);font-weight:400">Find your <em>calm.</em></p>
+                    <div class="mk-chips" style="justify-content:center"><span>Yoga</span><span class="on">Breathwork</span><span>Sound baths</span></div>
+                    <span class="mk-pill mk-pill--ac">Book a session</span>
                   </div>
                 </div>
               </div>
-              <div class="project-meta"><h3 class="h3">Floresco</h3><p class="muted">Website · Wellbeing</p></div>
-            </a>
-            <a href="/work.html" class="swiper-slide project-slide">
-              <div class="project-media mk-tile" style="--tile:#1a1a1a" role="img" aria-label="WorkRoom desk booking platform">
-                <div class="mk-wrap" aria-hidden="true">
-                  <div class="browser mk" style="--mk-bg:#202020;--mk-fg:#f3f1e7;--mk-muted:rgba(243,241,231,.55);--mk-line:rgba(243,241,231,.12);--mk-ac:#c6f432;--mk-ac-fg:#1a1a1a;--mk-card:#2a2a2a">
-                    <div class="br-bar"><i></i><i></i><i></i><span>workroom.space/book</span></div>
-                    <div class="br-body">
-                      <div class="mk-nav"><b>WorkRoom</b><span>Desks</span><span>Meeting rooms</span><span class="mk-pill mk-pill--ac">Members</span></div>
-                      <div class="mk-split">
-                        <div class="mk-card mk-stack">
-                          <div class="mk-between"><b>Floor 2 · Today</b><span class="mk-small">14 free</span></div>
-                          <div class="wr-desks"><i></i><i class="x"></i><i></i><i class="x"></i><i class="me"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i></div>
-                        </div>
-                        <div class="mk-stack">
-                          <p class="mk-title">Desk D5</p>
-                          <span class="mk-small">Window side · Monitor · Locker</span>
-                          <div class="mk-between"><span>Hot desk</span><b>₹499/day</b></div>
-                          <div class="mk-between"><span>Community</span><b>86 members</b></div>
-                          <div class="mk-btn">Book desk</div>
-                        </div>
+            </div>
+            <div class="swiper-slide sc-slide" data-title="WorkRoom" data-meta="Website · Workspaces" data-url="workroom.space/book" data-color="#c6f432" role="img" aria-label="WorkRoom desk booking platform">
+              <div class="mk-wrap" aria-hidden="true">
+                <div class="browser mk" style="--mk-bg:#202020;--mk-fg:#f3f1e7;--mk-muted:rgba(243,241,231,.55);--mk-line:rgba(243,241,231,.12);--mk-ac:#c6f432;--mk-ac-fg:#1a1a1a;--mk-card:#2a2a2a">
+                  <div class="br-bar"><i></i><i></i><i></i><span>workroom.space/book</span></div>
+                  <div class="br-body">
+                    <div class="mk-nav"><b>WorkRoom</b><span>Desks</span><span>Meeting rooms</span><span class="mk-pill mk-pill--ac">Members</span></div>
+                    <div class="mk-split">
+                      <div class="mk-card mk-stack">
+                        <div class="mk-between"><b>Floor 2 · Today</b><span class="mk-small">14 free</span></div>
+                        <div class="wr-desks"><i></i><i class="x"></i><i></i><i class="x"></i><i class="me"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i><i></i><i class="x"></i><i></i><i class="x"></i><i></i></div>
+                      </div>
+                      <div class="mk-stack">
+                        <p class="mk-title">Desk D5</p>
+                        <span class="mk-small">Window side · Monitor · Locker</span>
+                        <div class="mk-between"><span>Hot desk</span><b>₹499/day</b></div>
+                        <div class="mk-between"><span>Community</span><b>86 members</b></div>
+                        <div class="mk-btn">Book desk</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="project-meta"><h3 class="h3">WorkRoom</h3><p class="muted">Website · Workspaces</p></div>
-            </a>
-            <a href="/work.html" class="swiper-slide project-slide project-slide--more">
-              <span class="h2">More <em class="accent">projects</em></span>
-              <span class="slider-btn" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </span>
-            </a>
+            </div>
+            <div class="swiper-slide sc-slide sc-slide--more" data-title="More projects" data-meta="Concepts, apps and sites" data-url="wynklo.com/work" data-color="#fdd011">
+              <a href="/work.html" class="sc-more">
+                <span class="h2">More <em class="accent">projects</em></span>
+                <span class="slider-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </span>
+              </a>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sc-foot">
+          <a href="/work.html" class="sc-meta">
+            <h3 class="h3 sc-title">Clubmates</h3>
+            <p class="muted sc-sub">Website · Social nightlife</p>
+          </a>
+          <div class="sc-nav">
+            <span class="sc-count" aria-live="polite">01 / 08</span>
+            <button type="button" class="slider-btn slider-prev" aria-label="Previous project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+            </button>
+            <button type="button" class="slider-btn slider-next" aria-label="Next project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </button>
           </div>
         </div>
       </div>

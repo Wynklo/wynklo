@@ -3,7 +3,7 @@
    ======================================== */
 
 import Swiper from 'swiper';
-import { Navigation, Keyboard, A11y } from 'swiper/modules';
+import { Keyboard, A11y } from 'swiper/modules';
 import 'swiper/css';
 import { gsap, reducedMotion, splitReveal } from '../motion.js';
 import { runPreloader } from '../preloader.js';
@@ -68,19 +68,80 @@ function problemPin() {
 }
 
 function slider() {
-  const el = document.querySelector('.projects-swiper');
+  const browser = document.querySelector('.sc-browser');
+  const el = browser?.querySelector('.projects-swiper');
   if (!el) return;
 
-  new Swiper(el, {
-    modules: [Navigation, Keyboard, A11y],
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    speed: reducedMotion ? 0 : 900,
-    grabCursor: true,
-    keyboard: { enabled: true },
-    navigation: { prevEl: '.slider-prev', nextEl: '.slider-next' },
-    breakpoints: { 768: { spaceBetween: 32 } },
+  const section = browser.closest('.work-slider');
+  const slides = [...el.querySelectorAll('.sc-slide')];
+  const tabs = browser.querySelector('.sc-tabs');
+  const url = browser.querySelector('.sc-url-text');
+  const open = browser.querySelector('.sc-open');
+  const title = section.querySelector('.sc-title');
+  const sub = section.querySelector('.sc-sub');
+  const count = section.querySelector('.sc-count');
+  const prev = section.querySelector('.slider-prev');
+  const next = section.querySelector('.slider-next');
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const tabEls = slides.map((slide, i) => {
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'sc-tab';
+    tab.setAttribute('role', 'tab');
+    tab.style.setProperty('--c', slide.dataset.color);
+    tab.innerHTML = `<i aria-hidden="true"></i><span></span>`;
+    tab.querySelector('span').textContent = slide.dataset.title;
+    tab.addEventListener('click', () => swiper.slideTo(i));
+    tabs.appendChild(tab);
+    return tab;
   });
+
+  const swiper = new Swiper(el, {
+    modules: [Keyboard, A11y],
+    slidesPerView: 1,
+    spaceBetween: 0,
+    speed: reducedMotion ? 0 : 700,
+    keyboard: { enabled: true, onlyInViewport: true },
+    a11y: { enabled: true },
+  });
+
+  const sync = () => {
+    const i = swiper.activeIndex;
+    const { title: t, meta, url: u, href, live } = slides[i].dataset;
+    url.textContent = u;
+    title.textContent = t;
+    sub.textContent = meta;
+    count.textContent = `${pad(i + 1)} / ${pad(slides.length)}`;
+    browser.classList.toggle('is-live', live !== undefined);
+    browser.classList.remove('is-interactive');
+    open.href = href || '/work.html';
+    open.target = href ? '_blank' : '_self';
+    prev.disabled = swiper.isBeginning;
+    next.disabled = swiper.isEnd;
+    tabEls.forEach((tab, j) => {
+      tab.classList.toggle('is-active', j === i);
+      tab.setAttribute('aria-selected', j === i);
+    });
+    const tab = tabEls[i];
+    tabs.scrollTo({ left: tab.offsetLeft - (tabs.clientWidth - tab.offsetWidth) / 2, behavior: 'smooth' });
+  };
+
+  prev.addEventListener('click', () => swiper.slidePrev());
+  next.addEventListener('click', () => swiper.slideNext());
+  swiper.on('slideChange', sync);
+  sync();
+
+  // Live sites only take scroll/clicks once the visitor opts in, so the page never gets stuck inside one.
+  browser.querySelectorAll('.sc-explore').forEach((btn) =>
+    btn.addEventListener('click', () => browser.classList.add('is-interactive'))
+  );
+  browser.addEventListener('mouseleave', () => browser.classList.remove('is-interactive'));
+
+  // The floating chat dock sits over the slider controls, so step it aside while they're on screen.
+  new IntersectionObserver(([entry]) =>
+    document.documentElement.classList.toggle('dock-away', entry.isIntersecting)
+  ).observe(section.querySelector('.sc-foot'));
 }
 
 export function init() {

@@ -660,10 +660,20 @@
   align-items: flex-end;
   gap: 0.6rem;
   pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.5s var(--ease-out);
 }
 
 .cta-dock > * {
   pointer-events: auto;
+}
+
+.dock-away .cta-dock {
+  opacity: 0;
+  transform: translateY(1.5rem);
+}
+
+.dock-away .cta-dock > * {
+  pointer-events: none;
 }
 
 .cta-popup {
