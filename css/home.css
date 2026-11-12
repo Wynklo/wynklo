@@ -740,14 +740,6 @@
   inset: 0;
 }
 
-.live-view--light {
-  background: #f3f1e7;
-}
-
-.live-view--light::before {
-  color: rgba(26, 26, 26, 0.35);
-}
-
 .sc-slide .live-view iframe {
   pointer-events: none;
 }
