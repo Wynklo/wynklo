@@ -342,6 +342,14 @@
   opacity: 1;
 }
 
+.live-view--light {
+  background: #f3f1e7;
+}
+
+.live-view--light::before {
+  color: rgba(26, 26, 26, 0.35);
+}
+
 @keyframes live-wait {
   to {
     opacity: 0.35;
