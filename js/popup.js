@@ -14,6 +14,9 @@ export function initPopup() {
   function checkScroll() {
     if (isDismissed || hasShown) return;
 
+    // Wait until the hero is off-screen so the dock doesn't crowd the first viewport.
+    if (window.scrollY < window.innerHeight * 0.9) return;
+
     const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
     const threshold = window.matchMedia('(max-width: 560px)').matches ? 0.6 : 0.35;
     if (scrollPercent > threshold) {

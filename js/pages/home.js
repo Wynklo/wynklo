@@ -44,9 +44,12 @@ function problemPin() {
   const startRot = [-18, 14, -10, 20, -16, 12];
   const driftY = [-80, -60, -110, -50, -120, -90];
 
+  const head = pin.querySelector('.problem-head');
+
   gsap
     .timeline({
-      scrollTrigger: { trigger: pin, start: 'top top', end: '+=260%', pin: true, scrub: 0.8, anticipatePin: 1 },
+      // Keep the pin only as long as the cards + panel need — longer ends leave a yellow dead zone.
+      scrollTrigger: { trigger: pin, start: 'top top', end: '+=145%', pin: true, scrub: 0.8, anticipatePin: 1 },
     })
     .from(cards, {
       y: () => window.innerHeight * 0.75,
@@ -63,8 +66,19 @@ function problemPin() {
       { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, ease: 'power2.inOut' },
       '-=0.2'
     )
-    .from('.problem-panel-inner > *', { y: 70, opacity: 0, stagger: 0.1, duration: 0.8, ease: 'power2.out' }, '-=0.35')
-    .to({}, { duration: 0.5 });
+    // Hide the covered heading so it doesn't read as a second, left-aligned duplicate under the panel.
+    .to(
+      head,
+      {
+        autoAlpha: 0,
+        duration: 0.35,
+        ease: 'power1.out',
+        onStart: () => head.setAttribute('aria-hidden', 'true'),
+        onReverseComplete: () => head.removeAttribute('aria-hidden'),
+      },
+      '<+=0.25'
+    )
+    .from('.problem-panel-inner > *', { y: 70, opacity: 0, stagger: 0.1, duration: 0.8, ease: 'power2.out' }, '-=0.55');
 }
 
 function slider() {
@@ -120,8 +134,10 @@ function slider() {
     prev.disabled = swiper.isBeginning;
     next.disabled = swiper.isEnd;
     tabEls.forEach((tab, j) => {
-      tab.classList.toggle('is-active', j === i);
-      tab.setAttribute('aria-selected', j === i);
+      const on = j === i;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-selected', on);
+      tab.tabIndex = on ? 0 : -1;
     });
     const tab = tabEls[i];
     tabs.scrollTo({ left: tab.offsetLeft - (tabs.clientWidth - tab.offsetWidth) / 2, behavior: 'smooth' });
@@ -141,7 +157,7 @@ function slider() {
   // The floating chat dock sits over the slider controls, so step it aside while they're on screen.
   new IntersectionObserver(([entry]) =>
     document.documentElement.classList.toggle('dock-away', entry.isIntersecting)
-  ).observe(section.querySelector('.sc-foot'));
+  ).observe(section.querySelector('.sc-caption'));
 }
 
 export function init() {
